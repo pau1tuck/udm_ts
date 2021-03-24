@@ -10,7 +10,7 @@ const paginated_tracks_1 = require("../types/paginated-tracks");
 const redis_1 = require("../config/redis");
 const constants_1 = require("../config/constants");
 let TrackResolver = class TrackResolver {
-    Tracks(limit) {
+    tracks(limit) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
             const allTracks = (yield redis_1.redisClient.lrange(constants_1.TRACKS_CACHE_KEY, 0, -1)) || [];
             const tracks = allTracks.map((track) => JSON.parse(track));
@@ -20,22 +20,22 @@ let TrackResolver = class TrackResolver {
             };
         });
     }
-    Track(id) {
+    track(id) {
         return track_1.Track.findOne(id);
     }
-    CreateTrack(input) {
+    createTrack(input) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
             const newTrack = yield track_1.Track.create(Object.assign({}, input)).save();
             redis_1.redisClient.lpush(constants_1.TRACKS_CACHE_KEY, JSON.stringify(newTrack));
             return newTrack;
         });
     }
-    UpdateTrack(id, image, trackUrl, buyUrl) {
+    updateTrack(id, trackUrl, buyUrl) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
             const result = yield typeorm_1.getConnection()
                 .createQueryBuilder()
                 .update(track_1.Track)
-                .set({ image, trackUrl, buyUrl })
+                .set({ trackUrl, buyUrl })
                 .where("id = :id", {
                 id,
             })
@@ -44,7 +44,7 @@ let TrackResolver = class TrackResolver {
             return result.raw[0];
         });
     }
-    DeleteTrack(id) {
+    deleteTrack(id) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
             yield track_1.Track.delete({ id });
             return true;
@@ -57,38 +57,37 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [Number]),
     tslib_1.__metadata("design:returntype", Promise)
-], TrackResolver.prototype, "Tracks", null);
+], TrackResolver.prototype, "tracks", null);
 tslib_1.__decorate([
     type_graphql_1.Query(() => track_1.Track, { nullable: true }),
     tslib_1.__param(0, type_graphql_1.Arg("id")),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [String]),
     tslib_1.__metadata("design:returntype", Promise)
-], TrackResolver.prototype, "Track", null);
+], TrackResolver.prototype, "track", null);
 tslib_1.__decorate([
     type_graphql_1.Mutation(() => track_1.Track),
     tslib_1.__param(0, type_graphql_1.Arg("input")),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [track_input_1.TrackInput]),
     tslib_1.__metadata("design:returntype", Promise)
-], TrackResolver.prototype, "CreateTrack", null);
+], TrackResolver.prototype, "createTrack", null);
 tslib_1.__decorate([
     type_graphql_1.Mutation(() => track_1.Track, { nullable: true }),
     tslib_1.__param(0, type_graphql_1.Arg("id")),
-    tslib_1.__param(1, type_graphql_1.Arg("image")),
-    tslib_1.__param(2, type_graphql_1.Arg("trackUrl")),
-    tslib_1.__param(3, type_graphql_1.Arg("buyUrl")),
+    tslib_1.__param(1, type_graphql_1.Arg("trackUrl")),
+    tslib_1.__param(2, type_graphql_1.Arg("buyUrl")),
     tslib_1.__metadata("design:type", Function),
-    tslib_1.__metadata("design:paramtypes", [String, String, String, String]),
+    tslib_1.__metadata("design:paramtypes", [String, String, String]),
     tslib_1.__metadata("design:returntype", Promise)
-], TrackResolver.prototype, "UpdateTrack", null);
+], TrackResolver.prototype, "updateTrack", null);
 tslib_1.__decorate([
     type_graphql_1.Mutation(() => Boolean),
     tslib_1.__param(0, type_graphql_1.Arg("id")),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [String]),
     tslib_1.__metadata("design:returntype", Promise)
-], TrackResolver.prototype, "DeleteTrack", null);
+], TrackResolver.prototype, "deleteTrack", null);
 TrackResolver = tslib_1.__decorate([
     type_graphql_1.Resolver(track_1.Track)
 ], TrackResolver);

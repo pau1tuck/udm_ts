@@ -13,10 +13,9 @@ const type_graphql_1 = require("type-graphql");
 const cors_1 = tslib_1.__importDefault(require("cors"));
 const database_1 = tslib_1.__importDefault(require("./config/database"));
 const redis_1 = require("./config/redis");
-const track_1 = require("./entities/track");
 const user_resolver_1 = require("./resolvers/user.resolver");
 const track_resolver_1 = require("./resolvers/track.resolver");
-const constants_1 = require("./config/constants");
+const cache_tracks_1 = require("./utils/cache-tracks");
 const PRODUCTION = process.env.NODE_ENV === "production";
 const WORKERS = process.env.WEB_CONCURRENCY || 1;
 const PORT = parseInt(process.env.PORT, 10) || 5000;
@@ -56,14 +55,7 @@ const server = () => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
         context: ({ req, res }) => ({ req, res, redisClient: redis_1.redisClient }),
     });
     apolloServer.applyMiddleware({ app, cors: false });
-    yield redis_1.redisClient.del(constants_1.TRACKS_CACHE_KEY);
-    const allTracks = yield typeorm_1.getConnection()
-        .getRepository(track_1.Track)
-        .createQueryBuilder("t")
-        .orderBy('t."createdAt"', "DESC")
-        .getMany();
-    const tracks = allTracks.map((track) => JSON.stringify(track));
-    console.log(yield redis_1.redisClient.lrange(constants_1.TRACKS_CACHE_KEY, 0, -1));
+    cache_tracks_1.cacheTracks();
     if (orm.isConnected) {
         console.log("📙 Connected to PostgreSQL database.");
     }

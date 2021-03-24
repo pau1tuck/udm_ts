@@ -2,10 +2,10 @@ import DataLoader from "dataloader";
 import { User } from "../entities/user";
 
 export const createUserDataLoader = () => {
-    new DataLoader<number, User>(async (userIds) => {
+    const userDataLoader = new DataLoader<number, User>(async (userIds) => {
         const users = await User.findByIds(userIds as number[]);
         const userIdToUser: Record<number, User> = {};
-        users.forEach((u) => {
+        users.forEach((u: any) => {
             userIdToUser[u.id] = u;
         });
 

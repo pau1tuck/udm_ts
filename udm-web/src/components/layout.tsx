@@ -28,7 +28,7 @@ const Layout = ({
                     />
                     <meta name="og:title" content={siteTitle} />
                     <meta name="twitter:card" content="summary_large_image" />
-                    <link href="/fonts/fonts.css" rel="stylesheet" />
+                    <link href="fonts/fonts.css" rel="stylesheet" />
                 </Head>
                 <div>{children}</div>
             </div>
