@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const theme = extendTheme({
     colors: {
-        bubblegum: {
+        primary: {
             50: "#46A4F9",
             100: "#399EF9",
             200: "#2D98F8",
@@ -15,7 +15,7 @@ const theme = extendTheme({
             800: "#0772D2",
             900: "#066BC6",
         },
-        watermelon: {
+        secondary: {
             50: "#FF4D80",
             100: "#FF4077",
             200: "#FF336D",
