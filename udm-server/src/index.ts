@@ -20,6 +20,8 @@ import { Track } from "./entities/track";
 import { UserResolver } from "./resolvers/user.resolver";
 import { TrackResolver } from "./resolvers/track.resolver";
 
+import { cacheTracks } from "./utils/cache-tracks";
+
 import { TRACKS_CACHE_KEY } from "./config/constants";
 
 const PRODUCTION: boolean = process.env.NODE_ENV === "production";
@@ -84,16 +86,7 @@ const server = async () => {
         res.sendFile(path.join(__dirname + "/web/public/index.html"));
     }); */
 
-    await redisClient.del(TRACKS_CACHE_KEY);
-    // const allTracks = await Track.find();
-    const allTracks = await getConnection()
-        .getRepository(Track)
-        .createQueryBuilder("t")
-        .orderBy('t."createdAt"', "DESC")
-        .getMany();
-    const tracks = allTracks.map((track: any) => JSON.stringify(track));
-    await redisClient.lpush(TRACKS_CACHE_KEY, ...tracks);
-    console.log(await redisClient.lrange(TRACKS_CACHE_KEY, 0, -1));
+    cacheTracks();
 
     if (orm.isConnected) {
         console.log("📙 Connected to PostgreSQL database.");

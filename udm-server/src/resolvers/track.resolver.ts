@@ -17,7 +17,7 @@ import { TRACKS_CACHE_KEY } from "../config/constants";
 @Resolver(Track)
 export class TrackResolver {
     @Query(() => PaginatedTracks)
-    async Tracks(
+    async tracks(
         @Arg("limit", () => Int)
         limit: number
     ): Promise<PaginatedTracks> {
@@ -32,13 +32,13 @@ export class TrackResolver {
     }
 
     @Query(() => Track, { nullable: true })
-    Track(@Arg("id") id: string): Promise<Track | undefined> {
+    track(@Arg("id") id: string): Promise<Track | undefined> {
         return Track.findOne(id);
     }
 
     @Mutation(() => Track)
     // @UseMiddleware(isAdmin)
-    async CreateTrack(@Arg("input") input: TrackInput): Promise<Track> {
+    async createTrack(@Arg("input") input: TrackInput): Promise<Track> {
         const newTrack = await Track.create({
             ...input,
         }).save();
@@ -48,16 +48,15 @@ export class TrackResolver {
 
     @Mutation(() => Track, { nullable: true })
     // @UseMiddleware(isAdmin)
-    async UpdateTrack(
+    async updateTrack(
         @Arg("id") id: string,
-        @Arg("image") image: string,
         @Arg("trackUrl") trackUrl: string,
         @Arg("buyUrl") buyUrl: string
     ): Promise<Track | null> {
         const result = await getConnection()
             .createQueryBuilder()
             .update(Track)
-            .set({ image, trackUrl, buyUrl })
+            .set({ trackUrl, buyUrl })
             .where("id = :id", {
                 id,
             })
@@ -69,7 +68,7 @@ export class TrackResolver {
 
     @Mutation(() => Boolean)
     // @UseMiddleware(isAdmin)
-    async DeleteTrack(@Arg("id") id: string): Promise<boolean> {
+    async deleteTrack(@Arg("id") id: string): Promise<boolean> {
         await Track.delete({ id });
         return true;
     }

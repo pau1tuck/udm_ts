@@ -1,4 +1,3 @@
-import path from "path";
 import connectRedis from "connect-redis";
 import Redis from "ioredis";
 import session from "express-session";
