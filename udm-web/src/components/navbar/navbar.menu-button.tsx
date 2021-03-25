@@ -3,7 +3,7 @@ import { Box } from "@chakra-ui/react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
 
-export const MenuButton = ({ toggleMenu, isOpen }) => {
+export const NavbarMenuButton = ({ toggleMenu, isOpen }) => {
     return (
         <Box
             display={{ base: "block", sm: "none" }}

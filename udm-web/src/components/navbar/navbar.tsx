@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Box, Container, Flex, Spacer } from "@chakra-ui/react";
-import { Logo } from "./logo";
-import { MenuButton } from "./menu-button";
+import { Box, Container, Flex, Slide, Spacer, Stack } from "@chakra-ui/react";
+import { NavbarLogo } from "./navbar.logo";
+import { NavbarMenuButton } from "./navbar.menu-button";
+import { NavbarMenu } from "./navbar.menu";
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = React.useState(false);
@@ -12,18 +13,29 @@ export const Navbar = () => {
         <Box maxWidth="container.lg" margin="auto">
             <Flex
                 as="nav"
-                margin="0px"
                 align="center"
                 justify="space-between"
                 wrap="wrap"
+                w="100%"
+                p={3}
+                bg="tangerine.500"
                 color="white"
             >
-                <Logo />
+                <NavbarLogo />
                 <Box p="2">.</Box>
                 <Spacer />
-                <Box p="2">
-                    <MenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
-                </Box>
+                <NavbarMenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
+                <Slide in={isOpen} direction="top" style={{ zIndex: 10 }}>
+                    <Box
+                        display={{
+                            base: isOpen ? "block" : "none",
+                            md: "block",
+                        }}
+                        flexBasis={{ base: "100%", md: "auto" }}
+                    >
+                        <NavbarMenu />
+                    </Box>
+                </Slide>
             </Flex>
         </Box>
     );

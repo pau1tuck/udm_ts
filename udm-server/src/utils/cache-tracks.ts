@@ -1,6 +1,6 @@
 import { getConnection } from "typeorm";
 import { Track } from "../entities/track";
-import { RedisStore, redisClient } from "../config/redis";
+import { redisClient } from "../config/redis";
 import { TRACKS_CACHE_KEY } from "../config/constants";
 
 export const cacheTracks = async () => {

@@ -6,7 +6,7 @@ import express, { Express, Request, Response } from "express";
 
 import session from "express-session";
 
-import { createConnection, getConnection, Connection } from "typeorm";
+import { createConnection, Connection } from "typeorm";
 
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
@@ -15,14 +15,10 @@ import cors from "cors";
 import database from "./config/database";
 import { RedisStore, redisClient } from "./config/redis";
 
-import { Track } from "./entities/track";
-
 import { UserResolver } from "./resolvers/user.resolver";
 import { TrackResolver } from "./resolvers/track.resolver";
 
 import { cacheTracks } from "./utils/cache-tracks";
-
-import { TRACKS_CACHE_KEY } from "./config/constants";
 
 const PRODUCTION: boolean = process.env.NODE_ENV === "production";
 const WORKERS = process.env.WEB_CONCURRENCY || 1;
