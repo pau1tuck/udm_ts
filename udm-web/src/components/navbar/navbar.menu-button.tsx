@@ -11,7 +11,7 @@ export const NavbarMenuButton = ({ toggleMenu, isOpen }) => {
             pr="3"
             onClick={toggleMenu}
             opacity="0.8"
-            fontSize="xl"
+            fontSize="1.8rem"
         >
             {isOpen ? <IoMdClose /> : <GiHamburgerMenu />}
         </Box>

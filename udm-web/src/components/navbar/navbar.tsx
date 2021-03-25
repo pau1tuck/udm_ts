@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, Container, Flex, Slide, Spacer, Stack } from "@chakra-ui/react";
 import { NavbarLogo } from "./navbar.logo";
+import { NavbarItems } from "./navbar.items";
 import { NavbarMenuButton } from "./navbar.menu-button";
 import { NavbarMenu } from "./navbar.menu";
 
@@ -18,13 +19,11 @@ export const Navbar = () => {
                 wrap="wrap"
                 w="100%"
                 p={3}
-                bg="tangerine.500"
                 color="white"
             >
                 <NavbarLogo />
-                <Box p="2">.</Box>
                 <Spacer />
-                <NavbarMenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
+                <NavbarItems />
                 <Slide in={isOpen} direction="top" style={{ zIndex: 10 }}>
                     <Box
                         display={{
