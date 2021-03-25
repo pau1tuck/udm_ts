@@ -5,7 +5,7 @@ import { withApollo } from "../utils/with-apollo";
 const Home = () => {
     return (
         <Layout home>
-            <div>Hello, Bastard.</div>
+            <div></div>
         </Layout>
     );
 };

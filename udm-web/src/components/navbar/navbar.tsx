@@ -9,26 +9,22 @@ export const Navbar = () => {
     const toggleMenu = () => setIsOpen(!isOpen);
 
     return (
-        <div>
-            <Container maxWidth="container.lg">
-                <Flex
-                    bg="pumpkin.500"
-                    as="nav"
-                    margin="0px"
-                    align="center"
-                    justify="space-between"
-                    wrap="wrap"
-                    color="white"
-                    opacity="0.9"
-                >
-                    <Logo />
-                    <Box p="1">.</Box>
-                    <Spacer />
-                    <Box p="1">
-                        <MenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
-                    </Box>
-                </Flex>
-            </Container>
-        </div>
+        <Box maxWidth="container.lg" margin="auto">
+            <Flex
+                as="nav"
+                margin="0px"
+                align="center"
+                justify="space-between"
+                wrap="wrap"
+                color="white"
+            >
+                <Logo />
+                <Box p="2">.</Box>
+                <Spacer />
+                <Box p="2">
+                    <MenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
+                </Box>
+            </Flex>
+        </Box>
     );
 };
