@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 
 export const siteTitle = "Underground Dance Music";
 
@@ -15,6 +16,7 @@ const Layout = ({
         <>
             <div>
                 <Head>
+                    <title>{siteTitle}</title>
                     <link rel="icon" href="/favicon.ico" />
                     <meta
                         name="description"
@@ -28,7 +30,7 @@ const Layout = ({
                     />
                     <meta name="og:title" content={siteTitle} />
                     <meta name="twitter:card" content="summary_large_image" />
-                    <link href="fonts/fonts.css" rel="stylesheet" />
+                    <link href="/fonts/fonts.css" rel="stylesheet" />
                 </Head>
                 <div>{children}</div>
             </div>
