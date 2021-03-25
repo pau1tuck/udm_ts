@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import { Navbar } from "./navbar";
 
 export const siteTitle = "Underground Dance Music";
 
@@ -32,6 +33,7 @@ const Layout = ({
                     <meta name="twitter:card" content="summary_large_image" />
                     <link href="/fonts/fonts.css" rel="stylesheet" />
                 </Head>
+                <Navbar />
                 <div>{children}</div>
             </div>
         </>
