@@ -10,19 +10,19 @@ import {
     Stack,
     Text,
 } from "@chakra-ui/react";
-import { useMediaQuery } from "@chakra-ui/react";
-import { NavbarMenuButton } from "./navbar.menu-button";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { NavbarMenu } from "./navbar.menu";
 
 export const NavbarItems = () => {
-    const [isMinWidthLg] = useMediaQuery("(min-width: 62em)");
+    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
     const [isOpen, setIsOpen] = React.useState(false);
 
-    const toggleMenu = () => setIsOpen(!isOpen);
+    const toggle = () => setIsOpen(!isOpen);
 
     return (
         <>
-            <Box display={{ base: "none", md: "block" }}>
-                <ButtonGroup spacing="2">
+            <Box display={["none", "none", "none", "block"]}>
+                <ButtonGroup mr={2} spacing={2}>
                     <Button size="sm" colorScheme="white" variant="ghost">
                         <Text fontFamily="Quicksand" fontWeight="700">
                             LOG IN
@@ -35,7 +35,19 @@ export const NavbarItems = () => {
                     </Button>
                 </ButtonGroup>
             </Box>
-            <NavbarMenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
+            <Box
+                display={["block", "block", "block", "none"]}
+                p={2}
+                pr={3}
+                onClick={toggle}
+                opacity="0.8"
+                fontSize="1.6rem"
+            >
+                <GiHamburgerMenu />
+            </Box>
+            <Slide in={isOpen} direction="top" style={{ zIndex: 10 }}>
+                <NavbarMenu toggle={toggle} />
+            </Slide>
         </>
     );
 };

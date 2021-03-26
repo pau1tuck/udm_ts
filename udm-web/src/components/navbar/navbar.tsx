@@ -24,17 +24,6 @@ export const Navbar = () => {
                 <NavbarLogo />
                 <Spacer />
                 <NavbarItems />
-                <Slide in={isOpen} direction="top" style={{ zIndex: 10 }}>
-                    <Box
-                        display={{
-                            base: isOpen ? "block" : "none",
-                            md: "block",
-                        }}
-                        flexBasis={{ base: "100%", md: "auto" }}
-                    >
-                        <NavbarMenu />
-                    </Box>
-                </Slide>
             </Flex>
         </Box>
     );

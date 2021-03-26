@@ -1,20 +1,62 @@
 import React from "react";
-import { Box, Container, Flex, Spacer, Stack } from "@chakra-ui/react";
-import { NavbarMenuItem } from "./navbar.menu-item";
+import {
+    Box,
+    ButtonGroup,
+    Button,
+    Container,
+    Divider,
+    Flex,
+    Slide,
+    Spacer,
+    Stack,
+    Text,
+} from "@chakra-ui/react";
+import { IoMdClose } from "react-icons/io";
 
-export const NavbarMenu = () => {
+export const NavbarMenu = ({ toggle }) => {
     return (
-        <Stack
-            spacing={8}
+        <Box
+            width="100%"
+            m={0}
+            pb={12}
+            bg="black"
             align="center"
-            justify={["center", "space-between", "flex-end", "flex-end"]}
-            direction={["column", "row", "row", "row"]}
-            pt={[4, 4, 0, 0]}
+            justify="center"
         >
-            <NavbarMenuItem isLast to="/">
-                Log in
-            </NavbarMenuItem>
-            <NavbarMenuItem to="/">SIGN UP</NavbarMenuItem>
-        </Stack>
+            <Box
+                align="right"
+                pt={3}
+                pr={4}
+                onClick={toggle}
+                opacity="0.8"
+                fontSize="1.8rem"
+            >
+                <IoMdClose />
+            </Box>
+            <Box>
+                <ButtonGroup>
+                    <Stack
+                        spacing={4}
+                        align="center"
+                        justify="center"
+                        direction="column"
+                        pt={2}
+                        textAlign="center"
+                    >
+                        <Button size="md" colorScheme="primary">
+                            <Text fontFamily="Quicksand" fontWeight="700">
+                                SIGN UP
+                            </Text>
+                        </Button>
+                        <Button size="md" colorScheme="white" variant="ghost">
+                            <Text fontFamily="Quicksand" fontWeight="700">
+                                LOG IN
+                            </Text>
+                        </Button>
+                        <Divider />
+                    </Stack>
+                </ButtonGroup>
+            </Box>
+        </Box>
     );
 };
