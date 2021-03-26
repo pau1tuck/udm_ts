@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Container, Flex, Slide, Spacer, Stack } from "@chakra-ui/react";
 import { NavbarLogo } from "./navbar.logo";
-import { NavbarItems } from "./navbar.items";
+import NavbarItems from "./navbar.items";
 import { NavbarMenuButton } from "./navbar.menu-button";
 import { NavbarMenu } from "./navbar.menu";
 

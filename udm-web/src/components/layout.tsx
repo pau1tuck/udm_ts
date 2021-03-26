@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { Navbar } from "./navbar/navbar";
+import { Logo } from "./logo";
 
 export const siteTitle = "Underground Dance Music";
 
@@ -34,6 +35,7 @@ const Layout = ({
                     <link href="/fonts/fonts.css" rel="stylesheet" />
                 </Head>
                 <Navbar />
+                <Logo />
                 <div>{children}</div>
             </div>
         </>

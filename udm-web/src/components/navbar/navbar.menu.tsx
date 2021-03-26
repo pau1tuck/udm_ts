@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { IoMdClose } from "react-icons/io";
 
-export const NavbarMenu = ({ toggle }) => {
+export const NavbarMenu = ({ toggle, user }) => {
     return (
         <Box
             width="100%"

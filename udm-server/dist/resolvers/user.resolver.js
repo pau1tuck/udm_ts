@@ -6,16 +6,16 @@ const type_graphql_1 = require("type-graphql");
 const argon2_1 = tslib_1.__importDefault(require("argon2"));
 const user_1 = require("../entities/user");
 let UserResolver = class UserResolver {
-    Users() {
+    users() {
         return user_1.User.find();
     }
-    CurrentUser({ req }) {
+    currentUser({ req }) {
         if (!req.session.userId) {
             return null;
         }
         return user_1.User.findOne(req.session.userId);
     }
-    Register(firstName, lastName, country, email, password) {
+    register(firstName, lastName, country, email, password) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
             const encryptedPassword = yield argon2_1.default.hash(password);
             try {
@@ -34,7 +34,7 @@ let UserResolver = class UserResolver {
             return true;
         });
     }
-    Login(email, password, ctx) {
+    login(email, password, ctx) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
             const user = yield user_1.User.findOne({ where: { email } });
             if (!user) {
@@ -52,7 +52,7 @@ let UserResolver = class UserResolver {
             return user;
         });
     }
-    Logout({ req, res }) {
+    logout({ req, res }) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve) => req.session.destroy((err) => {
                 res.clearCookie("sid");
@@ -65,7 +65,7 @@ let UserResolver = class UserResolver {
             }));
         });
     }
-    DeleteUser(id) {
+    deleteUser(id) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
             yield user_1.User.delete({ id });
             return true;
@@ -77,14 +77,14 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", []),
     tslib_1.__metadata("design:returntype", Promise)
-], UserResolver.prototype, "Users", null);
+], UserResolver.prototype, "users", null);
 tslib_1.__decorate([
     type_graphql_1.Query(() => user_1.User, { nullable: true }),
     tslib_1.__param(0, type_graphql_1.Ctx()),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [Object]),
     tslib_1.__metadata("design:returntype", void 0)
-], UserResolver.prototype, "CurrentUser", null);
+], UserResolver.prototype, "currentUser", null);
 tslib_1.__decorate([
     type_graphql_1.Mutation(() => Boolean),
     tslib_1.__param(0, type_graphql_1.Arg("firstName")),
@@ -95,7 +95,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [String, String, String, String, String]),
     tslib_1.__metadata("design:returntype", Promise)
-], UserResolver.prototype, "Register", null);
+], UserResolver.prototype, "register", null);
 tslib_1.__decorate([
     type_graphql_1.Mutation(() => user_1.User, { nullable: true }),
     tslib_1.__param(0, type_graphql_1.Arg("email")),
@@ -104,21 +104,21 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [String, String, Object]),
     tslib_1.__metadata("design:returntype", Promise)
-], UserResolver.prototype, "Login", null);
+], UserResolver.prototype, "login", null);
 tslib_1.__decorate([
     type_graphql_1.Mutation(() => Boolean),
     tslib_1.__param(0, type_graphql_1.Ctx()),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [Object]),
     tslib_1.__metadata("design:returntype", Promise)
-], UserResolver.prototype, "Logout", null);
+], UserResolver.prototype, "logout", null);
 tslib_1.__decorate([
     type_graphql_1.Mutation(() => Boolean),
     tslib_1.__param(0, type_graphql_1.Arg("id")),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [String]),
     tslib_1.__metadata("design:returntype", Promise)
-], UserResolver.prototype, "DeleteUser", null);
+], UserResolver.prototype, "deleteUser", null);
 UserResolver = tslib_1.__decorate([
     type_graphql_1.Resolver(user_1.User)
 ], UserResolver);

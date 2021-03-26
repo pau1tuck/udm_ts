@@ -4452,8 +4452,8 @@
         "affectsGlobalScope": false
       },
       "./src/resolvers/user.resolver.ts": {
-        "version": "6ba8b7287850c989a1acf1bec8c9fcd0c490c82ca172c787fa0e81518123a286",
-        "signature": "d8e547569a0c67d0aa66b13c0bdd43dfaa7b7fb2255b1007552b7c6a89082913",
+        "version": "c9a02f469c5bcbee6fbf297dcb4a1875a15d80b666e295684f1c9713a2f91033",
+        "signature": "43f2bbf6acb5b16db6a471701c3e3e8844b722e086ba059927e3714ef0daf8a3",
         "affectsGlobalScope": false
       },
       "./src/types/track-input.ts": {
@@ -4854,6 +4854,7 @@
       },
       "moduleResolution": 2,
       "pathsBasePath": "D:/dev/udm/udm-server",
+      "watch": true,
       "configFilePath": "./tsconfig.json"
     },
     "referencedMap": {

@@ -22,13 +22,13 @@ export class UserResolver {
     // ALL USERS
     @Query(() => [User])
     // @UseMiddleware(isAdmin)
-    Users(): Promise<User[]> {
+    users(): Promise<User[]> {
         return User.find();
     }
 
     // CURRENT USER
     @Query(() => User, { nullable: true })
-    CurrentUser(@Ctx() { req }: IContext) {
+    currentUser(@Ctx() { req }: IContext) {
         if (!req.session.userId) {
             return null;
         }
@@ -37,7 +37,7 @@ export class UserResolver {
 
     // REGISTER
     @Mutation(() => Boolean)
-    async Register(
+    async register(
         @Arg("firstName") firstName: string,
         @Arg("lastName") lastName: string,
         @Arg("country") country: string,
@@ -63,7 +63,7 @@ export class UserResolver {
 
     // LOG IN
     @Mutation(() => User, { nullable: true })
-    async Login(
+    async login(
         @Arg("email") email: string,
         @Arg("password") password: string,
         @Ctx() ctx: IContext
@@ -92,7 +92,7 @@ export class UserResolver {
 
     // LOG OUT
     @Mutation(() => Boolean)
-    async Logout(@Ctx() { req, res }: IContext) {
+    async logout(@Ctx() { req, res }: IContext) {
         return new Promise((resolve) =>
             req.session.destroy((err: Errback) => {
                 res.clearCookie("sid");
@@ -110,7 +110,7 @@ export class UserResolver {
     // DELETE USER
     @Mutation(() => Boolean)
     // @UseMiddleware(isAdmin)
-    async DeleteUser(@Arg("id") id: string): Promise<boolean> {
+    async deleteUser(@Arg("id") id: string): Promise<boolean> {
         await User.delete({ id });
         return true;
     }
