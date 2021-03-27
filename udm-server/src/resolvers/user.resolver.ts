@@ -1,7 +1,6 @@
 import path from "path";
 import { Errback } from "express";
 import { createWriteStream } from "fs";
-import { GraphQLUpload } from "graphql-upload";
 import {
     Arg,
     Authorized,
@@ -15,6 +14,8 @@ import {
     Resolver,
     UseMiddleware,
 } from "type-graphql";
+import { getConnection } from "typeorm";
+import { GraphQLUpload } from "graphql-upload";
 import argon2 from "argon2";
 import { User } from "../entities/user";
 import { IContext } from "../types/context.interface";
@@ -113,12 +114,26 @@ export class UserResolver {
         );
     }
 
-    // DELETE USER
-    @Mutation(() => Boolean)
+    // UPDATE USER
+    @Mutation(() => User, { nullable: true })
     // @UseMiddleware(isAdmin)
-    async deleteUser(@Arg("id") id: string): Promise<boolean> {
-        await User.delete({ id });
-        return true;
+    async updateUser(
+        @Arg("id") id: string,
+        @Arg("firstName") firstName: string,
+        @Arg("lastName") lastName: string,
+        @Arg("country") country: string
+    ): Promise<User | null> {
+        const result = await getConnection()
+            .createQueryBuilder()
+            .update(User)
+            .set({ firstName, lastName, country })
+            .where("id = :id", {
+                id,
+            })
+            .returning("*")
+            .execute();
+
+        return result.raw[0];
     }
 
     // UPLOAD USER AVATAR
@@ -142,5 +157,13 @@ export class UserResolver {
                 // eslint-disable-next-line prefer-promise-reject-errors
                 .on("error", () => reject(false))
         );
+    }
+
+    // DELETE USER
+    @Mutation(() => Boolean)
+    // @UseMiddleware(isAdmin)
+    async deleteUser(@Arg("id") id: string): Promise<boolean> {
+        await User.delete({ id });
+        return true;
     }
 }

@@ -8,7 +8,7 @@ export const Subheader = () => {
         <Flex
             mt={4}
             mb={6}
-            ml={3}
+            ml={1}
             alignContent="center"
             justifyContent="space-between"
         >

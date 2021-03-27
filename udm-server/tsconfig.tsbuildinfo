@@ -4407,8 +4407,8 @@
         "affectsGlobalScope": false
       },
       "./src/entities/track.ts": {
-        "version": "028ecc7c0de08f0621a9601511311da74a82b55d6776dbf41db55a4fc07fffc1",
-        "signature": "a2ff41a6e424283d0921fcee7125315abfe9bc1d75482e04af264b7b74c03e2e",
+        "version": "07d59159527d81a63a9959ea20b6491948b712a421fda8cc44625cd8b67bf0bb",
+        "signature": "33f1389dab664df737180ab89be517c1ee95b19d1bfc0aa9c38fec858f2023c8",
         "affectsGlobalScope": false
       },
       "./src/config/database.ts": {
@@ -4462,13 +4462,13 @@
         "affectsGlobalScope": false
       },
       "./src/resolvers/user.resolver.ts": {
-        "version": "64a11ef5415322db74dbcd196be04e59b6ae6671623692b03a46fdec8cae119a",
-        "signature": "4b74cc29fc4b7cbd833bfedd8cee88d6ddff5d61825830aed85d8b07aa5895b2",
+        "version": "35971929e254af10096adab7eb26c536cdc4e3ce26d7b98ddcdc825968adc4f2",
+        "signature": "8dbc96803cb2d7d548f666b3ff50de1f3f4ff7cd9ba454ff4dfe50814850facc",
         "affectsGlobalScope": false
       },
       "./src/types/track-input.ts": {
-        "version": "cadab8587359f7b1c56ddfd377b7e7b74fddfc775bcfb1a61f163ecb91027412",
-        "signature": "649da0db24d7b193e034ec29dcdbfc4daf89fb24da02ef6ea68df4f9aece811b",
+        "version": "febe757f132651e0593a44420d1d25bcb2b55d250980e306d488707fcc34f4d7",
+        "signature": "96cc90cc8fa9722ae399b610ec3f002e46254fb47b1745f220fcf7bd9683c3a3",
         "affectsGlobalScope": false
       },
       "./src/types/paginated-tracks.ts": {
@@ -4482,8 +4482,8 @@
         "affectsGlobalScope": false
       },
       "./src/resolvers/track.resolver.ts": {
-        "version": "c2d4c1cfc8046190bb705d0798dcf648586eb41a1fd0f6c03d24321c56042bab",
-        "signature": "c191d558129ac534e4a97927ff7f72cf10befd96770499c4105b458aa5ae9e4d",
+        "version": "e6bc4bc7c166a3e63165b3e493984399cbd5838b1e4131db6c547c4a1297c5f0",
+        "signature": "bc8ec377071fab74a3df1b490f8e96fc98d91d7933b1ca4bb29628cf614043b9",
         "affectsGlobalScope": false
       },
       "./src/utils/cache-tracks.ts": {
@@ -8687,6 +8687,7 @@
         "./node_modules/argon2/argon2.d.ts",
         "./node_modules/tslib/tslib.d.ts",
         "./node_modules/type-graphql/dist/index.d.ts",
+        "./node_modules/typeorm/index.d.ts",
         "./src/entities/user.ts",
         "./src/types/context.interface.ts",
         "./src/types/upload.interface.ts",

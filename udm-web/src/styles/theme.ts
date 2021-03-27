@@ -19,6 +19,9 @@ const theme = extendTheme({
     "::placeholder": {
         /* Chrome, Firefox, Opera, Safari 10.1+ */ color: "#CDC9C9",
     },
+    ":active": {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */ color: "yellow",
+    },
     breakpoints,
 });
 

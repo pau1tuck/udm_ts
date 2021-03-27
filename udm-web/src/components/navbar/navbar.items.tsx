@@ -50,7 +50,7 @@ export const NavbarItems = () => {
         body = (
             <>
                 <Box display={["none", "none", "none", "block"]}>
-                    <Text>User is logged in.</Text>
+                    <Text>{`${data.currentUser.firstName} ${data.currentUser.lastName}`}</Text>
                 </Box>
             </>
         );

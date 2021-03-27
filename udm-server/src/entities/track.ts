@@ -31,6 +31,10 @@ export class Track extends BaseEntity {
     @Column({ nullable: true })
     label?: string;
 
+    @Field((_type) => String)
+    @Column({ nullable: true, default: "" })
+    image?: string;
+
     @Field()
     @Column()
     trackUrl!: string;

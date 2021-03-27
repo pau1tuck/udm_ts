@@ -32,6 +32,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], Track.prototype, "label", void 0);
 tslib_1.__decorate([
+    type_graphql_1.Field((_type) => String),
+    typeorm_1.Column({ nullable: true, default: "" }),
+    tslib_1.__metadata("design:type", String)
+], Track.prototype, "image", void 0);
+tslib_1.__decorate([
     type_graphql_1.Field(),
     typeorm_1.Column(),
     tslib_1.__metadata("design:type", String)
