@@ -42,7 +42,9 @@ export class UserResolver {
         @Arg("lastName") lastName: string,
         @Arg("country") country: string,
         @Arg("email") email: string,
-        @Arg("password") password: string
+        @Arg("password") password: string,
+        // eslint-disable-next-line @typescript-eslint/no-shadow
+        @Arg("isAdmin") isAdmin: boolean
     ) {
         const encryptedPassword = await argon2.hash(password);
 

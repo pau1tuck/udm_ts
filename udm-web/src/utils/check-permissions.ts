@@ -1,22 +1,22 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { useUserQuery } from "../graphql/graphql";
+import { useCurrentUserQuery } from "../graphql/graphql";
 
 export const checkAuth = () => {
-    const { data, loading } = useUserQuery();
+    const { data, loading } = useCurrentUserQuery();
     const router = useRouter();
     useEffect(() => {
-        if (!loading && !data?.CurrentUser) {
+        if (!loading && !data?.currentUser) {
             router.replace("/login?next=" + router.pathname);
         }
     }, [loading, data, router]);
 };
 
 export const checkAdmin = () => {
-    const { data, loading } = useUserQuery();
+    const { data, loading } = useCurrentUserQuery();
     const router = useRouter();
     useEffect(() => {
-        if (!loading && !data?.CurrentUser.isAdmin) {
+        if (!loading && !data?.currentUser.isAdmin) {
             router.push("/");
         }
     }, [loading, data, router]);
