@@ -44,9 +44,6 @@ let UserResolver = class UserResolver {
             if (!checkPassword) {
                 throw new Error("Incorrect password");
             }
-            if (!user.verified) {
-                throw new Error("Email address not verified");
-            }
             ctx.req.session.userId = user.id;
             ctx.req.session.isAdmin = user.isAdmin;
             return user;

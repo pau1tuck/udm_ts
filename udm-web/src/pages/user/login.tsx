@@ -66,12 +66,11 @@ const Login = () => {
                 user = data?.login;
             },
         });
-        if (response.data?.login.errors) {
-            // respond errors
-        } else if (response.data?.login.user) {
+        if (response.data?.login) {
             Cookies.set("user", JSON.stringify(user), {
                 expires: 1000 * 60 * 60 * 24 * 365,
             });
+            console.log(user);
             router.push("/");
         } else console.log(errors);
     };
