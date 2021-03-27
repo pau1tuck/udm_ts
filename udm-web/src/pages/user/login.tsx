@@ -93,6 +93,7 @@ const Login = () => {
                                     autoComplete="email"
                                     autoFocus
                                     ref={register}
+                                    color="white"
                                 />
                                 <FormErrorMessage>
                                     {errors.email && errors.email.message}
@@ -106,6 +107,7 @@ const Login = () => {
                                     placeholder="Password"
                                     autoComplete="password"
                                     ref={register}
+                                    color="white"
                                 />
                                 <FormErrorMessage>
                                     {errors.password && errors.password.message}
@@ -115,7 +117,7 @@ const Login = () => {
                         <Button
                             width="100%"
                             mt={8}
-                            colorScheme="blue"
+                            colorScheme="primary"
                             isLoading={formState.isSubmitting}
                             type="submit"
                         >

@@ -11,7 +11,7 @@ export const styles = {
             color: "white",
         },
         "::placeholder": {
-            /* Chrome, Firefox, Opera, Safari 10.1+ */ color: "yellow",
+            /* Chrome, Firefox, Opera, Safari 10.1+ */ color: "#CDC9C9",
         },
     },
 };

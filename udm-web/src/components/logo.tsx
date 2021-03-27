@@ -1,20 +1,30 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Box, Center, Container, Flex, Text } from "@chakra-ui/react";
+import {
+    Box,
+    Center,
+    Container,
+    Flex,
+    Text,
+    useMediaQuery,
+} from "@chakra-ui/react";
 import logoStyles from "../styles/components/logo.module.css";
 
 export const Logo = () => {
+    const [isMobile] = useMediaQuery("(max-width: 30em)");
     return (
-        <Box mb={7} justifyContent="center">
+        <Box mb={7} align="center" justifyContent="center">
             <Link href="/">
                 <Box as="button" mt="-55px" zIndex="10">
-                    <Image
-                        src="/images/udm-logo.png"
-                        alt="UDM"
-                        width={300}
-                        height={200}
-                    />
+                    {isMobile ? null : (
+                        <Image
+                            src="/images/udm-logo.png"
+                            alt="UDM"
+                            width={250}
+                            height={200}
+                        />
+                    )}
                 </Box>
             </Link>
             <Box justifyContent="center">
