@@ -12,11 +12,11 @@ import {
 } from "@chakra-ui/react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { NavbarMenu } from "./navbar.menu";
-import { useApolloClient } from "@apollo/client";
+import { ApolloClient, useApolloClient } from "@apollo/client";
 import { useCurrentUserQuery } from "../../graphql/graphql";
 import { withApollo } from "../../utils/with-apollo";
 
-const NavbarItems = () => {
+export const NavbarItems = () => {
     const { data, loading } = useCurrentUserQuery({
         fetchPolicy: "cache-first",
     });
@@ -76,5 +76,3 @@ const NavbarItems = () => {
         </>
     );
 };
-
-export default withApollo({ ssr: false })(NavbarItems);

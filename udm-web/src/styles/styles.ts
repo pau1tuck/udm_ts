@@ -10,8 +10,5 @@ export const styles = {
             fontFamily: "body",
             color: "white",
         },
-        "::placeholder": {
-            /* Chrome, Firefox, Opera, Safari 10.1+ */ color: "#CDC9C9",
-        },
     },
 };

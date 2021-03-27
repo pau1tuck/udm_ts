@@ -4436,6 +4436,11 @@
         "signature": "f1fcd7dcddeace57e543fa76d4abedf6fe63a4ea25972c3b21937025cc791037",
         "affectsGlobalScope": false
       },
+      "./node_modules/@types/graphql-upload/index.d.ts": {
+        "version": "74da2e9262096f5d5cfd1b2c4b2c16d6f40b771cd558a47e0525e02ede8b5ea9",
+        "signature": "74da2e9262096f5d5cfd1b2c4b2c16d6f40b771cd558a47e0525e02ede8b5ea9",
+        "affectsGlobalScope": false
+      },
       "./node_modules/argon2/argon2.d.ts": {
         "version": "daedf662f5c12939c9e2098b24dfee1cb9726cfa2a872f2b0963655c434ad546",
         "signature": "daedf662f5c12939c9e2098b24dfee1cb9726cfa2a872f2b0963655c434ad546",
@@ -4446,14 +4451,19 @@
         "signature": "c2bbecf951171d792aa12331a5f82676b7969b12a34282bfedf1a60cc264f988",
         "affectsGlobalScope": false
       },
+      "./src/types/upload.interface.ts": {
+        "version": "dc7c4dbeb9347622db1a18f663a5bbebd576dd275b5e1c60fd86b72ca80bbc65",
+        "signature": "a6a1ff0d53d4008dd7eda84810575d02f9482d2645c8da48c7051e26ac607dab",
+        "affectsGlobalScope": false
+      },
       "./src/utils/check-permissions.ts": {
         "version": "584bbea048fddc77f3cbcf93f1f00dfb245c47b49946b64278ab77c732c56bce",
         "signature": "14ad46dd2d1e1cccb8c79ff35b63ae0ec33d85ce5f958f3f9efcf30b7672bdda",
         "affectsGlobalScope": false
       },
       "./src/resolvers/user.resolver.ts": {
-        "version": "f4c49314a1c557f1fe9df929240fea3e50abd35f29daa10470a842ec229bcb5d",
-        "signature": "824cf773ca21faa7538960065d93579afc8821c0cf2e66cd234c550cec0bf1a1",
+        "version": "64a11ef5415322db74dbcd196be04e59b6ae6671623692b03a46fdec8cae119a",
+        "signature": "4b74cc29fc4b7cbd833bfedd8cee88d6ddff5d61825830aed85d8b07aa5895b2",
         "affectsGlobalScope": false
       },
       "./src/types/track-input.ts": {
@@ -4961,6 +4971,13 @@
         "./node_modules/@types/minimatch/index.d.ts",
         "./node_modules/@types/node/events.d.ts",
         "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/graphql-upload/index.d.ts": [
+        "./node_modules/@types/express/index.d.ts",
+        "./node_modules/@types/fs-capacitor/index.d.ts",
+        "./node_modules/@types/koa/index.d.ts",
+        "./node_modules/@types/node/http.d.ts",
+        "./node_modules/graphql/index.d.ts"
       ],
       "./node_modules/@types/ioredis/index.d.ts": [
         "./node_modules/@types/node/events.d.ts",
@@ -8664,11 +8681,15 @@
       ],
       "./src/resolvers/user.resolver.ts": [
         "./node_modules/@types/express/index.d.ts",
+        "./node_modules/@types/graphql-upload/index.d.ts",
+        "./node_modules/@types/node/fs.d.ts",
+        "./node_modules/@types/node/path.d.ts",
         "./node_modules/argon2/argon2.d.ts",
         "./node_modules/tslib/tslib.d.ts",
         "./node_modules/type-graphql/dist/index.d.ts",
         "./src/entities/user.ts",
         "./src/types/context.interface.ts",
+        "./src/types/upload.interface.ts",
         "./src/utils/check-permissions.ts"
       ],
       "./src/types/context.interface.ts": [
@@ -8683,6 +8704,10 @@
       "./src/types/track-input.ts": [
         "./node_modules/tslib/tslib.d.ts",
         "./node_modules/type-graphql/dist/index.d.ts"
+      ],
+      "./src/types/upload.interface.ts": [
+        "./node_modules/@types/node/stream.d.ts",
+        "./node_modules/tslib/tslib.d.ts"
       ],
       "./src/utils/cache-tracks.ts": [
         "./node_modules/tslib/tslib.d.ts",
@@ -8815,6 +8840,13 @@
         "./node_modules/@types/minimatch/index.d.ts",
         "./node_modules/@types/node/events.d.ts",
         "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/graphql-upload/index.d.ts": [
+        "./node_modules/@types/express/index.d.ts",
+        "./node_modules/@types/fs-capacitor/index.d.ts",
+        "./node_modules/@types/koa/index.d.ts",
+        "./node_modules/@types/node/http.d.ts",
+        "./node_modules/graphql/index.d.ts"
       ],
       "./node_modules/@types/ioredis/index.d.ts": [
         "./node_modules/@types/node/events.d.ts",
@@ -12485,13 +12517,17 @@
       ],
       "./src/resolvers/user.resolver.ts": [
         "./src/entities/user.ts",
-        "./src/types/context.interface.ts"
+        "./src/types/context.interface.ts",
+        "./src/types/upload.interface.ts"
       ],
       "./src/types/context.interface.ts": [
         "./node_modules/@types/express/index.d.ts"
       ],
       "./src/types/paginated-tracks.ts": [
         "./src/entities/track.ts"
+      ],
+      "./src/types/upload.interface.ts": [
+        "./node_modules/@types/node/stream.d.ts"
       ],
       "./src/utils/check-permissions.ts": [
         "./node_modules/type-graphql/dist/index.d.ts",
@@ -12524,6 +12560,7 @@
       "./node_modules/@types/express/node_modules/@types/express-serve-static-core/index.d.ts",
       "./node_modules/@types/fs-capacitor/index.d.ts",
       "./node_modules/@types/glob/index.d.ts",
+      "./node_modules/@types/graphql-upload/index.d.ts",
       "./node_modules/@types/http-assert/index.d.ts",
       "./node_modules/@types/http-errors/index.d.ts",
       "./node_modules/@types/ioredis/index.d.ts",
@@ -13455,6 +13492,7 @@
       "./src/types/env.d.ts",
       "./src/types/paginated-tracks.ts",
       "./src/types/track-input.ts",
+      "./src/types/upload.interface.ts",
       "./src/utils/cache-tracks.ts",
       "./src/utils/check-permissions.ts",
       "./src/utils/create-user-dataloader.ts",

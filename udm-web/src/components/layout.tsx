@@ -36,6 +36,7 @@ const Layout = ({
                 </Head>
                 <Navbar />
                 <Logo />
+
                 <div>{children}</div>
             </div>
         </>

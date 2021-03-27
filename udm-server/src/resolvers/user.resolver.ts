@@ -1,4 +1,7 @@
+import path from "path";
 import { Errback } from "express";
+import { createWriteStream } from "fs";
+import { GraphQLUpload } from "graphql-upload";
 import {
     Arg,
     Authorized,
@@ -15,6 +18,7 @@ import {
 import argon2 from "argon2";
 import { User } from "../entities/user";
 import { IContext } from "../types/context.interface";
+import { IUpload } from "../types/upload.interface";
 import { isAdmin } from "../utils/check-permissions";
 
 @Resolver(User)
@@ -88,7 +92,7 @@ export class UserResolver {
         */
         ctx.req.session.userId = user.id;
         ctx.req.session.isAdmin = user.isAdmin;
-
+        console.log(`${user.email} logged in`);
         return user;
     }
 
@@ -115,5 +119,28 @@ export class UserResolver {
     async deleteUser(@Arg("id") id: string): Promise<boolean> {
         await User.delete({ id });
         return true;
+    }
+
+    // UPLOAD USER AVATAR
+    @Mutation(() => Boolean)
+    async uploadAvatar(
+        @Arg("id") id: string,
+        @Arg("avatar", () => GraphQLUpload)
+        { createReadStream, filename }: IUpload
+    ): Promise<boolean> {
+        return new Promise((resolve, reject) =>
+            createReadStream()
+                .pipe(
+                    createWriteStream(
+                        path.join(
+                            __dirname,
+                            `media/images/avatars/${id}/${filename}`
+                        )
+                    )
+                )
+                .on("finish", () => resolve(true))
+                // eslint-disable-next-line prefer-promise-reject-errors
+                .on("error", () => reject(false))
+        );
     }
 }
