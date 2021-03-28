@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 require("reflect-metadata");
 require("dotenv/config");
-const path_1 = tslib_1.__importDefault(require("path"));
 const uuid_1 = require("uuid");
 const express_1 = tslib_1.__importDefault(require("express"));
 const express_session_1 = tslib_1.__importDefault(require("express-session"));
@@ -59,7 +58,7 @@ const server = () => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
     if (orm.isConnected) {
         console.log("📙 Connected to PostgreSQL database.");
     }
-    app.use("/media", express_1.default.static(path_1.default.join(__dirname, "media")));
+    app.use("/media", express_1.default.static("media"));
     app.listen(PORT, () => {
         console.log(`🚀 Server running on port ${PORT}.`);
     });

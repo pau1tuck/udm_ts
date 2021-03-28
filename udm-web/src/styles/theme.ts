@@ -15,7 +15,12 @@ const breakpoints = createBreakpoints({
 const theme = extendTheme({
     styles,
     colors,
-    typography,
+    fonts: {
+        body: "'Montserrat', sans-serif",
+        track: "'Architects Daughter', sans-serif",
+        heading: "'Montserrat', sans-serif",
+        title: "'Michroma', monospace",
+    },
     "::placeholder": {
         /* Chrome, Firefox, Opera, Safari 10.1+ */ color: "#CDC9C9",
     },

@@ -1,7 +1,7 @@
 export const styles = {
+    useSystemColorMode: false,
+    initialColorMode: "dark",
     global: {
-        useSystemColorMode: false,
-        initialColorMode: "dark",
         body: {
             backgroundImage: "url('/images/background.jpg')",
             backgroundSize: "cover",

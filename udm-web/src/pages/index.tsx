@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import Layout from "../components/layout";
 import { Subheader } from "../components/subheader";
+import { Navigation } from "../components/navigation";
 import { withApollo } from "../utils/with-apollo";
 
 const Home = () => {
@@ -29,17 +30,8 @@ const Home = () => {
                     templateColumns="repeat(5, 1fr)"
                     gap={4}
                 >
-                    <GridItem rowSpan={4} colSpan={1} bg="black">
-                        <Stack
-                            mt={6}
-                            spacing={4}
-                            fontFamily="Montserrat"
-                            fontWeight="600"
-                            fontSize="large"
-                        >
-                            <Link to="/">Latest Tunes</Link>
-                            <Link to="/">All Tracks</Link>
-                        </Stack>
+                    <GridItem rowSpan={4} colSpan={1}>
+                        <Navigation />
                     </GridItem>
                     <GridItem rowSpan={4} colSpan={4} bg="black"></GridItem>
                 </Grid>

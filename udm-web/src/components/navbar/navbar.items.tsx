@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import {
+    Avatar,
     Box,
     Button,
     ButtonGroup,
@@ -49,8 +51,17 @@ export const NavbarItems = () => {
     } else {
         body = (
             <>
-                <Box display={["none", "none", "none", "block"]}>
-                    <Text>{`${data.currentUser.firstName} ${data.currentUser.lastName}`}</Text>
+                <Box
+                    display={["none", "none", "flex", "flex"]}
+                    alignItems="center"
+                >
+                    <Text
+                        mr={2}
+                        fontFamily="heading"
+                        fontWeight="600"
+                        fontSize="sm"
+                    >{`${data.currentUser.firstName} ${data.currentUser.lastName}`}</Text>
+                    <Avatar src="http://localhost:5000/media/images/avatars/9681727f-11af-424c-8a54-942f9321fc48/avatar.jpg" />
                 </Box>
             </>
         );

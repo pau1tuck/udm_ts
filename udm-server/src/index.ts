@@ -94,7 +94,7 @@ const server = async () => {
 
     // app.set("trust proxy", "127.0.0.1");
 
-    app.use("/media", express.static(path.join(__dirname, "media")));
+    app.use("/media", express.static("media"));
 
     app.listen(PORT, () => {
         console.log(`🚀 Server running on port ${PORT}.`);

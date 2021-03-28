@@ -18,7 +18,8 @@ export const Navbar = () => {
                 justify="space-between"
                 wrap="wrap"
                 w="100%"
-                p={3}
+                pt={2}
+                pr={2}
                 color="white"
             >
                 <Box>&nbsp;</Box>
