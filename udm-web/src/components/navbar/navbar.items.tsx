@@ -60,7 +60,10 @@ export const NavbarItems = () => {
                         fontWeight="600"
                         fontSize="sm"
                     >{`${data.currentUser.firstName} ${data.currentUser.lastName}`}</Text>
-                    <Avatar src="http://localhost:5000/media/images/avatars/9681727f-11af-424c-8a54-942f9321fc48/avatar.jpg" />
+                    <Avatar
+                        src="http://localhost:5000/media/images/avatars/9681727f-11af-424c-8a54-942f9321fc48/avatar.jpg"
+                        alt={data.currentUser.firstName}
+                    />
                 </Box>
             </>
         );

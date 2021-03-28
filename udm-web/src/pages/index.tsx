@@ -3,6 +3,7 @@ import React from "react";
 import {
     Box,
     Container,
+    Flex,
     Grid,
     GridItem,
     Heading,
@@ -15,6 +16,7 @@ import Layout from "../components/layout";
 import { Subheader } from "../components/subheader";
 import { Navigation } from "../components/navigation";
 import { withApollo } from "../utils/with-apollo";
+import { TrackCard } from "../components/tracks/track-card";
 
 const Home = () => {
     const [sm] = useMediaQuery("");
@@ -33,7 +35,14 @@ const Home = () => {
                     <GridItem rowSpan={4} colSpan={1}>
                         <Navigation />
                     </GridItem>
-                    <GridItem rowSpan={4} colSpan={4} bg="black"></GridItem>
+                    <GridItem rowSpan={4} colSpan={4}>
+                        <Flex wrap="wrap">
+                            <TrackCard />
+                            <TrackCard />
+                            <TrackCard />
+                            <TrackCard />
+                        </Flex>
+                    </GridItem>
                 </Grid>
             </Container>
         </Layout>
