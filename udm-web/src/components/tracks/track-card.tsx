@@ -10,6 +10,9 @@ import {
     Text,
     useMediaQuery,
 } from "@chakra-ui/react";
+import { RiShoppingBasket2Fill } from "react-icons/ri";
+import { HiThumbUp } from "react-icons/hi";
+import { AiFillStar } from "react-icons/ai";
 
 export const TrackCard = () => {
     return (
@@ -47,7 +50,23 @@ export const TrackCard = () => {
                     </Stack>
                 </GridItem>
                 <GridItem pb={2} rowSpan={1}>
-                    <Text>👍</Text>
+                    <Box
+                        display="flex"
+                        mt="-5px"
+                        justifyContent="center"
+                        opacity="0.6"
+                        fontSize="1.3rem"
+                    >
+                        <Box pt="1px" pr={2}>
+                            <AiFillStar />
+                        </Box>
+                        <Box pr={2}>
+                            <HiThumbUp />
+                        </Box>
+                        <Box>
+                            <RiShoppingBasket2Fill />
+                        </Box>
+                    </Box>
                 </GridItem>
             </Grid>
         </Box>
