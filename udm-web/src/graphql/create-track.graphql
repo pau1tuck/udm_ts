@@ -5,7 +5,7 @@ mutation CreateTrack($input: TrackInput!) {
         title
         version
         label
-        trackUrl
+        filename
         createdAt
         updatedAt
         votes

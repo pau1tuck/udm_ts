@@ -4407,8 +4407,8 @@
         "affectsGlobalScope": false
       },
       "./src/entities/track.ts": {
-        "version": "07d59159527d81a63a9959ea20b6491948b712a421fda8cc44625cd8b67bf0bb",
-        "signature": "33f1389dab664df737180ab89be517c1ee95b19d1bfc0aa9c38fec858f2023c8",
+        "version": "8d2abc7a026920bdca342f9620df9a9db3aaca41ea5cf726d827af5e9791b685",
+        "signature": "67bb38653ad394ea5d25093aba8bc1dc942a45e2afd4d25e7a77f5961ee06e33",
         "affectsGlobalScope": false
       },
       "./src/config/database.ts": {
@@ -4467,8 +4467,8 @@
         "affectsGlobalScope": false
       },
       "./src/types/track-input.ts": {
-        "version": "febe757f132651e0593a44420d1d25bcb2b55d250980e306d488707fcc34f4d7",
-        "signature": "96cc90cc8fa9722ae399b610ec3f002e46254fb47b1745f220fcf7bd9683c3a3",
+        "version": "0e9c8d8b117c5eb4e9f3d56d66b3615fc6acd7509d92c414e694fcdc9727d165",
+        "signature": "836200ee6717bda6df19dd1078f747da39ed3dfe548e582a668f158d4e5e039f",
         "affectsGlobalScope": false
       },
       "./src/types/paginated-tracks.ts": {
@@ -4482,8 +4482,8 @@
         "affectsGlobalScope": false
       },
       "./src/resolvers/track.resolver.ts": {
-        "version": "e6bc4bc7c166a3e63165b3e493984399cbd5838b1e4131db6c547c4a1297c5f0",
-        "signature": "bc8ec377071fab74a3df1b490f8e96fc98d91d7933b1ca4bb29628cf614043b9",
+        "version": "c0de00bb76d0f2dde4cafd4f579db7137082efb26c537700264ae2af69c0416f",
+        "signature": "0f3fb195169c956d5b3ef92a86bc73664fda90a70b09d01d5f3bcb6e54f36d66",
         "affectsGlobalScope": false
       },
       "./src/utils/cache-tracks.ts": {

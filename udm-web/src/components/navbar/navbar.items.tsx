@@ -16,7 +16,6 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { NavbarMenu } from "./navbar.menu";
 import { ApolloClient, useApolloClient } from "@apollo/client";
 import { useCurrentUserQuery } from "../../graphql/graphql";
-import { withApollo } from "../../utils/with-apollo";
 
 export const NavbarItems = () => {
     const { data, loading } = useCurrentUserQuery({

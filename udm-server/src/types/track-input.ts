@@ -18,7 +18,7 @@ export class TrackInput {
     image?: string;
 
     @Field()
-    trackUrl!: string;
+    filename!: string;
 
     @Field()
     buyUrl?: string;

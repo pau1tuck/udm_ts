@@ -37,7 +37,7 @@ export class Track extends BaseEntity {
 
     @Field()
     @Column()
-    trackUrl!: string;
+    filename!: string;
 
     @Field()
     @Column({ nullable: true })

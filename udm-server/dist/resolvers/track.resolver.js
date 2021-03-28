@@ -30,12 +30,12 @@ let TrackResolver = class TrackResolver {
             return newTrack;
         });
     }
-    updateTrack(id, image, trackUrl, buyUrl) {
+    updateTrack(id, image, filename, buyUrl) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
             const result = yield typeorm_1.getConnection()
                 .createQueryBuilder()
                 .update(track_1.Track)
-                .set({ image, trackUrl, buyUrl })
+                .set({ image, filename, buyUrl })
                 .where("id = :id", {
                 id,
             })
@@ -76,7 +76,7 @@ tslib_1.__decorate([
     type_graphql_1.Mutation(() => track_1.Track, { nullable: true }),
     tslib_1.__param(0, type_graphql_1.Arg("id")),
     tslib_1.__param(1, type_graphql_1.Arg("image")),
-    tslib_1.__param(2, type_graphql_1.Arg("trackUrl")),
+    tslib_1.__param(2, type_graphql_1.Arg("filename")),
     tslib_1.__param(3, type_graphql_1.Arg("buyUrl")),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [String, String, String, String]),
