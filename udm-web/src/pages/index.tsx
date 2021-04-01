@@ -16,7 +16,7 @@ import Layout from "../components/layout";
 import { Subheader } from "../components/subheader";
 import { Navigation } from "../components/navigation";
 import { withApollo } from "../utils/with-apollo";
-import { TrackCard } from "../components/tracks/track-card";
+import { TrackCard } from "../components/track/track.card";
 
 const Home = () => {
     const [sm] = useMediaQuery("");
