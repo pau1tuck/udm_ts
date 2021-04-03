@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
     Box,
     Container,
+    Flex,
     Grid,
     GridItem,
     Heading,
@@ -34,28 +35,34 @@ export const TrackCard = () => {
                         </Box>
                     </GridItem>
                     <GridItem rowSpan={4}>
-                        <Stack
-                            mt={2}
-                            spacing={1}
-                            fontFamily="track"
-                            fontSize="0.9rem"
+                        <Box
+                            display="flex"
+                            h="140px"
+                            justifyContent="center"
+                            alignItems="center"
                         >
-                            <Text color="secondary.300">
-                                Tears of the Fallen Angel
-                            </Text>
-                            <Text color="primary.400">(Extended Mix)</Text>
-                            <Text>Marc Brauner, Muhammad Ali Shawal</Text>
-                            <Text fontSize="sm" color="pumpkin.300">
-                                [SHALL NOT FADE]
-                            </Text>
-                        </Stack>
+                            <Stack
+                                spacing={1}
+                                textAlign="center"
+                                fontFamily="track"
+                                fontSize="0.9rem"
+                            >
+                                <Text color="secondary.300">
+                                    Tears of the Fallen Angel
+                                </Text>
+                                <Text color="primary.400">(Extended Mix)</Text>
+                                <Text>Marc Brauner</Text>
+                                <Text fontSize="sm" color="pumpkin.300">
+                                    [SHALL NOT FADE]
+                                </Text>
+                            </Stack>
+                        </Box>
                     </GridItem>
                 </Box>
                 <GridItem rowSpan={1}>
                     <Box
                         display="flex"
                         justifyContent="center"
-                        mt={3}
                         opacity="0.6"
                         fontSize="1.3rem"
                     >
