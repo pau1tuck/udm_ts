@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Image from "next/image";
+import NextLink from "next/link";
 import {
     Avatar,
     Box,
@@ -7,6 +7,7 @@ import {
     ButtonGroup,
     Container,
     Flex,
+    Link,
     Slide,
     Spacer,
     Stack,
@@ -34,9 +35,16 @@ export const NavbarItems = () => {
                 <Box display={["none", "none", "none", "block"]}>
                     <ButtonGroup mr={2} spacing={2}>
                         <Button size="sm" colorScheme="white" variant="ghost">
-                            <Text fontFamily="Quicksand" fontWeight="700">
-                                LOG IN
-                            </Text>
+                            <NextLink href="/user/login" passHref>
+                                <Link>
+                                    <Text
+                                        fontFamily="Quicksand"
+                                        fontWeight="700"
+                                    >
+                                        LOG IN
+                                    </Text>
+                                </Link>
+                            </NextLink>
                         </Button>
                         <Button size="sm" colorScheme="primary">
                             <Text fontFamily="Quicksand" fontWeight="700">

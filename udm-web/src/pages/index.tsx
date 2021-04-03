@@ -38,9 +38,6 @@ const Home = () => {
                     <GridItem rowSpan={4} colSpan={4}>
                         <Flex wrap="wrap">
                             <TrackCard />
-                            <TrackCard />
-                            <TrackCard />
-                            <TrackCard />
                         </Flex>
                     </GridItem>
                 </Grid>
