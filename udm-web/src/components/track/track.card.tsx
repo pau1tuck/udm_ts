@@ -24,8 +24,9 @@ export const TrackCard = ({ track }) => {
             h="310px"
             mr={2}
             mb={4}
+            pt="1px"
             align="center"
-            bgColor="#0d0d0d"
+            bgColor="#1e1e1e"
             opacity="0.9"
             borderRadius={6}
         >

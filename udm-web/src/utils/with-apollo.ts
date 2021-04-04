@@ -3,6 +3,8 @@ import { withApollo as nextWithApollo } from "next-apollo";
 import { PaginatedTracks } from "../graphql/graphql";
 import { NextPageContext } from "next";
 
+export const nowPlayingVar = makeVar("");
+
 const createClient = (ctx: NextPageContext) =>
     new ApolloClient({
         uri: "http://localhost:5000/graphql" as string,
@@ -30,6 +32,11 @@ const createClient = (ctx: NextPageContext) =>
                                         ...incoming.tracks,
                                     ],
                                 };
+                            },
+                        },
+                        nowPlaying: {
+                            read() {
+                                return nowPlayingVar();
                             },
                         },
                     },
