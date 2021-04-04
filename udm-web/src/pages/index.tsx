@@ -29,6 +29,7 @@ import { withApollo } from "../utils/with-apollo";
 import { TrackCard } from "../components/track/track.card";
 import playerStyles from "../styles/components/player.module.css";
 import { RiPlayCircleFill } from "react-icons/ri";
+import { RiPauseCircleFill } from "react-icons/ri";
 import { nowPlayingVar } from "../utils/with-apollo";
 
 import { dummyData } from "../dummy-data";
@@ -61,7 +62,13 @@ const Home = () => {
     const cards = (
         <Flex justifyContent="center" wrap="wrap">
             {dummyData.map((track, key) => (
-                <Box key={key} onClick={() => setNowPlaying(track)}>
+                <Box
+                    key={key}
+                    onClick={() => {
+                        setNowPlaying(track);
+                        setIsPlaying(true);
+                    }}
+                >
                     <TrackCard track={track} />
                 </Box>
             ))}
@@ -105,27 +112,38 @@ const Home = () => {
                 position="fixed"
                 display="flex"
                 maxWidth="100vw"
-                height="50px"
+                height="40px"
                 bottom="0px"
                 left="0px"
                 right="0px"
+                pb="2px"
                 alignItems="center"
-                backgroundColor="#1e1e1e"
+                borderTopWidth="2px"
+                borderTopColor="#161616"
+                backgroundColor="#111111"
+                opacity="0.9"
             >
                 <Box
                     display="flex"
                     h="50px"
-                    ml={2}
+                    ml={1}
                     alignItems="center"
                     cursor="pointer"
                     fontSize="2.5rem"
-                    color="primary.400"
                     onClick={handlePlayPause}
                 >
-                    <RiPlayCircleFill />
+                    {isPlaying ? (
+                        <Box color="lime.400">
+                            <RiPauseCircleFill />
+                        </Box>
+                    ) : (
+                        <Box color="primary.400">
+                            <RiPlayCircleFill />
+                        </Box>
+                    )}
                 </Box>
-                <Box ml={2}>
-                    {nowPlaying.filename !== "" ? (
+                <Box ml={2} fontWeight="600">
+                    {nowPlaying.filename ? (
                         <Box fontSize={["sm", "md", "md", "lg"]} isTruncated>
                             <Text as="span">{`${nowPlaying.artist}`}</Text>
                             <Text

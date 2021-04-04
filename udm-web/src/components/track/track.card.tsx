@@ -26,7 +26,7 @@ export const TrackCard = ({ track }) => {
             mb={4}
             pt="1px"
             align="center"
-            bgColor="#1e1e1e"
+            bgColor="#111111"
             opacity="0.9"
             borderRadius={6}
         >
