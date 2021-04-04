@@ -2,6 +2,7 @@ import React from "react";
 // import Link from "next/link";
 import {
     Box,
+    Center,
     Container,
     Flex,
     Grid,
@@ -18,11 +19,16 @@ import { Navigation } from "../components/navigation";
 import { withApollo } from "../utils/with-apollo";
 import { TrackCard } from "../components/track/track.card";
 
+import { dummyData } from "../dummy-data";
+
 const Home = () => {
-    const [sm] = useMediaQuery("");
+    const cards = dummyData.map((track, key) => (
+        <TrackCard track={track} key={key} />
+    ));
+
     return (
         <Layout home>
-            <Container maxW={"62em"}>
+            <Container maxW={"62em"} justifyContent="center">
                 <Subheader />
                 <Grid
                     display={["none", "none", "none", "grid"]}
@@ -36,11 +42,24 @@ const Home = () => {
                         <Navigation />
                     </GridItem>
                     <GridItem rowSpan={4} colSpan={4}>
-                        <Flex wrap="wrap">
-                            <TrackCard />
-                        </Flex>
+                        <Flex wrap="wrap">{cards}</Flex>
                     </GridItem>
                 </Grid>
+                <Box
+                    display={[
+                        "inline-grid",
+                        "inline-grid",
+                        "inline-grid",
+                        "none",
+                    ]}
+                    w="100%"
+                    justifyContent="center"
+                    wrap="wrap"
+                >
+                    <Flex justifyContent="center" wrap="wrap">
+                        {cards}
+                    </Flex>
+                </Box>
             </Container>
         </Layout>
     );

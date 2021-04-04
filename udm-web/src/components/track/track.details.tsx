@@ -20,12 +20,12 @@ export const TrackDetails = ({ track }) => {
             fontFamily="track"
             fontSize="0.9rem"
         >
-            <Text color="secondary.300">{track.title}</Text>
+            <Text color="pumpkin.300">{track.title}</Text>
             {track.version ? (
                 <Text color="primary.400">({track.version})</Text>
             ) : null}
             <Text>{track.artist}</Text>
-            <Text fontSize="sm" color="pumpkin.300">
+            <Text fontSize="sm" color="secondary.300">
                 [{track.label}]
             </Text>
         </Stack>

@@ -16,15 +16,13 @@ export const Logo = () => {
     return (
         <Box mb={7} align="center" justifyContent="center">
             <Link href="/">
-                <Box as="button" mt="-47px" zIndex="10">
-                    {isMobile ? null : (
-                        <Image
-                            src="/images/udm-logo.png"
-                            alt="UDM"
-                            width={225}
-                            height={180}
-                        />
-                    )}
+                <Box as="button" zIndex="10">
+                    <Image
+                        src="/images/udm-logo.png"
+                        alt="UDM"
+                        width={225}
+                        height={180}
+                    />
                 </Box>
             </Link>
             <Box justifyContent="center">

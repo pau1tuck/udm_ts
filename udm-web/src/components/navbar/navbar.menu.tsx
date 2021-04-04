@@ -49,11 +49,21 @@ export const NavbarMenu = ({ toggle, user }) => {
                             </Text>
                         </Button>
                         <Button size="md" colorScheme="white" variant="ghost">
-                            <Text fontFamily="Quicksand" fontWeight="700">
+                            <Text
+                                fontFamily="Quicksand"
+                                fontWeight="700"
+                                color="pumpkin.400"
+                            >
                                 LOG IN
                             </Text>
                         </Button>
                         <Divider />
+                        <Text fontFamily="Quicksand" fontWeight="700">
+                            Latest Tunes
+                        </Text>
+                        <Text fontFamily="Quicksand" fontWeight="700">
+                            All Tracks
+                        </Text>
                     </Stack>
                 </ButtonGroup>
             </Box>

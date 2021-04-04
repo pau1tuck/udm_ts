@@ -46,10 +46,13 @@ export const NavbarItems = () => {
                                 </Link>
                             </NextLink>
                         </Button>
-                        <Button size="sm" colorScheme="primary">
-                            <Text fontFamily="Quicksand" fontWeight="700">
-                                SIGN UP
-                            </Text>
+                        <Button
+                            size="sm"
+                            fontFamily="Quicksand"
+                            fontWeight="700"
+                            colorScheme="primary"
+                        >
+                            SIGN UP
                         </Button>
                     </ButtonGroup>
                 </Box>
@@ -60,6 +63,7 @@ export const NavbarItems = () => {
             <>
                 <Box
                     display={["none", "none", "flex", "flex"]}
+                    pr={4}
                     alignItems="center"
                 >
                     <Text

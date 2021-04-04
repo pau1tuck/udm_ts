@@ -7,7 +7,7 @@ export const checkAuth = () => {
     const router = useRouter();
     useEffect(() => {
         if (!loading && !data?.currentUser) {
-            router.replace("/login?next=" + router.pathname);
+            router.replace("/user/login?next=" + router.pathname);
         }
     }, [loading, data, router]);
 };
@@ -16,7 +16,9 @@ export const checkAdmin = () => {
     const { data, loading } = useCurrentUserQuery();
     const router = useRouter();
     useEffect(() => {
-        if (!loading && !data?.currentUser.isAdmin) {
+        if (!loading && !data?.currentUser) {
+            router.replace("/user/login?next=" + router.pathname);
+        } else if (!loading && !data?.currentUser.isAdmin) {
             router.push("/");
         }
     }, [loading, data, router]);
