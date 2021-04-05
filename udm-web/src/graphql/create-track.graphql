@@ -7,6 +7,7 @@ mutation CreateTrack($input: TrackInput!) {
         label
         image
         filename
+        buyUrl
         createdAt
         updatedAt
         votes

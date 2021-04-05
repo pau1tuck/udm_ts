@@ -32,6 +32,7 @@ import playerStyles from "../styles/components/player.module.css";
 import { RiPlayCircleFill } from "react-icons/ri";
 import { RiPauseCircleFill } from "react-icons/ri";
 import { nowPlayingVar } from "../utils/with-apollo";
+import { NowPlaying } from "../components/track/track.now-playing";
 
 import { dummyData } from "../dummy-data";
 
@@ -57,25 +58,27 @@ interface ITrack {
 
 const Home = () => {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [nowPlaying, setNowPlaying] = useState({
+    const [currentTrack, setCurrentTrack] = useState({
         title: "",
         artist: "",
         version: "",
         label: "",
         image: "",
         filename: "",
+        buyUrl: "",
     });
 
     const myAudio = useRef();
 
     const onChangeTrack = (track: ITrack) => {
-        setNowPlaying(track);
+        setCurrentTrack(track);
         setIsPlaying(true);
     };
 
-    const onPlayPause = () => {
+    const onPause = () => {
         if (myAudio.current !== undefined) {
-            myAudio.current.play();
+            myAudio.current.pause();
+            setIsPlaying(false);
         }
     };
 
@@ -138,10 +141,9 @@ const Home = () => {
                     alignItems="center"
                     cursor="pointer"
                     fontSize="2.5rem"
-                    onClick={onPlayPause}
                 >
                     {isPlaying ? (
-                        <Box color="lime.400">
+                        <Box onClick={onPause} color="lime.400">
                             <RiPauseCircleFill />
                         </Box>
                     ) : (
@@ -150,28 +152,12 @@ const Home = () => {
                         </Box>
                     )}
                 </Box>
-                <Box ml={2} fontWeight="600">
-                    {nowPlaying.filename ? (
-                        <Box fontSize={["sm", "md", "md", "lg"]} isTruncated>
-                            <Text as="span">{`${nowPlaying.artist}`}</Text>
-                            <Text
-                                as="span"
-                                color="pumpkin.200"
-                            >{` - ${nowPlaying.title}`}</Text>
-                            {nowPlaying.version ? (
-                                <Text
-                                    as="span"
-                                    color="primary.300"
-                                >{` (${nowPlaying.version})`}</Text>
-                            ) : null}
-                        </Box>
-                    ) : null}
-                </Box>
+                <NowPlaying nowPlaying={currentTrack} />
             </Box>
             <audio
                 id="audio-player"
                 ref={myAudio}
-                src={`http://localhost:5000/media/audio/tracks/${nowPlaying.filename}`}
+                src={`http://localhost:5000/media/audio/tracks/${currentTrack.filename}`}
                 autoPlay
                 className={playerStyles.player}
             />
