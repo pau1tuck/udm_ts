@@ -6,6 +6,7 @@ import {
     Grid,
     GridItem,
     Heading,
+    HStack,
     Link,
     Stack,
     Text,
@@ -17,7 +18,7 @@ import { AiFillStar } from "react-icons/ai";
 import trackCardStyles from "../../styles/components/track-card.module.css";
 import { TrackDetails } from "./track.details";
 
-export const TrackCard = ({ track }) => {
+export const TrackCard = ({ track, handleChangeTrack }) => {
     return (
         <Box
             w="246px"
@@ -31,7 +32,7 @@ export const TrackCard = ({ track }) => {
             borderRadius={6}
         >
             <Grid h="310px" m={1} mb={4} templateRows="repeat(9, 1fr)">
-                <Box cursor="pointer">
+                <Box onClick={() => handleChangeTrack(track)} cursor="pointer">
                     <GridItem rowSpan={4} align="center">
                         <Box w="237px" h="134px" align="center">
                             <img

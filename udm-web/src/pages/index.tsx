@@ -14,6 +14,7 @@ import {
     Grid,
     GridItem,
     Heading,
+    HStack,
     Link,
     Stack,
     Text,
@@ -40,6 +41,20 @@ export const NOW_PLAYING = gql`
     }
 `;
 
+interface ITrack {
+    id: string;
+    artist: string;
+    title: string;
+    version: string;
+    label: string;
+    image: string;
+    filename: string;
+    buyUrl: string;
+    createdAt: string;
+    updatedAt: string;
+    votes: number;
+}
+
 const Home = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [nowPlaying, setNowPlaying] = useState({
@@ -53,27 +68,20 @@ const Home = () => {
 
     const myAudio = useRef();
 
-    const handlePlayPause = () => {
+    const onChangeTrack = (track: ITrack) => {
+        setNowPlaying(track);
+        setIsPlaying(true);
+    };
+
+    const onPlayPause = () => {
         if (myAudio.current !== undefined) {
             myAudio.current.play();
         }
     };
 
-    const cards = (
-        <Flex justifyContent="center" wrap="wrap">
-            {dummyData.map((track, key) => (
-                <Box
-                    key={key}
-                    onClick={() => {
-                        setNowPlaying(track);
-                        setIsPlaying(true);
-                    }}
-                >
-                    <TrackCard track={track} />
-                </Box>
-            ))}
-        </Flex>
-    );
+    const cards = dummyData.map((track, key) => (
+        <TrackCard key={key} track={track} handleChangeTrack={onChangeTrack} />
+    ));
 
     return (
         <Layout home>
@@ -91,7 +99,7 @@ const Home = () => {
                         <Navigation />
                     </GridItem>
                     <GridItem rowSpan={4} colSpan={4}>
-                        {cards}
+                        <Flex wrap="wrap">{cards}</Flex>
                     </GridItem>
                 </Grid>
                 <Box
@@ -130,7 +138,7 @@ const Home = () => {
                     alignItems="center"
                     cursor="pointer"
                     fontSize="2.5rem"
-                    onClick={handlePlayPause}
+                    onClick={onPlayPause}
                 >
                     {isPlaying ? (
                         <Box color="lime.400">
