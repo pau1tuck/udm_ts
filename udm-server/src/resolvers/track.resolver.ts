@@ -37,7 +37,7 @@ export class TrackResolver {
     }
 
     @Mutation(() => Track)
-    // @UseMiddleware(isAdmin)
+    @UseMiddleware(isAdmin)
     async createTrack(@Arg("input") input: TrackInput): Promise<Track> {
         const newTrack = await Track.create({
             ...input,
@@ -47,17 +47,17 @@ export class TrackResolver {
     }
 
     @Mutation(() => Track, { nullable: true })
-    // @UseMiddleware(isAdmin)
+    @UseMiddleware(isAdmin)
     async updateTrack(
         @Arg("id") id: string,
         @Arg("image") image: string,
-        @Arg("filename") filename: string,
+        @Arg("src") src: string,
         @Arg("buyUrl") buyUrl: string
     ): Promise<Track | null> {
         const result = await getConnection()
             .createQueryBuilder()
             .update(Track)
-            .set({ image, filename, buyUrl })
+            .set({ image, src, buyUrl })
             .where("id = :id", {
                 id,
             })
@@ -68,7 +68,7 @@ export class TrackResolver {
     }
 
     @Mutation(() => Boolean)
-    // @UseMiddleware(isAdmin)
+    @UseMiddleware(isAdmin)
     async deleteTrack(@Arg("id") id: string): Promise<boolean> {
         await Track.delete({ id });
         return true;

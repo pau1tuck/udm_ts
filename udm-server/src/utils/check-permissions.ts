@@ -7,9 +7,15 @@ export const isAuthenticated: MiddlewareFn<IContext> = ({ context }, next) => {
     }
     return next();
 };
-
+/*
 export const isAdmin: MiddlewareFn<IContext> = ({ context }, next) => {
     if (!context.req.session.roles.some("ADMIN")) {
+        throw new Error("User does not have admin rights");
+    }
+    return next();
+};  */
+export const isAdmin: MiddlewareFn<IContext> = ({ context }, next) => {
+    if (!context.req.session.isAdmin(true)) {
         throw new Error("User does not have admin rights");
     }
     return next();
