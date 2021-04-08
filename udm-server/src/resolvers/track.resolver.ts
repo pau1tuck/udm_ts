@@ -50,14 +50,13 @@ export class TrackResolver {
     @UseMiddleware(isAdmin)
     async updateTrack(
         @Arg("id") id: string,
-        @Arg("image") image: string,
-        @Arg("src") src: string,
+        @Arg("youTubeId") youTubeId: string,
         @Arg("buyUrl") buyUrl: string
     ): Promise<Track | null> {
         const result = await getConnection()
             .createQueryBuilder()
             .update(Track)
-            .set({ image, src, buyUrl })
+            .set({ youTubeId, buyUrl })
             .where("id = :id", {
                 id,
             })

@@ -15,10 +15,7 @@ export class TrackInput {
     label?: string;
 
     @Field()
-    image?: string;
-
-    @Field()
-    src!: string;
+    youTubeId!: string;
 
     @Field()
     buyUrl?: string;
