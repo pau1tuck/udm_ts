@@ -5,13 +5,9 @@ import { Track } from "../entities/track";
 
 export default {
     type: "postgres",
-    url: process.env.DB_URI,
-    port: process.env.DB_PORT,
-    username: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME,
+    url: process.env.DB_URL,
     synchronize: true,
-    logging: process.env.NODE_ENV !== "production",
+    logging: process.env.DB_LOGGING,
     ssl: true,
     extra: {
         ssl: {
