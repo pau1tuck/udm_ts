@@ -1,24 +1,19 @@
 import React from "react";
-import Typed from "react-typed";
-import { Box, ButtonGroup, Flex, Text } from "@chakra-ui/react";
-import subheaderStyles from "../styles/components/subheader.module.css";
+import Image from "next/image";
+import Link from "next/link";
+import { Box } from "@chakra-ui/react";
+import logoStyles from "../styles/components/logo.module.css";
 
 export const Subheader = () => {
     return (
-        <Flex
-            mt={4}
-            mb={6}
-            ml={1}
-            alignContent="center"
-            justifyContent="space-between"
-        >
-            <Typed
-                className={subheaderStyles.typed}
-                strings={[
-                    "Delivering the finest new underground house and techno.",
-                ]}
-                typeSpeed={50}
-            />
-        </Flex>
+        <Box justifyContent="center">
+            <Box mt="-10px" zIndex="11">
+                <img
+                    className={logoStyles.title}
+                    src="/images/udm-title.png"
+                    alt="UNDERGROUND DANCE MUSIC"
+                />
+            </Box>
+        </Box>
     );
 };

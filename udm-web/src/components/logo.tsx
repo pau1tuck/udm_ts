@@ -1,15 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-    Box,
-    Center,
-    Container,
-    Flex,
-    Text,
-    useMediaQuery,
-} from "@chakra-ui/react";
+import { Box, useMediaQuery } from "@chakra-ui/react";
 import logoStyles from "../styles/components/logo.module.css";
+import { Subheader } from "./subheader";
 
 export const Logo = () => {
     const [isMobile] = useMediaQuery("(max-width: 30em)");
@@ -25,15 +19,7 @@ export const Logo = () => {
                     />
                 </Box>
             </Link>
-            <Box justifyContent="center">
-                <Box mt="-10px" zIndex="11">
-                    <img
-                        className={logoStyles.title}
-                        src="/images/udm-title.png"
-                        alt="UNDERGROUND DANCE MUSIC"
-                    />
-                </Box>
-            </Box>
+            <Subheader />
         </Box>
     );
 };

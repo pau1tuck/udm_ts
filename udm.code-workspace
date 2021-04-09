@@ -5,26 +5,9 @@
 	},
 	{
 		"path": "udm-web"
+	},
+	{
+		"path": "udm-native"
 	}
-],
-"settings": {
-	"sqltools.connections": [
-		{
-			"pgOptions": {
-				"ssl": {
-					"rejectUnauthorized": false,
-					"requestCert": false
-				}
-			},
-			"previewLimit": 50,
-			"server": "ec2-52-7-115-250.compute-1.amazonaws.com",
-			"port": 5432,
-			"driver": "PostgreSQL",
-			"name": "udm",
-			"database": "d4j9t96u7m45mr",
-			"username": "sunwsttooeghwg",
-			"password": "961d44b8ea34085d7bf5c082f72b1828b25f61257ed91d863a5e34bfefa9fc9b"
-		}
-	]
-}
+]
 }

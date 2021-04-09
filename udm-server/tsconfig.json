@@ -1,6 +1,7 @@
 {
     "extends": "./tsconfig_base.json",
     "compilerOptions": {
+        "noEmit": false,
         "incremental": true,
         "target": "es6",
         "module": "commonjs",

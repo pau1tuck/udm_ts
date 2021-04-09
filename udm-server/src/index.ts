@@ -93,8 +93,6 @@ const server = async () => {
         res.sendFile(path.join(__dirname, "index.html"));
     }); */
 
-    app.set("trust proxy", process.env.PROXY);
-
     app.use("/media", express.static("media"));
 
     app.listen(PORT, () => {

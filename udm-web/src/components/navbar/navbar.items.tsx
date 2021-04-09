@@ -33,7 +33,7 @@ export const NavbarItems = () => {
         body = (
             <>
                 <Box display={["none", "none", "none", "block"]}>
-                    <ButtonGroup mr={2} spacing={2}>
+                    <ButtonGroup mt={1} mr={2} spacing={2}>
                         <Button size="sm" colorScheme="white" variant="ghost">
                             <NextLink href="/user/login" passHref>
                                 <Link>

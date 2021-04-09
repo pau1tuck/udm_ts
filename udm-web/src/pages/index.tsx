@@ -21,10 +21,8 @@ import {
     useDisclosure,
     useMediaQuery,
 } from "@chakra-ui/react";
-import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
-import "react-h5-audio-player/lib/styles.css";
 import Layout from "../components/layout";
-import { Subheader } from "../components/subheader";
+import { Tagline } from "../components/tagline";
 import { Navigation } from "../components/navigation";
 import { withApollo } from "../utils/with-apollo";
 import { TrackCard } from "../components/track/track.card";
@@ -34,6 +32,9 @@ import { RiPauseCircleFill } from "react-icons/ri";
 import { nowPlayingVar } from "../utils/with-apollo";
 import { NowPlaying } from "../components/track/track.now-playing";
 
+import { Media, Player, controls } from "react-media-player";
+import { ITrack } from "../types/track.interface";
+
 import { dummyData } from "../dummy-data";
 
 export const NOW_PLAYING = gql`
@@ -42,20 +43,6 @@ export const NOW_PLAYING = gql`
     }
 `;
 
-interface ITrack {
-    id: string;
-    artist: string;
-    title: string;
-    version: string;
-    label: string;
-    image: string;
-    filename: string;
-    buyUrl: string;
-    createdAt: string;
-    updatedAt: string;
-    votes: number;
-}
-
 const Home = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTrack, setCurrentTrack] = useState({
@@ -63,8 +50,7 @@ const Home = () => {
         artist: "",
         version: "",
         label: "",
-        image: "",
-        filename: "",
+        youTubeId: "",
         buyUrl: "",
     });
 
@@ -89,7 +75,7 @@ const Home = () => {
     return (
         <Layout home>
             <Container maxW={"62em"} justifyContent="center">
-                <Subheader />
+                <Tagline />
                 <Grid
                     display={["none", "none", "none", "grid"]}
                     h="500px"
