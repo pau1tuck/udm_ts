@@ -3,13 +3,8 @@ import { Errback } from "express";
 import { createWriteStream } from "fs";
 import {
     Arg,
-    Authorized,
     Ctx,
-    Field,
-    InputType,
-    Int,
     Mutation,
-    ObjectType,
     Query,
     Resolver,
     UseMiddleware,
@@ -18,15 +13,15 @@ import { getConnection } from "typeorm";
 import { GraphQLUpload } from "graphql-upload";
 import argon2 from "argon2";
 import { User } from "../entities/user";
+import { isAdmin } from "../utils/check-permissions";
 import { IContext } from "../types/context.interface";
 import { IUpload } from "../types/upload.interface";
-import { isAdmin } from "../utils/check-permissions";
 
 @Resolver(User)
 export class UserResolver {
     // ALL USERS
     @Query(() => [User])
-    // @UseMiddleware(isAdmin)
+    @UseMiddleware(isAdmin)
     users(): Promise<User[]> {
         return User.find();
     }
@@ -48,6 +43,7 @@ export class UserResolver {
         @Arg("country") country: string,
         @Arg("email") email: string,
         @Arg("password") password: string,
+        @Arg("isVerified") isVerified: boolean,
         // eslint-disable-next-line @typescript-eslint/no-shadow
         @Arg("isAdmin") isAdmin: boolean
     ) {
@@ -60,6 +56,8 @@ export class UserResolver {
                 country,
                 email,
                 password: encryptedPassword,
+                isVerified,
+                isAdmin,
             });
         } catch (err) {
             console.log(err);
@@ -86,11 +84,11 @@ export class UserResolver {
         if (!checkPassword) {
             throw new Error("Incorrect password");
         }
-        /*
-        if (!user.verified) {
+
+        if (!user.isVerified) {
             throw new Error("Email address not verified");
         }
-        */
+
         ctx.req.session.userId = user.id;
         ctx.req.session.isAdmin = user.isAdmin;
         console.log(`${user.email} logged in`);
@@ -116,7 +114,7 @@ export class UserResolver {
 
     // UPDATE USER
     @Mutation(() => User, { nullable: true })
-    // @UseMiddleware(isAdmin)
+    @UseMiddleware(isAdmin)
     async updateUser(
         @Arg("id") id: string,
         @Arg("firstName") firstName: string,
@@ -134,6 +132,14 @@ export class UserResolver {
             .execute();
 
         return result.raw[0];
+    }
+
+    // DELETE USER
+    @Mutation(() => Boolean)
+    @UseMiddleware(isAdmin)
+    async deleteUser(@Arg("id") id: string): Promise<boolean> {
+        await User.delete({ id });
+        return true;
     }
 
     // UPLOAD USER AVATAR
@@ -157,13 +163,5 @@ export class UserResolver {
                 // eslint-disable-next-line prefer-promise-reject-errors
                 .on("error", () => reject(false))
         );
-    }
-
-    // DELETE USER
-    @Mutation(() => Boolean)
-    // @UseMiddleware(isAdmin)
-    async deleteUser(@Arg("id") id: string): Promise<boolean> {
-        await User.delete({ id });
-        return true;
     }
 }

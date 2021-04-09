@@ -43,7 +43,7 @@ export class User extends BaseEntity {
     password!: string;
 
     @Column({ default: false })
-    verified!: boolean;
+    isVerified!: boolean;
 
     @Field()
     @Column({ default: false })
