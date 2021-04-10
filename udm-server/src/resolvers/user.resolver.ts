@@ -19,7 +19,7 @@ import { IUpload } from "../types/upload.interface";
 
 @Resolver(User)
 export class UserResolver {
-    // ALL USERS
+    // LIST ALL USERS
     @Query(() => [User])
     @UseMiddleware(isAdmin)
     users(): Promise<User[]> {
@@ -42,10 +42,7 @@ export class UserResolver {
         @Arg("lastName") lastName: string,
         @Arg("country") country: string,
         @Arg("email") email: string,
-        @Arg("password") password: string,
-        @Arg("isVerified") isVerified: boolean,
-        // eslint-disable-next-line @typescript-eslint/no-shadow
-        @Arg("isAdmin") isAdmin: boolean
+        @Arg("password") password: string
     ) {
         const encryptedPassword = await argon2.hash(password);
 
@@ -56,8 +53,6 @@ export class UserResolver {
                 country,
                 email,
                 password: encryptedPassword,
-                isVerified,
-                isAdmin,
             });
         } catch (err) {
             console.log(err);
@@ -137,7 +132,7 @@ export class UserResolver {
     // DELETE USER
     @Mutation(() => Boolean)
     @UseMiddleware(isAdmin)
-    async deleteUser(@Arg("id") id: string): Promise<boolean> {
+    async deleteUser(@Arg("id") id: number): Promise<boolean> {
         await User.delete({ id });
         return true;
     }

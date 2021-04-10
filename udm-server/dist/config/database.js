@@ -8,8 +8,8 @@ exports.default = {
     type: "postgres",
     url: process.env.DB_URL,
     synchronize: true,
-    logging: process.env.DB_LOGGING,
-    ssl: true,
+    logging: process.env.DB_LOGGING || true,
+    ssl: false,
     extra: {
         ssl: {
             rejectUnauthorized: false,

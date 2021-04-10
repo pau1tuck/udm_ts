@@ -20,7 +20,7 @@ let UserResolver = class UserResolver {
         }
         return user_1.User.findOne(req.session.userId);
     }
-    register(firstName, lastName, country, email, password, isVerified, isAdmin) {
+    register(firstName, lastName, country, email, password) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
             const encryptedPassword = yield argon2_1.default.hash(password);
             try {
@@ -30,8 +30,6 @@ let UserResolver = class UserResolver {
                     country,
                     email,
                     password: encryptedPassword,
-                    isVerified,
-                    isAdmin,
                 });
             }
             catch (err) {
@@ -123,10 +121,8 @@ tslib_1.__decorate([
     tslib_1.__param(2, type_graphql_1.Arg("country")),
     tslib_1.__param(3, type_graphql_1.Arg("email")),
     tslib_1.__param(4, type_graphql_1.Arg("password")),
-    tslib_1.__param(5, type_graphql_1.Arg("isVerified")),
-    tslib_1.__param(6, type_graphql_1.Arg("isAdmin")),
     tslib_1.__metadata("design:type", Function),
-    tslib_1.__metadata("design:paramtypes", [String, String, String, String, String, Boolean, Boolean]),
+    tslib_1.__metadata("design:paramtypes", [String, String, String, String, String]),
     tslib_1.__metadata("design:returntype", Promise)
 ], UserResolver.prototype, "register", null);
 tslib_1.__decorate([
@@ -161,7 +157,7 @@ tslib_1.__decorate([
     type_graphql_1.UseMiddleware(check_permissions_1.isAdmin),
     tslib_1.__param(0, type_graphql_1.Arg("id")),
     tslib_1.__metadata("design:type", Function),
-    tslib_1.__metadata("design:paramtypes", [String]),
+    tslib_1.__metadata("design:paramtypes", [Number]),
     tslib_1.__metadata("design:returntype", Promise)
 ], UserResolver.prototype, "deleteUser", null);
 tslib_1.__decorate([

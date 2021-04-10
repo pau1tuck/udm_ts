@@ -6,15 +6,14 @@ import {
     UpdateDateColumn,
     Column,
     BaseEntity,
-    Any,
 } from "typeorm";
 
 @ObjectType()
 @Entity()
 export class User extends BaseEntity {
     @Field(() => ID)
-    @PrimaryGeneratedColumn("uuid")
-    id!: string;
+    @PrimaryGeneratedColumn()
+    id!: number;
 
     @Column({ nullable: true })
     socialId!: string;

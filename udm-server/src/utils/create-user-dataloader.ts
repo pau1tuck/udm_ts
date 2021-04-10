@@ -1,8 +1,9 @@
+/* eslint-disable no-new */
 import DataLoader from "dataloader";
 import { User } from "../entities/user";
 
 export const createUserDataLoader = () => {
-    const userDataLoader = new DataLoader<number, User>(async (userIds) => {
+    new DataLoader<number, User>(async (userIds) => {
         const users = await User.findByIds(userIds as number[]);
         const userIdToUser: Record<number, User> = {};
         users.forEach((u: any) => {
@@ -10,9 +11,9 @@ export const createUserDataLoader = () => {
         });
 
         const sortedUsers = userIds.map((userId) => userIdToUser[userId]);
-        // console.log("userIds", userIds);
-        // console.log("map", userIdToUser);
-        // console.log("sortedUsers", sortedUsers);
+        console.log("userIds", userIds);
+        console.log("map", userIdToUser);
+        console.log("sortedUsers", sortedUsers);
         return sortedUsers;
     });
 };

@@ -8,8 +8,8 @@ let User = class User extends typeorm_1.BaseEntity {
 };
 tslib_1.__decorate([
     type_graphql_1.Field(() => type_graphql_1.ID),
-    typeorm_1.PrimaryGeneratedColumn("uuid"),
-    tslib_1.__metadata("design:type", String)
+    typeorm_1.PrimaryGeneratedColumn(),
+    tslib_1.__metadata("design:type", Number)
 ], User.prototype, "id", void 0);
 tslib_1.__decorate([
     typeorm_1.Column({ nullable: true }),
