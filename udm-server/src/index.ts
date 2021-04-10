@@ -68,7 +68,6 @@ const server = async () => {
     const apolloServer = new ApolloServer({
         schema: graphQLSchema,
         context: ({ req, res }) => ({ req, res, redisClient }),
-        playground: true,
     });
 
     apolloServer.applyMiddleware({ app, cors: false });
