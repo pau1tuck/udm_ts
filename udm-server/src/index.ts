@@ -18,6 +18,8 @@ import { RedisStore, redisClient } from "./config/redis";
 import { UserResolver } from "./resolvers/user.resolver";
 import { TrackResolver } from "./resolvers/track.resolver";
 
+import { createUserDataLoader } from "./utils/create-user-dataloader";
+
 import { cacheTracks } from "./utils/cache-tracks";
 
 const PRODUCTION: boolean = process.env.NODE_ENV === "production";
@@ -67,7 +69,12 @@ const server = async () => {
 
     const apolloServer = new ApolloServer({
         schema: graphQLSchema,
-        context: ({ req, res }) => ({ req, res, redisClient }),
+        context: ({ req, res }: any) => ({
+            req,
+            res,
+            redisClient,
+            userLoader: createUserDataLoader(),
+        }),
     });
 
     apolloServer.applyMiddleware({ app, cors: false });
