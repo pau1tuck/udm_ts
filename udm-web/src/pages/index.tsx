@@ -32,7 +32,6 @@ import { RiPauseCircleFill } from "react-icons/ri";
 import { nowPlayingVar } from "../utils/with-apollo";
 import { NowPlaying } from "../components/track/track.now-playing";
 
-import { Media, Player, controls } from "react-media-player";
 import { ITrack } from "../types/track.interface";
 
 import { dummyData } from "../dummy-data";
@@ -147,7 +146,6 @@ const Home = () => {
                 autoPlay
                 className={playerStyles.player}
             />
-            )
         </Layout>
     );
 };
