@@ -9,7 +9,7 @@ exports.default = {
     url: process.env.DB_URL,
     synchronize: true,
     logging: process.env.DB_LOGGING || true,
-    ssl: false,
+    ssl: true,
     extra: {
         ssl: {
             rejectUnauthorized: false,

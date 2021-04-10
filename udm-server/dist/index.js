@@ -52,7 +52,7 @@ const server = () => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
     const apolloServer = new apollo_server_express_1.ApolloServer({
         schema: graphQLSchema,
         context: ({ req, res }) => ({ req, res, redisClient: redis_1.redisClient }),
-        playground: !PRODUCTION,
+        playground: true,
     });
     apolloServer.applyMiddleware({ app, cors: false });
     cache_tracks_1.cacheTracks();
