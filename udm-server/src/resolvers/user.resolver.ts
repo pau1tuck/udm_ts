@@ -21,7 +21,7 @@ import { IUpload } from "../types/upload.interface";
 export class UserResolver {
     // LIST ALL USERS
     @Query(() => [User])
-    @UseMiddleware(isAdmin)
+    // @UseMiddleware(isAdmin)
     users(): Promise<User[]> {
         return User.find();
     }

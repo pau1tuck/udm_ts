@@ -102,7 +102,6 @@ let UserResolver = class UserResolver {
 };
 tslib_1.__decorate([
     type_graphql_1.Query(() => [user_1.User]),
-    type_graphql_1.UseMiddleware(check_permissions_1.isAdmin),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", []),
     tslib_1.__metadata("design:returntype", Promise)
