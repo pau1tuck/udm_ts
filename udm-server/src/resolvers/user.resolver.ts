@@ -109,7 +109,6 @@ export class UserResolver {
 
     // UPDATE USER
     @Mutation(() => User, { nullable: true })
-    @UseMiddleware(isAdmin)
     async updateUser(
         @Arg("id") id: string,
         @Arg("firstName") firstName: string,
