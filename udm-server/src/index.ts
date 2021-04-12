@@ -14,6 +14,7 @@ import cors from "cors";
 
 import database from "./config/database";
 import { RedisStore, redisClient } from "./config/redis";
+import { transporter } from "./config/email";
 
 import { UserResolver } from "./resolvers/user.resolver";
 import { TrackResolver } from "./resolvers/track.resolver";
@@ -91,18 +92,26 @@ const server = async () => {
 
     cacheTracks();
 
+    app.use("/media", express.static("media"));
+
     if (orm.isConnected) {
-        console.log("📙 Connected to PostgreSQL database.");
+        console.log("📙 Connected to PostgreSQL database");
     }
 
     /* app.get("/", (req: Request, res: Response) => {
         res.sendFile(path.join(__dirname, "index.html"));
     }); */
-
-    app.use("/media", express.static("media"));
+    transporter.verify((error, success) => {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log(success);
+            console.log("SMTP email server ready");
+        }
+    });
 
     app.listen(PORT, () => {
-        console.log(`🚀 Server running on port ${PORT}.`);
+        console.log(`🚀 Server running on port ${PORT}`);
     });
 };
 server().catch((err) => {
