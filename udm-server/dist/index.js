@@ -10,6 +10,7 @@ const typeorm_1 = require("typeorm");
 const apollo_server_express_1 = require("apollo-server-express");
 const type_graphql_1 = require("type-graphql");
 const cors_1 = tslib_1.__importDefault(require("cors"));
+const auth_checker_1 = require("./utils/auth-checker");
 const database_1 = tslib_1.__importDefault(require("./config/database"));
 const redis_1 = require("./config/redis");
 const email_1 = require("./config/email");
@@ -50,6 +51,7 @@ const server = () => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
     const graphQLSchema = yield type_graphql_1.buildSchema({
         resolvers: [user_resolver_1.UserResolver, track_resolver_1.TrackResolver],
         validate: false,
+        authChecker: auth_checker_1.authChecker,
     });
     const apolloServer = new apollo_server_express_1.ApolloServer({
         schema: graphQLSchema,

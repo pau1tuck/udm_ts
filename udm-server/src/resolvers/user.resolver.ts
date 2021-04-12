@@ -5,7 +5,9 @@ import {
     Arg,
     Args,
     ArgsType,
+    Authorized,
     Ctx,
+    InputType,
     Field,
     Int,
     Mutation,
@@ -17,9 +19,14 @@ import { getConnection } from "typeorm";
 import { GraphQLUpload } from "graphql-upload";
 import argon2 from "argon2";
 import { User } from "../entities/user";
-import { isAdmin } from "../utils/check-permissions";
 import { IContext } from "../types/context.interface";
 import { IUpload } from "../types/upload.interface";
+
+@InputType()
+export class AssRoles {
+    @Field()
+    roles?: string;
+}
 
 @ArgsType()
 class CreateUserArgs {
@@ -41,13 +48,14 @@ class CreateUserArgs {
     @Field({ defaultValue: false })
     verified!: boolean;
 
-    @Field({ nullable: true })
-    roles!: string[];
+    @Field((type) => AssRoles)
+    roles?: string[];
 }
 
 @Resolver(User)
 export class UserResolver {
     // LIST ALL USERS
+    @Authorized("ADMIN")
     @Query(() => [User])
     // @UseMiddleware(isAdmin)
     users(): Promise<User[]> {
@@ -115,7 +123,7 @@ export class UserResolver {
             throw new Error("Incorrect password");
         }
 
-        if (!user.isVerified) {
+        if (!user.verified) {
             throw new Error("Email address not verified");
         }
 
@@ -166,7 +174,6 @@ export class UserResolver {
 
     // DELETE USER
     @Mutation(() => Boolean)
-    @UseMiddleware(isAdmin)
     async deleteUser(@Arg("id") id: number): Promise<boolean> {
         await User.delete({ id });
         return true;

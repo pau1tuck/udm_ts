@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserResolver = void 0;
+exports.UserResolver = exports.AssRoles = void 0;
 const tslib_1 = require("tslib");
 const path_1 = tslib_1.__importDefault(require("path"));
 const fs_1 = require("fs");
@@ -9,7 +9,49 @@ const typeorm_1 = require("typeorm");
 const graphql_upload_1 = require("graphql-upload");
 const argon2_1 = tslib_1.__importDefault(require("argon2"));
 const user_1 = require("../entities/user");
-const check_permissions_1 = require("../utils/check-permissions");
+let AssRoles = class AssRoles {
+};
+tslib_1.__decorate([
+    type_graphql_1.Field(),
+    tslib_1.__metadata("design:type", String)
+], AssRoles.prototype, "roles", void 0);
+AssRoles = tslib_1.__decorate([
+    type_graphql_1.InputType()
+], AssRoles);
+exports.AssRoles = AssRoles;
+let CreateUserArgs = class CreateUserArgs {
+};
+tslib_1.__decorate([
+    type_graphql_1.Field(),
+    tslib_1.__metadata("design:type", String)
+], CreateUserArgs.prototype, "firstName", void 0);
+tslib_1.__decorate([
+    type_graphql_1.Field(),
+    tslib_1.__metadata("design:type", String)
+], CreateUserArgs.prototype, "lastName", void 0);
+tslib_1.__decorate([
+    type_graphql_1.Field(),
+    tslib_1.__metadata("design:type", String)
+], CreateUserArgs.prototype, "country", void 0);
+tslib_1.__decorate([
+    type_graphql_1.Field(),
+    tslib_1.__metadata("design:type", String)
+], CreateUserArgs.prototype, "email", void 0);
+tslib_1.__decorate([
+    type_graphql_1.Field(),
+    tslib_1.__metadata("design:type", String)
+], CreateUserArgs.prototype, "password", void 0);
+tslib_1.__decorate([
+    type_graphql_1.Field({ defaultValue: false }),
+    tslib_1.__metadata("design:type", Boolean)
+], CreateUserArgs.prototype, "verified", void 0);
+tslib_1.__decorate([
+    type_graphql_1.Field((type) => AssRoles),
+    tslib_1.__metadata("design:type", Array)
+], CreateUserArgs.prototype, "roles", void 0);
+CreateUserArgs = tslib_1.__decorate([
+    type_graphql_1.ArgsType()
+], CreateUserArgs);
 let UserResolver = class UserResolver {
     users() {
         return user_1.User.find();
@@ -20,7 +62,7 @@ let UserResolver = class UserResolver {
         }
         return user_1.User.findOne(req.session.userId);
     }
-    register(firstName, lastName, country, email, password) {
+    register({ firstName, lastName, country, email, password, verified, roles, }) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
             const encryptedPassword = yield argon2_1.default.hash(password);
             try {
@@ -30,6 +72,8 @@ let UserResolver = class UserResolver {
                     country,
                     email,
                     password: encryptedPassword,
+                    verified,
+                    roles,
                 });
             }
             catch (err) {
@@ -49,11 +93,12 @@ let UserResolver = class UserResolver {
             if (!checkPassword) {
                 throw new Error("Incorrect password");
             }
-            if (!user.isVerified) {
+            if (!user.verified) {
                 throw new Error("Email address not verified");
             }
             ctx.req.session.userId = user.id;
             ctx.req.session.isAdmin = user.isAdmin;
+            ctx.req.session.roles = user.roles;
             console.log(`${user.email} logged in`);
             return user;
         });
@@ -101,6 +146,7 @@ let UserResolver = class UserResolver {
     }
 };
 tslib_1.__decorate([
+    type_graphql_1.Authorized("ADMIN"),
     type_graphql_1.Query(() => [user_1.User]),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", []),
@@ -115,13 +161,9 @@ tslib_1.__decorate([
 ], UserResolver.prototype, "currentUser", null);
 tslib_1.__decorate([
     type_graphql_1.Mutation(() => Boolean),
-    tslib_1.__param(0, type_graphql_1.Arg("firstName")),
-    tslib_1.__param(1, type_graphql_1.Arg("lastName")),
-    tslib_1.__param(2, type_graphql_1.Arg("country")),
-    tslib_1.__param(3, type_graphql_1.Arg("email")),
-    tslib_1.__param(4, type_graphql_1.Arg("password")),
+    tslib_1.__param(0, type_graphql_1.Args()),
     tslib_1.__metadata("design:type", Function),
-    tslib_1.__metadata("design:paramtypes", [String, String, String, String, String]),
+    tslib_1.__metadata("design:paramtypes", [CreateUserArgs]),
     tslib_1.__metadata("design:returntype", Promise)
 ], UserResolver.prototype, "register", null);
 tslib_1.__decorate([
@@ -152,7 +194,6 @@ tslib_1.__decorate([
 ], UserResolver.prototype, "updateUser", null);
 tslib_1.__decorate([
     type_graphql_1.Mutation(() => Boolean),
-    type_graphql_1.UseMiddleware(check_permissions_1.isAdmin),
     tslib_1.__param(0, type_graphql_1.Arg("id")),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [Number]),

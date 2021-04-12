@@ -7,7 +7,6 @@ const typeorm_1 = require("typeorm");
 const track_1 = require("../entities/track");
 const track_input_1 = require("../types/track-input");
 const paginated_tracks_1 = require("../types/paginated-tracks");
-const check_permissions_1 = require("../utils/check-permissions");
 const redis_1 = require("../config/redis");
 const constants_1 = require("../config/constants");
 let TrackResolver = class TrackResolver {
@@ -68,7 +67,6 @@ tslib_1.__decorate([
 ], TrackResolver.prototype, "track", null);
 tslib_1.__decorate([
     type_graphql_1.Mutation(() => track_1.Track),
-    type_graphql_1.UseMiddleware(check_permissions_1.isAdmin),
     tslib_1.__param(0, type_graphql_1.Arg("input")),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [track_input_1.TrackInput]),
@@ -76,7 +74,6 @@ tslib_1.__decorate([
 ], TrackResolver.prototype, "createTrack", null);
 tslib_1.__decorate([
     type_graphql_1.Mutation(() => track_1.Track, { nullable: true }),
-    type_graphql_1.UseMiddleware(check_permissions_1.isAdmin),
     tslib_1.__param(0, type_graphql_1.Arg("id")),
     tslib_1.__param(1, type_graphql_1.Arg("youTubeId")),
     tslib_1.__param(2, type_graphql_1.Arg("buyUrl")),
@@ -86,7 +83,6 @@ tslib_1.__decorate([
 ], TrackResolver.prototype, "updateTrack", null);
 tslib_1.__decorate([
     type_graphql_1.Mutation(() => Boolean),
-    type_graphql_1.UseMiddleware(check_permissions_1.isAdmin),
     tslib_1.__param(0, type_graphql_1.Arg("id")),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [String]),

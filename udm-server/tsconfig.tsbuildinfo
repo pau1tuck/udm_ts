@@ -4401,14 +4401,39 @@
         "signature": "86ba810f782b1c70750b3b1ddcb32edea02ad0c516e10ed79c59f3015d195444",
         "affectsGlobalScope": false
       },
+      "./node_modules/@types/ioredis/index.d.ts": {
+        "version": "7bc7049b1ca5bc3add20777efc795e02d79adda7d61e076b60453446d9404bbc",
+        "signature": "7bc7049b1ca5bc3add20777efc795e02d79adda7d61e076b60453446d9404bbc",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/dataloader/index.d.ts": {
+        "version": "507050f504a446515a2d9e648fdcf850176a27d748e0c430ad118d09f0ba0124",
+        "signature": "507050f504a446515a2d9e648fdcf850176a27d748e0c430ad118d09f0ba0124",
+        "affectsGlobalScope": false
+      },
       "./src/types/user-role.ts": {
-        "version": "7923d5af5970fae282532d46ec13d3060f804803ab4b9259adb6fbfed31bedd5",
-        "signature": "238c40d7ba448e4bf9e85699cb384060b9f834f7b1a5b536a70faa4c15156b54",
+        "version": "24ff071115956b2a38b1da82dccc92ae02c7f34c1f44deffecf3aa644b115e09",
+        "signature": "fefd8a08863a60a830e9b42b4bd7f2c7f17154f534709109e738a0c30ba0f3af",
         "affectsGlobalScope": false
       },
       "./src/entities/user.ts": {
-        "version": "ca85fd2683a613faf1e5020c60f02bfa9f69607bbd6564bc4463f324ee651269",
-        "signature": "a352dcefd0f0a8f3619055da3c3f0b5085a9bebf60fd1dfc0e525c2633b53f04",
+        "version": "779e8dff29be77043531b9373bc1cefa70dfadaf828be5abe947a8e07195c1f6",
+        "signature": "271eecf94f9fdbc48e6280aadfce2370b5e670e341bb71c8af90a7abfea4fb9c",
+        "affectsGlobalScope": false
+      },
+      "./src/utils/create-user-dataloader.ts": {
+        "version": "4557981bee4157f25e856031a08bccf2f640cd91f1d742afda8dc5c9fd3068dc",
+        "signature": "def2bc9ae2193776b5e9f714feabc57b660d4771d8919a64df5454a2daa328b9",
+        "affectsGlobalScope": false
+      },
+      "./src/types/context.interface.ts": {
+        "version": "bd90f84fc0e12340ddd2346787ef70966e994f12fc040568faeee5b2b6cf2dba",
+        "signature": "3d2833239ef27c8c297fcf11f0b2a10e299085eaf8b7fcfb008b991768fb4544",
+        "affectsGlobalScope": false
+      },
+      "./src/utils/auth-checker.ts": {
+        "version": "e7aec82ebb3071243b315e691b8a5141c8df5d07e2566018d0b07c0d4645ca44",
+        "signature": "2ff0f71a2446b7031f2d7687c333d02f4a4a8ff77f61269e9c3e5ba0d845c075",
         "affectsGlobalScope": false
       },
       "./src/entities/track.ts": {
@@ -4424,11 +4449,6 @@
       "./node_modules/@types/redis/index.d.ts": {
         "version": "c6f0fb24005dfe5c741b2f0877bcd2e3a7602907f0233caf581a791d4da2c753",
         "signature": "c6f0fb24005dfe5c741b2f0877bcd2e3a7602907f0233caf581a791d4da2c753",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@types/ioredis/index.d.ts": {
-        "version": "7bc7049b1ca5bc3add20777efc795e02d79adda7d61e076b60453446d9404bbc",
-        "signature": "7bc7049b1ca5bc3add20777efc795e02d79adda7d61e076b60453446d9404bbc",
         "affectsGlobalScope": false
       },
       "./node_modules/@types/connect-redis/index.d.ts": {
@@ -4526,34 +4546,14 @@
         "signature": "daedf662f5c12939c9e2098b24dfee1cb9726cfa2a872f2b0963655c434ad546",
         "affectsGlobalScope": false
       },
-      "./node_modules/dataloader/index.d.ts": {
-        "version": "507050f504a446515a2d9e648fdcf850176a27d748e0c430ad118d09f0ba0124",
-        "signature": "507050f504a446515a2d9e648fdcf850176a27d748e0c430ad118d09f0ba0124",
-        "affectsGlobalScope": false
-      },
-      "./src/utils/create-user-dataloader.ts": {
-        "version": "4557981bee4157f25e856031a08bccf2f640cd91f1d742afda8dc5c9fd3068dc",
-        "signature": "def2bc9ae2193776b5e9f714feabc57b660d4771d8919a64df5454a2daa328b9",
-        "affectsGlobalScope": false
-      },
-      "./src/types/context.interface.ts": {
-        "version": "56716ac396c996e31771d650d5712dc8d081158664cef50145ff27e671e43dd8",
-        "signature": "898397b08feda5f52c553f545906715bde35b6c294c65812da65d23c2309a393",
-        "affectsGlobalScope": false
-      },
-      "./src/utils/check-permissions.ts": {
-        "version": "f46b08ccb71ec3e68e835ae416d70cfd798a20f091aab4cea43b181ae4af334d",
-        "signature": "14ad46dd2d1e1cccb8c79ff35b63ae0ec33d85ce5f958f3f9efcf30b7672bdda",
-        "affectsGlobalScope": false
-      },
       "./src/types/upload.interface.ts": {
         "version": "dc7c4dbeb9347622db1a18f663a5bbebd576dd275b5e1c60fd86b72ca80bbc65",
         "signature": "a6a1ff0d53d4008dd7eda84810575d02f9482d2645c8da48c7051e26ac607dab",
         "affectsGlobalScope": false
       },
       "./src/resolvers/user.resolver.ts": {
-        "version": "0793a35a3e9a4bf7b9af25be5de104855bacd3c0687a53546ef1147c8e1e96d5",
-        "signature": "ff0c5228e363743499c8c1b76d71a5fb41894fdfdab70fa14d0c7bce4f8a1ca1",
+        "version": "a6e4048433bfb781c3345ae73f1dc6bbd3b672a057b34be8ead12e16fc552c2c",
+        "signature": "94e73885843304a0c4c99be38d35f02f541ffaf59797aebebd1b59a9fe3bc8dd",
         "affectsGlobalScope": false
       },
       "./src/types/track-input.ts": {
@@ -4572,7 +4572,7 @@
         "affectsGlobalScope": false
       },
       "./src/resolvers/track.resolver.ts": {
-        "version": "460a1470d8a922220f81ab8635fdd867ce31c5f9bfb7f5d80c46571366607d06",
+        "version": "932f82fcb1a874ab7cf42b4ff7fd764531650cc4467ff729069ae11078fb465c",
         "signature": "deccef008a21099a4f6872d36b66bc4b888dd114d8285efd28b5947e028c4eef",
         "affectsGlobalScope": false
       },
@@ -4582,7 +4582,7 @@
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
-        "version": "e86c2e69d1bd02ebc2b4e77468b37ad2429894a736e82a7f9e3aa12bd1fc7ea4",
+        "version": "4895aa582469f85af588a979dd8b68abf2151ac897347746f7a2f836ca23bca1",
         "signature": "ed67f3476bd1d2cf794092aeaa5206fe302cf3ae937d015e00252859b0914122",
         "affectsGlobalScope": false
       },
@@ -4590,6 +4590,11 @@
         "version": "1c2940b077c5634163cf20ec5a9bb3463b268461f2ef840d60b3a280cc5ec315",
         "signature": "1c2940b077c5634163cf20ec5a9bb3463b268461f2ef840d60b3a280cc5ec315",
         "affectsGlobalScope": true
+      },
+      "./src/utils/check-permissions.ts": {
+        "version": "dc218ab40b57d2f90959381159bff3f944234a14ba1ead53f13bdea736b42fee",
+        "signature": "1034448a16267ac93d22fe326ba1373559440353f19cb20574bf704c2169c92d",
+        "affectsGlobalScope": false
       },
       "./node_modules/@types/jsonwebtoken/index.d.ts": {
         "version": "82cffc446a000271c34cdf657c5aaa397c87183762431efe5e09660979cce586",
@@ -8678,6 +8683,7 @@
         "./src/config/redis.ts",
         "./src/resolvers/track.resolver.ts",
         "./src/resolvers/user.resolver.ts",
+        "./src/utils/auth-checker.ts",
         "./src/utils/cache-tracks.ts",
         "./src/utils/create-user-dataloader.ts"
       ],
@@ -8689,8 +8695,7 @@
         "./src/config/redis.ts",
         "./src/entities/track.ts",
         "./src/types/paginated-tracks.ts",
-        "./src/types/track-input.ts",
-        "./src/utils/check-permissions.ts"
+        "./src/types/track-input.ts"
       ],
       "./src/resolvers/user.resolver.ts": [
         "./node_modules/@types/express/index.d.ts",
@@ -8703,8 +8708,7 @@
         "./node_modules/typeorm/index.d.ts",
         "./src/entities/user.ts",
         "./src/types/context.interface.ts",
-        "./src/types/upload.interface.ts",
-        "./src/utils/check-permissions.ts"
+        "./src/types/upload.interface.ts"
       ],
       "./src/types/context.interface.ts": [
         "./node_modules/@types/express/index.d.ts",
@@ -8726,7 +8730,13 @@
         "./node_modules/tslib/tslib.d.ts"
       ],
       "./src/types/user-role.ts": [
-        "./node_modules/tslib/tslib.d.ts"
+        "./node_modules/tslib/tslib.d.ts",
+        "./node_modules/type-graphql/dist/index.d.ts"
+      ],
+      "./src/utils/auth-checker.ts": [
+        "./node_modules/tslib/tslib.d.ts",
+        "./node_modules/type-graphql/dist/index.d.ts",
+        "./src/types/context.interface.ts"
       ],
       "./src/utils/cache-tracks.ts": [
         "./node_modules/tslib/tslib.d.ts",
@@ -12528,8 +12538,7 @@
         "./node_modules/typeorm/index.d.ts"
       ],
       "./src/entities/user.ts": [
-        "./node_modules/typeorm/index.d.ts",
-        "./src/types/user-role.ts"
+        "./node_modules/typeorm/index.d.ts"
       ],
       "./src/index.ts": [
         "./node_modules/reflect-metadata/index.d.ts"
@@ -12554,6 +12563,10 @@
       ],
       "./src/types/upload.interface.ts": [
         "./node_modules/@types/node/stream.d.ts"
+      ],
+      "./src/utils/auth-checker.ts": [
+        "./node_modules/type-graphql/dist/index.d.ts",
+        "./src/types/context.interface.ts"
       ],
       "./src/utils/check-permissions.ts": [
         "./node_modules/type-graphql/dist/index.d.ts",
@@ -13521,6 +13534,7 @@
       "./src/types/track-input.ts",
       "./src/types/upload.interface.ts",
       "./src/types/user-role.ts",
+      "./src/utils/auth-checker.ts",
       "./src/utils/cache-tracks.ts",
       "./src/utils/check-permissions.ts",
       "./src/utils/create-user-dataloader.ts",

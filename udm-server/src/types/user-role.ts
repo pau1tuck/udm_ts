@@ -1,1 +1,7 @@
-export type UserRole = "admin" | "member" | "ghost";
+import { ObjectType, Field, ID } from "type-graphql";
+
+@ObjectType()
+export class Roles {
+    @Field()
+    roles?: string;
+}

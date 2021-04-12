@@ -10,7 +10,6 @@ import { getConnection } from "typeorm";
 import { Track } from "../entities/track";
 import { TrackInput } from "../types/track-input";
 import { PaginatedTracks } from "../types/paginated-tracks";
-import { isAdmin } from "../utils/check-permissions";
 import { RedisStore, redisClient } from "../config/redis";
 import { TRACKS_CACHE_KEY } from "../config/constants";
 
@@ -37,7 +36,6 @@ export class TrackResolver {
     }
 
     @Mutation(() => Track)
-    @UseMiddleware(isAdmin)
     async createTrack(@Arg("input") input: TrackInput): Promise<Track> {
         const newTrack = await Track.create({
             ...input,
@@ -47,7 +45,6 @@ export class TrackResolver {
     }
 
     @Mutation(() => Track, { nullable: true })
-    @UseMiddleware(isAdmin)
     async updateTrack(
         @Arg("id") id: string,
         @Arg("youTubeId") youTubeId: string,
@@ -67,7 +64,6 @@ export class TrackResolver {
     }
 
     @Mutation(() => Boolean)
-    @UseMiddleware(isAdmin)
     async deleteTrack(@Arg("id") id: string): Promise<boolean> {
         await Track.delete({ id });
         return true;
