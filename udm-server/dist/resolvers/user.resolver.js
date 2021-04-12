@@ -142,7 +142,6 @@ tslib_1.__decorate([
 ], UserResolver.prototype, "logout", null);
 tslib_1.__decorate([
     type_graphql_1.Mutation(() => user_1.User, { nullable: true }),
-    type_graphql_1.UseMiddleware(check_permissions_1.isAdmin),
     tslib_1.__param(0, type_graphql_1.Arg("id")),
     tslib_1.__param(1, type_graphql_1.Arg("firstName")),
     tslib_1.__param(2, type_graphql_1.Arg("lastName")),

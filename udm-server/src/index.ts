@@ -11,10 +11,11 @@ import { createConnection, Connection } from "typeorm";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import cors from "cors";
+import { authChecker } from "./utils/auth-checker";
 
 import database from "./config/database";
 import { RedisStore, redisClient } from "./config/redis";
-import { transporter } from "./config/email";
+import { emailTransporter } from "./config/email";
 
 import { UserResolver } from "./resolvers/user.resolver";
 import { TrackResolver } from "./resolvers/track.resolver";
@@ -66,6 +67,7 @@ const server = async () => {
     const graphQLSchema = await buildSchema({
         resolvers: [UserResolver, TrackResolver],
         validate: false,
+        authChecker,
     });
 
     const apolloServer = new ApolloServer({
@@ -80,38 +82,40 @@ const server = async () => {
 
     apolloServer.applyMiddleware({ app, cors: false });
 
-    /* app.use("*", (req: Request, res: Response) => {
-        res.status(200);
-        res.sendFile(path.join(`${__dirname}/public/index.html`));
-        res.end();
-    });
-
-    /* appadmin/create-track.get("*", (req: Request, res: Response) => {
-        res.sendFile(path.join(__dirname + "/web/public/index.html"));
-    }); */
-
     cacheTracks();
 
     app.use("/media", express.static("media"));
 
     if (orm.isConnected) {
-        console.log("📙 Connected to PostgreSQL database");
+        console.log(
+            `🗄️  Connected to PostgreSQL database on port ${process.env.DB_PORT}`
+        );
     }
 
-    /* app.get("/", (req: Request, res: Response) => {
-        res.sendFile(path.join(__dirname, "index.html"));
-    }); */
-    transporter.verify((error, success) => {
+    redisClient.monitor((error, monitor) => {
+        // Entering monitoring mode.
+        monitor.on("monitor", (time, args, source) => {
+            console.log(time, args, source);
+        });
+        if (!error) {
+            console.log(
+                `📙 Connected to Redis on port ${process.env.REDIS_PORT}`
+            );
+        }
+    });
+
+    emailTransporter.verify((error) => {
         if (error) {
             console.log(error);
         } else {
-            console.log(success);
-            console.log("SMTP email server ready");
+            console.log(
+                `📧 SMTP email server ready at ${process.env.SMTP_HOST}:${process.env.SMTP_PORT}`
+            );
         }
     });
 
     app.listen(PORT, () => {
-        console.log(`🚀 Server running on port ${PORT}`);
+        console.log(`🚀 Node server running on port ${PORT}`);
     });
 };
 server().catch((err) => {

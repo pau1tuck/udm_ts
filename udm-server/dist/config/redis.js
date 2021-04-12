@@ -12,5 +12,6 @@ exports.redisClient = new ioredis_1.default({
     family: Number(process.env.REDIS_FAMILY),
     password: process.env.REDIS_PASS,
     db: Number(process.env.REDIS_DB),
+    enableReadyCheck: true,
 });
 //# sourceMappingURL=redis.js.map

@@ -3,7 +3,11 @@ import { Errback } from "express";
 import { createWriteStream } from "fs";
 import {
     Arg,
+    Args,
+    ArgsType,
     Ctx,
+    Field,
+    Int,
     Mutation,
     Query,
     Resolver,
@@ -16,6 +20,30 @@ import { User } from "../entities/user";
 import { isAdmin } from "../utils/check-permissions";
 import { IContext } from "../types/context.interface";
 import { IUpload } from "../types/upload.interface";
+
+@ArgsType()
+class CreateUserArgs {
+    @Field()
+    firstName!: string;
+
+    @Field()
+    lastName!: string;
+
+    @Field()
+    country!: string;
+
+    @Field()
+    email!: string;
+
+    @Field()
+    password!: string;
+
+    @Field({ defaultValue: false })
+    verified!: boolean;
+
+    @Field({ nullable: true })
+    roles!: string[];
+}
 
 @Resolver(User)
 export class UserResolver {
@@ -38,11 +66,16 @@ export class UserResolver {
     // REGISTER
     @Mutation(() => Boolean)
     async register(
-        @Arg("firstName") firstName: string,
-        @Arg("lastName") lastName: string,
-        @Arg("country") country: string,
-        @Arg("email") email: string,
-        @Arg("password") password: string
+        @Args()
+        {
+            firstName,
+            lastName,
+            country,
+            email,
+            password,
+            verified,
+            roles,
+        }: CreateUserArgs
     ) {
         const encryptedPassword = await argon2.hash(password);
 
@@ -53,6 +86,8 @@ export class UserResolver {
                 country,
                 email,
                 password: encryptedPassword,
+                verified,
+                roles,
             });
         } catch (err) {
             console.log(err);
@@ -86,6 +121,7 @@ export class UserResolver {
 
         ctx.req.session.userId = user.id;
         ctx.req.session.isAdmin = user.isAdmin;
+        ctx.req.session.roles = user.roles;
         console.log(`${user.email} logged in`);
         return user;
     }

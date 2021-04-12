@@ -54,6 +54,14 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Boolean)
 ], User.prototype, "isAdmin", void 0);
 tslib_1.__decorate([
+    typeorm_1.Column({
+        type: "enum",
+        enum: ["admin", "member", "ghost"],
+        default: "ghost",
+    }),
+    tslib_1.__metadata("design:type", String)
+], User.prototype, "role", void 0);
+tslib_1.__decorate([
     type_graphql_1.Field(() => String),
     typeorm_1.CreateDateColumn(),
     tslib_1.__metadata("design:type", Date)

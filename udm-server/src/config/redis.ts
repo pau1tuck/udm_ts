@@ -9,4 +9,5 @@ export const redisClient = new Redis({
     family: Number(process.env.REDIS_FAMILY),
     password: process.env.REDIS_PASS,
     db: Number(process.env.REDIS_DB),
+    enableReadyCheck: true,
 });

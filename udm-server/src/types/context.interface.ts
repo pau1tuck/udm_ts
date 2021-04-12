@@ -6,6 +6,6 @@ export interface IContext {
     req: Request & { session: any };
     res: Response;
     redis: Redis;
-    payload?: { userId: string };
+    payload?: { userId: string; roles: string[] };
     userLoader: ReturnType<typeof createUserDataLoader>;
 }

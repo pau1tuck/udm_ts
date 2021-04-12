@@ -7,6 +7,7 @@ import {
     Column,
     BaseEntity,
 } from "typeorm";
+import { UserRole } from "../types/user-role";
 
 @ObjectType()
 @Entity()
@@ -42,11 +43,15 @@ export class User extends BaseEntity {
     password!: string;
 
     @Column({ default: false })
-    isVerified!: boolean;
+    verified!: boolean;
 
     @Field()
     @Column({ default: false })
     isAdmin!: boolean;
+
+    @Field()
+    @Column("simple-array", { nullable: true })
+    roles!: string[];
 
     @Field(() => String)
     @CreateDateColumn()

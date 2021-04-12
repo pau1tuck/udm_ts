@@ -5,7 +5,7 @@ const tslib_1 = require("tslib");
 const nodemailer_1 = tslib_1.__importDefault(require("nodemailer"));
 const email_1 = require("../config/email");
 const sendVerificationEmail = (recipient, url) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
-    const info = yield email_1.transporter.sendMail({
+    const info = yield email_1.emailTransporter.sendMail({
         from: '"Underground Dance Music" <noreply@udmx.net>',
         to: recipient,
         subject: "Confirm email address",
