@@ -12,8 +12,10 @@ const type_graphql_1 = require("type-graphql");
 const cors_1 = tslib_1.__importDefault(require("cors"));
 const database_1 = tslib_1.__importDefault(require("./config/database"));
 const redis_1 = require("./config/redis");
+const email_1 = require("./config/email");
 const user_resolver_1 = require("./resolvers/user.resolver");
 const track_resolver_1 = require("./resolvers/track.resolver");
+const create_user_dataloader_1 = require("./utils/create-user-dataloader");
 const cache_tracks_1 = require("./utils/cache-tracks");
 const PRODUCTION = process.env.NODE_ENV === "production";
 const WORKERS = process.env.WEB_CONCURRENCY || 1;
@@ -51,16 +53,30 @@ const server = () => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
     });
     const apolloServer = new apollo_server_express_1.ApolloServer({
         schema: graphQLSchema,
-        context: ({ req, res }) => ({ req, res, redisClient: redis_1.redisClient }),
+        context: ({ req, res }) => ({
+            req,
+            res,
+            redisClient: redis_1.redisClient,
+            userLoader: create_user_dataloader_1.createUserDataLoader(),
+        }),
     });
     apolloServer.applyMiddleware({ app, cors: false });
     cache_tracks_1.cacheTracks();
-    if (orm.isConnected) {
-        console.log("📙 Connected to PostgreSQL database.");
-    }
     app.use("/media", express_1.default.static("media"));
+    if (orm.isConnected) {
+        console.log("📙 Connected to PostgreSQL database");
+    }
+    email_1.transporter.verify((error, success) => {
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log(success);
+            console.log("SMTP email server ready");
+        }
+    });
     app.listen(PORT, () => {
-        console.log(`🚀 Server running on port ${PORT}.`);
+        console.log(`🚀 Server running on port ${PORT}`);
     });
 });
 server().catch((err) => {
