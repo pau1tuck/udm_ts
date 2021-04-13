@@ -9,6 +9,7 @@ const typeorm_1 = require("typeorm");
 const graphql_upload_1 = require("graphql-upload");
 const argon2_1 = tslib_1.__importDefault(require("argon2"));
 const user_1 = require("../entities/user");
+const user_input_1 = require("../types/user.input");
 let AssRoles = class AssRoles {
 };
 tslib_1.__decorate([
@@ -62,19 +63,11 @@ let UserResolver = class UserResolver {
         }
         return user_1.User.findOne(req.session.userId);
     }
-    register({ firstName, lastName, country, email, password, verified, roles, }) {
+    register(input) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
-            const encryptedPassword = yield argon2_1.default.hash(password);
+            const encryptedPassword = yield argon2_1.default.hash(input.password);
             try {
-                yield user_1.User.insert({
-                    firstName,
-                    lastName,
-                    country,
-                    email,
-                    password: encryptedPassword,
-                    verified,
-                    roles,
-                });
+                yield user_1.User.insert(Object.assign(Object.assign({}, input), { password: encryptedPassword }));
             }
             catch (err) {
                 console.log(err);
@@ -161,9 +154,9 @@ tslib_1.__decorate([
 ], UserResolver.prototype, "currentUser", null);
 tslib_1.__decorate([
     type_graphql_1.Mutation(() => Boolean),
-    tslib_1.__param(0, type_graphql_1.Args()),
+    tslib_1.__param(0, type_graphql_1.Arg("input")),
     tslib_1.__metadata("design:type", Function),
-    tslib_1.__metadata("design:paramtypes", [CreateUserArgs]),
+    tslib_1.__metadata("design:paramtypes", [user_input_1.UserInput]),
     tslib_1.__metadata("design:returntype", Promise)
 ], UserResolver.prototype, "register", null);
 tslib_1.__decorate([

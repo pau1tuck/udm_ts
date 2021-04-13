@@ -8,7 +8,7 @@ import {
 } from "type-graphql";
 import { getConnection } from "typeorm";
 import { Track } from "../entities/track";
-import { TrackInput } from "../types/track-input";
+import { TrackInput } from "../types/track.input";
 import { PaginatedTracks } from "../types/paginated-tracks";
 import { RedisStore, redisClient } from "../config/redis";
 import { TRACKS_CACHE_KEY } from "../config/constants";

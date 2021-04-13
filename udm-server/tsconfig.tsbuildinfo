@@ -4411,13 +4411,8 @@
         "signature": "507050f504a446515a2d9e648fdcf850176a27d748e0c430ad118d09f0ba0124",
         "affectsGlobalScope": false
       },
-      "./src/types/user-role.ts": {
-        "version": "24ff071115956b2a38b1da82dccc92ae02c7f34c1f44deffecf3aa644b115e09",
-        "signature": "fefd8a08863a60a830e9b42b4bd7f2c7f17154f534709109e738a0c30ba0f3af",
-        "affectsGlobalScope": false
-      },
       "./src/entities/user.ts": {
-        "version": "779e8dff29be77043531b9373bc1cefa70dfadaf828be5abe947a8e07195c1f6",
+        "version": "dcdfcc282ac31e81af26e22afaecd86d680f1981eb05b208ffc16c1ace714a7a",
         "signature": "271eecf94f9fdbc48e6280aadfce2370b5e670e341bb71c8af90a7abfea4fb9c",
         "affectsGlobalScope": false
       },
@@ -4546,17 +4541,22 @@
         "signature": "daedf662f5c12939c9e2098b24dfee1cb9726cfa2a872f2b0963655c434ad546",
         "affectsGlobalScope": false
       },
+      "./src/types/user.input.ts": {
+        "version": "7ceea485d663c26c646f85349d960842ba03802857e0f12138e0d5ff2f123433",
+        "signature": "ce4ce9af99ec8a32e7cada00ab6eb2575607dc697c4bc0d0a4244c9b568cb8e2",
+        "affectsGlobalScope": false
+      },
       "./src/types/upload.interface.ts": {
         "version": "dc7c4dbeb9347622db1a18f663a5bbebd576dd275b5e1c60fd86b72ca80bbc65",
         "signature": "a6a1ff0d53d4008dd7eda84810575d02f9482d2645c8da48c7051e26ac607dab",
         "affectsGlobalScope": false
       },
       "./src/resolvers/user.resolver.ts": {
-        "version": "a6e4048433bfb781c3345ae73f1dc6bbd3b672a057b34be8ead12e16fc552c2c",
-        "signature": "94e73885843304a0c4c99be38d35f02f541ffaf59797aebebd1b59a9fe3bc8dd",
+        "version": "381698cb39dd7f030484576b63295f080e596cd3c61c50b047583248e40f893a",
+        "signature": "e363281f82bd645157a3d357cd33d8e1f3472f582e520685adfc982b3ac405f1",
         "affectsGlobalScope": false
       },
-      "./src/types/track-input.ts": {
+      "./src/types/track.input.ts": {
         "version": "c10380fac39cbb0900d411c2e034429e2c791a73106282c2a2e5400507bce0a6",
         "signature": "0d3420f3006f8d4947d044e979c78fd4c46f69eded4d1ec7264bd7142c35c904",
         "affectsGlobalScope": false
@@ -4572,8 +4572,8 @@
         "affectsGlobalScope": false
       },
       "./src/resolvers/track.resolver.ts": {
-        "version": "932f82fcb1a874ab7cf42b4ff7fd764531650cc4467ff729069ae11078fb465c",
-        "signature": "deccef008a21099a4f6872d36b66bc4b888dd114d8285efd28b5947e028c4eef",
+        "version": "06b3d13819ee3b953d9ed7c0c0d210d48fbbfffa1a2dc159273be58a4ac71b76",
+        "signature": "8ec3fe71b96a64e95e69de18533d397b7c3a04181eb14367f82227a0e9dadce7",
         "affectsGlobalScope": false
       },
       "./src/utils/cache-tracks.ts": {
@@ -4875,7 +4875,6 @@
       },
       "moduleResolution": 2,
       "pathsBasePath": "/home/paul/dev/udm/udm-server",
-      "watch": true,
       "configFilePath": "./tsconfig.json"
     },
     "referencedMap": {
@@ -8664,8 +8663,7 @@
       "./src/entities/user.ts": [
         "./node_modules/tslib/tslib.d.ts",
         "./node_modules/type-graphql/dist/index.d.ts",
-        "./node_modules/typeorm/index.d.ts",
-        "./src/types/user-role.ts"
+        "./node_modules/typeorm/index.d.ts"
       ],
       "./src/index.ts": [
         "./node_modules/@types/cors/index.d.ts",
@@ -8695,7 +8693,7 @@
         "./src/config/redis.ts",
         "./src/entities/track.ts",
         "./src/types/paginated-tracks.ts",
-        "./src/types/track-input.ts"
+        "./src/types/track.input.ts"
       ],
       "./src/resolvers/user.resolver.ts": [
         "./node_modules/@types/express/index.d.ts",
@@ -8708,7 +8706,8 @@
         "./node_modules/typeorm/index.d.ts",
         "./src/entities/user.ts",
         "./src/types/context.interface.ts",
-        "./src/types/upload.interface.ts"
+        "./src/types/upload.interface.ts",
+        "./src/types/user.input.ts"
       ],
       "./src/types/context.interface.ts": [
         "./node_modules/@types/express/index.d.ts",
@@ -8721,7 +8720,7 @@
         "./node_modules/type-graphql/dist/index.d.ts",
         "./src/entities/track.ts"
       ],
-      "./src/types/track-input.ts": [
+      "./src/types/track.input.ts": [
         "./node_modules/tslib/tslib.d.ts",
         "./node_modules/type-graphql/dist/index.d.ts"
       ],
@@ -8729,7 +8728,7 @@
         "./node_modules/@types/node/stream.d.ts",
         "./node_modules/tslib/tslib.d.ts"
       ],
-      "./src/types/user-role.ts": [
+      "./src/types/user.input.ts": [
         "./node_modules/tslib/tslib.d.ts",
         "./node_modules/type-graphql/dist/index.d.ts"
       ],
@@ -12546,12 +12545,13 @@
       "./src/resolvers/track.resolver.ts": [
         "./src/entities/track.ts",
         "./src/types/paginated-tracks.ts",
-        "./src/types/track-input.ts"
+        "./src/types/track.input.ts"
       ],
       "./src/resolvers/user.resolver.ts": [
         "./src/entities/user.ts",
         "./src/types/context.interface.ts",
-        "./src/types/upload.interface.ts"
+        "./src/types/upload.interface.ts",
+        "./src/types/user.input.ts"
       ],
       "./src/types/context.interface.ts": [
         "./node_modules/@types/express/index.d.ts",
@@ -13531,9 +13531,9 @@
       "./src/types/context.interface.ts",
       "./src/types/env.d.ts",
       "./src/types/paginated-tracks.ts",
-      "./src/types/track-input.ts",
+      "./src/types/track.input.ts",
       "./src/types/upload.interface.ts",
-      "./src/types/user-role.ts",
+      "./src/types/user.input.ts",
       "./src/utils/auth-checker.ts",
       "./src/utils/cache-tracks.ts",
       "./src/utils/check-permissions.ts",

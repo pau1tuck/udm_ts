@@ -11,6 +11,7 @@ import {
     Field,
     Int,
     Mutation,
+    ObjectType,
     Query,
     Resolver,
     UseMiddleware,
@@ -19,6 +20,7 @@ import { getConnection } from "typeorm";
 import { GraphQLUpload } from "graphql-upload";
 import argon2 from "argon2";
 import { User } from "../entities/user";
+import { UserInput } from "../types/user.input";
 import { IContext } from "../types/context.interface";
 import { IUpload } from "../types/upload.interface";
 
@@ -73,29 +75,12 @@ export class UserResolver {
 
     // REGISTER
     @Mutation(() => Boolean)
-    async register(
-        @Args()
-        {
-            firstName,
-            lastName,
-            country,
-            email,
-            password,
-            verified,
-            roles,
-        }: CreateUserArgs
-    ) {
-        const encryptedPassword = await argon2.hash(password);
-
+    async register(@Arg("input") input: UserInput) {
+        const encryptedPassword = await argon2.hash(input.password);
         try {
             await User.insert({
-                firstName,
-                lastName,
-                country,
-                email,
+                ...input,
                 password: encryptedPassword,
-                verified,
-                roles,
             });
         } catch (err) {
             console.log(err);
@@ -202,3 +187,12 @@ export class UserResolver {
         );
     }
 }
+/*
+        @Arg("firstName") firstName: string,
+        @Arg("lastName") lastName: string,
+        @Arg("country") country: string,
+        @Arg("email") email: string,
+        @Arg("password") password: string,
+        @Arg("verified") verified: boolean,
+        @Arg("roles") roles: any
+        */

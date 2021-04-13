@@ -7,7 +7,6 @@ import {
     Column,
     BaseEntity,
 } from "typeorm";
-import { Roles } from "../types/user-role";
 
 @ObjectType()
 @Entity()
@@ -49,7 +48,7 @@ export class User extends BaseEntity {
     @Column({ default: false })
     isAdmin!: boolean;
 
-    @Field((type) => [Roles])
+    @Field(() => [String])
     @Column("simple-array", { nullable: true })
     roles!: string[];
 
