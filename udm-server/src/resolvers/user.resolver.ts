@@ -113,8 +113,8 @@ export class UserResolver {
         }
 
         ctx.req.session.userId = user.id;
-        ctx.req.session.isAdmin = user.isAdmin;
         ctx.req.session.roles = user.roles;
+
         console.log(`${user.email} logged in`);
         return user;
     }

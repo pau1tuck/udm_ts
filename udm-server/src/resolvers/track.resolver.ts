@@ -1,5 +1,6 @@
 import {
     Arg,
+    Authorized,
     Int,
     Mutation,
     Query,
@@ -35,6 +36,7 @@ export class TrackResolver {
         return Track.findOne(id);
     }
 
+    @Authorized("ADMIN")
     @Mutation(() => Track)
     async createTrack(@Arg("input") input: TrackInput): Promise<Track> {
         const newTrack = await Track.create({
@@ -44,6 +46,7 @@ export class TrackResolver {
         return newTrack;
     }
 
+    @Authorized("ADMIN")
     @Mutation(() => Track, { nullable: true })
     async updateTrack(
         @Arg("id") id: string,
@@ -63,6 +66,7 @@ export class TrackResolver {
         return result.raw[0];
     }
 
+    @Authorized("ADMIN")
     @Mutation(() => Boolean)
     async deleteTrack(@Arg("id") id: string): Promise<boolean> {
         await Track.delete({ id });
