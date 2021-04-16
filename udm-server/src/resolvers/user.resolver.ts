@@ -33,7 +33,7 @@ export class AssRoles {
 @Resolver(User)
 export class UserResolver {
     // LIST ALL USERS
-    @Authorized("ADMIN")
+    // @Authorized("ADMIN")
     @Query(() => [User])
     // @UseMiddleware(isAdmin)
     users(): Promise<User[]> {
@@ -51,8 +51,11 @@ export class UserResolver {
 
     // REGISTER
     @Mutation(() => Boolean)
-    async register(@Arg("input") input: UserInput) {
-        const encryptedPassword = await argon2.hash(input.password);
+    async register(
+        @Arg("input") input: UserInput,
+        @Arg("password") password: string
+    ) {
+        const encryptedPassword = await argon2.hash(password);
         try {
             await User.insert({
                 ...input,
@@ -116,9 +119,10 @@ export class UserResolver {
     @Mutation(() => User, { nullable: true })
     async updateUser(
         @Arg("id") id: number,
-        @Arg("input") input: UserInput
+        @Arg("input") input: UserInput,
+        @Arg("password") password: string
     ): Promise<User | null> {
-        const encryptedPassword = await argon2.hash(input.password);
+        const encryptedPassword = await argon2.hash(password);
         const result = await getConnection()
             .createQueryBuilder()
             .update(User)

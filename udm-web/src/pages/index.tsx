@@ -64,13 +64,6 @@ const Home = () => {
         setIsPlaying(true);
     };
 
-    const onPause = () => {
-        if (myAudio.current !== undefined) {
-            myAudio.current.pause();
-            setIsPlaying(false);
-        }
-    };
-
     const cards = dummyData.map((track, key) => (
         <TrackCard key={key} track={track} handleChangeTrack={onChangeTrack} />
     ));
@@ -132,7 +125,7 @@ const Home = () => {
                     fontSize="2.5rem"
                 >
                     {isPlaying ? (
-                        <Box onClick={onPause} color="lime.400">
+                        <Box color="lime.400">
                             <RiPauseCircleFill />
                         </Box>
                     ) : (
@@ -150,20 +143,11 @@ const Home = () => {
                             <Player src="http://www.youtube.com/embed/h3YVKTxTOgU" />
                         </Box>
                         <div className="media-controls">
-                            <PlayPause />
-                            <MuteUnmute />
                             <PlayPauseButton />
                         </div>
                     </div>
                 </Media>
             </Box>
-            <audio
-                id="audio-player"
-                ref={myAudio}
-                src={`http://localhost:5000/media/audio/tracks/${currentTrack.filename}`}
-                autoPlay
-                className={playerStyles.player}
-            />
         </Layout>
     );
 };

@@ -5,6 +5,6 @@ query CurrentUser {
         lastName
         country
         email
-        isAdmin
+        roles
     }
 }

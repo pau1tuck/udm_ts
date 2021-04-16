@@ -30,9 +30,9 @@ let UserResolver = class UserResolver {
         }
         return user_1.User.findOne(req.session.userId);
     }
-    register(input) {
+    register(input, password) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
-            const encryptedPassword = yield argon2_1.default.hash(input.password);
+            const encryptedPassword = yield argon2_1.default.hash(password);
             try {
                 yield user_1.User.insert(Object.assign(Object.assign({}, input), { password: encryptedPassword }));
             }
@@ -75,9 +75,9 @@ let UserResolver = class UserResolver {
             }));
         });
     }
-    updateUser(id, input) {
+    updateUser(id, input, password) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
-            const encryptedPassword = yield argon2_1.default.hash(input.password);
+            const encryptedPassword = yield argon2_1.default.hash(password);
             const result = yield typeorm_1.getConnection()
                 .createQueryBuilder()
                 .update(user_1.User)
@@ -106,7 +106,6 @@ let UserResolver = class UserResolver {
     }
 };
 tslib_1.__decorate([
-    type_graphql_1.Authorized("ADMIN"),
     type_graphql_1.Query(() => [user_1.User]),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", []),
@@ -122,8 +121,9 @@ tslib_1.__decorate([
 tslib_1.__decorate([
     type_graphql_1.Mutation(() => Boolean),
     tslib_1.__param(0, type_graphql_1.Arg("input")),
+    tslib_1.__param(1, type_graphql_1.Arg("password")),
     tslib_1.__metadata("design:type", Function),
-    tslib_1.__metadata("design:paramtypes", [user_input_1.UserInput]),
+    tslib_1.__metadata("design:paramtypes", [user_input_1.UserInput, String]),
     tslib_1.__metadata("design:returntype", Promise)
 ], UserResolver.prototype, "register", null);
 tslib_1.__decorate([
@@ -146,8 +146,9 @@ tslib_1.__decorate([
     type_graphql_1.Mutation(() => user_1.User, { nullable: true }),
     tslib_1.__param(0, type_graphql_1.Arg("id")),
     tslib_1.__param(1, type_graphql_1.Arg("input")),
+    tslib_1.__param(2, type_graphql_1.Arg("password")),
     tslib_1.__metadata("design:type", Function),
-    tslib_1.__metadata("design:paramtypes", [Number, user_input_1.UserInput]),
+    tslib_1.__metadata("design:paramtypes", [Number, user_input_1.UserInput, String]),
     tslib_1.__metadata("design:returntype", Promise)
 ], UserResolver.prototype, "updateUser", null);
 tslib_1.__decorate([

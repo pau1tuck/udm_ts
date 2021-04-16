@@ -14,9 +14,6 @@ export class UserInput {
     @Field()
     email!: string;
 
-    @Field()
-    password!: string;
-
     @Field({ defaultValue: false })
     verified!: boolean;
 

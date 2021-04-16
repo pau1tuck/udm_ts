@@ -18,7 +18,7 @@ export const checkAdmin = () => {
     useEffect(() => {
         if (!loading && !data?.currentUser) {
             router.replace("/user/login?next=" + router.pathname);
-        } else if (!loading && !data?.currentUser.isAdmin) {
+        } else if (!loading && !data?.currentUser.roles.includes("ADMIN")) {
             router.push("/");
         }
     }, [loading, data, router]);
