@@ -30,30 +30,6 @@ export class AssRoles {
     roles?: string;
 }
 
-@ArgsType()
-class CreateUserArgs {
-    @Field()
-    firstName!: string;
-
-    @Field()
-    lastName!: string;
-
-    @Field()
-    country!: string;
-
-    @Field()
-    email!: string;
-
-    @Field()
-    password!: string;
-
-    @Field({ defaultValue: false })
-    verified!: boolean;
-
-    @Field((type) => AssRoles)
-    roles?: string[];
-}
-
 @Resolver(User)
 export class UserResolver {
     // LIST ALL USERS
@@ -139,15 +115,14 @@ export class UserResolver {
     // UPDATE USER
     @Mutation(() => User, { nullable: true })
     async updateUser(
-        @Arg("id") id: string,
-        @Arg("firstName") firstName: string,
-        @Arg("lastName") lastName: string,
-        @Arg("country") country: string
+        @Arg("id") id: number,
+        @Arg("input") input: UserInput
     ): Promise<User | null> {
+        const encryptedPassword = await argon2.hash(input.password);
         const result = await getConnection()
             .createQueryBuilder()
             .update(User)
-            .set({ firstName, lastName, country })
+            .set({ ...input, password: encryptedPassword })
             .where("id = :id", {
                 id,
             })

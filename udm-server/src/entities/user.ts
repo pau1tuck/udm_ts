@@ -48,9 +48,9 @@ export class User extends BaseEntity {
     @Column({ default: false })
     isAdmin!: boolean;
 
-    @Field(() => [String])
+    @Field(() => [String], { nullable: true })
     @Column("simple-array", { nullable: true })
-    roles!: string[];
+    roles?: string[];
 
     @Field(() => String)
     @CreateDateColumn()

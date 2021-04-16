@@ -41,8 +41,7 @@ const validationSchema = yup.object().shape({
     ["title"]: yup.string().required().label("Title"),
     ["version"]: yup.string().label("Version"),
     ["label"]: yup.string().label("Label"),
-    ["image"]: yup.string().label("Image Location"),
-    ["filename"]: yup.string().required().label("Filename"),
+    ["youTubeId"]: yup.string().required().label("YouTube ID"),
     ["buyUrl"]: yup.string().label("Buy Link"),
 });
 
@@ -117,21 +116,14 @@ const CreateTrack = () => {
                                     {errors.label && errors.label.message}
                                 </FormErrorMessage>
                                 <Input
-                                    name="image"
-                                    placeholder="Image location"
-                                    ref={register}
-                                />
-                                <FormErrorMessage>
-                                    {errors.label && errors.label.message}
-                                </FormErrorMessage>
-                                <Input
-                                    name="filename"
-                                    placeholder="Filename"
+                                    name="youtube-id"
+                                    placeholder="YouTube ID"
                                     autoComplete="off"
                                     ref={register}
                                 />
                                 <FormErrorMessage>
-                                    {errors.trackUrl && errors.trackUrl.message}
+                                    {errors.youTubeId &&
+                                        errors.youTubeId.message}
                                 </FormErrorMessage>
                                 <Input
                                     name="buyUrl"

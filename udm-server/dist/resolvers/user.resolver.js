@@ -20,39 +20,6 @@ AssRoles = tslib_1.__decorate([
     type_graphql_1.InputType()
 ], AssRoles);
 exports.AssRoles = AssRoles;
-let CreateUserArgs = class CreateUserArgs {
-};
-tslib_1.__decorate([
-    type_graphql_1.Field(),
-    tslib_1.__metadata("design:type", String)
-], CreateUserArgs.prototype, "firstName", void 0);
-tslib_1.__decorate([
-    type_graphql_1.Field(),
-    tslib_1.__metadata("design:type", String)
-], CreateUserArgs.prototype, "lastName", void 0);
-tslib_1.__decorate([
-    type_graphql_1.Field(),
-    tslib_1.__metadata("design:type", String)
-], CreateUserArgs.prototype, "country", void 0);
-tslib_1.__decorate([
-    type_graphql_1.Field(),
-    tslib_1.__metadata("design:type", String)
-], CreateUserArgs.prototype, "email", void 0);
-tslib_1.__decorate([
-    type_graphql_1.Field(),
-    tslib_1.__metadata("design:type", String)
-], CreateUserArgs.prototype, "password", void 0);
-tslib_1.__decorate([
-    type_graphql_1.Field({ defaultValue: false }),
-    tslib_1.__metadata("design:type", Boolean)
-], CreateUserArgs.prototype, "verified", void 0);
-tslib_1.__decorate([
-    type_graphql_1.Field((type) => AssRoles),
-    tslib_1.__metadata("design:type", Array)
-], CreateUserArgs.prototype, "roles", void 0);
-CreateUserArgs = tslib_1.__decorate([
-    type_graphql_1.ArgsType()
-], CreateUserArgs);
 let UserResolver = class UserResolver {
     users() {
         return user_1.User.find();
@@ -90,7 +57,6 @@ let UserResolver = class UserResolver {
                 throw new Error("Email address not verified");
             }
             ctx.req.session.userId = user.id;
-            ctx.req.session.isAdmin = user.isAdmin;
             ctx.req.session.roles = user.roles;
             console.log(`${user.email} logged in`);
             return user;
@@ -109,12 +75,13 @@ let UserResolver = class UserResolver {
             }));
         });
     }
-    updateUser(id, firstName, lastName, country) {
+    updateUser(id, input) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
+            const encryptedPassword = yield argon2_1.default.hash(input.password);
             const result = yield typeorm_1.getConnection()
                 .createQueryBuilder()
                 .update(user_1.User)
-                .set({ firstName, lastName, country })
+                .set(Object.assign(Object.assign({}, input), { password: encryptedPassword }))
                 .where("id = :id", {
                 id,
             })
@@ -178,11 +145,9 @@ tslib_1.__decorate([
 tslib_1.__decorate([
     type_graphql_1.Mutation(() => user_1.User, { nullable: true }),
     tslib_1.__param(0, type_graphql_1.Arg("id")),
-    tslib_1.__param(1, type_graphql_1.Arg("firstName")),
-    tslib_1.__param(2, type_graphql_1.Arg("lastName")),
-    tslib_1.__param(3, type_graphql_1.Arg("country")),
+    tslib_1.__param(1, type_graphql_1.Arg("input")),
     tslib_1.__metadata("design:type", Function),
-    tslib_1.__metadata("design:paramtypes", [String, String, String, String]),
+    tslib_1.__metadata("design:paramtypes", [Number, user_input_1.UserInput]),
     tslib_1.__metadata("design:returntype", Promise)
 ], UserResolver.prototype, "updateUser", null);
 tslib_1.__decorate([

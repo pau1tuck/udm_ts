@@ -30,7 +30,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Boolean)
 ], UserInput.prototype, "verified", void 0);
 tslib_1.__decorate([
-    type_graphql_1.Field(() => [String]),
+    type_graphql_1.Field(() => [String], { nullable: true }),
     tslib_1.__metadata("design:type", Array)
 ], UserInput.prototype, "roles", void 0);
 UserInput = tslib_1.__decorate([

@@ -4,12 +4,12 @@ const tslib_1 = require("tslib");
 require("reflect-metadata");
 require("dotenv/config");
 const uuid_1 = require("uuid");
+const cors_1 = tslib_1.__importDefault(require("cors"));
 const express_1 = tslib_1.__importDefault(require("express"));
 const express_session_1 = tslib_1.__importDefault(require("express-session"));
 const typeorm_1 = require("typeorm");
 const apollo_server_express_1 = require("apollo-server-express");
 const type_graphql_1 = require("type-graphql");
-const cors_1 = tslib_1.__importDefault(require("cors"));
 const auth_checker_1 = require("./utils/auth-checker");
 const database_1 = tslib_1.__importDefault(require("./config/database"));
 const redis_1 = require("./config/redis");
@@ -20,7 +20,7 @@ const create_user_dataloader_1 = require("./utils/create-user-dataloader");
 const cache_tracks_1 = require("./utils/cache-tracks");
 const PRODUCTION = process.env.NODE_ENV === "production";
 const WORKERS = process.env.WEB_CONCURRENCY || 1;
-const PORT = parseInt(process.env.PORT, 10) || 5000;
+const PORT = process.env.PORT || 5000;
 const server = () => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
     const orm = yield typeorm_1.createConnection(database_1.default);
     const app = express_1.default();
@@ -32,7 +32,7 @@ const server = () => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
     }));
     app.use(express_session_1.default({
         name: "sid",
-        genid: (req) => uuid_1.v4(),
+        genid: () => uuid_1.v4(),
         store: new redis_1.RedisStore({
             client: redis_1.redisClient,
             disableTouch: true,

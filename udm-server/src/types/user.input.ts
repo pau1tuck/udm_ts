@@ -20,6 +20,6 @@ export class UserInput {
     @Field({ defaultValue: false })
     verified!: boolean;
 
-    @Field(() => [String])
+    @Field(() => [String], { nullable: true })
     roles?: string[];
 }

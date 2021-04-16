@@ -66,6 +66,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:returntype", Promise)
 ], TrackResolver.prototype, "track", null);
 tslib_1.__decorate([
+    type_graphql_1.Authorized("ADMIN"),
     type_graphql_1.Mutation(() => track_1.Track),
     tslib_1.__param(0, type_graphql_1.Arg("input")),
     tslib_1.__metadata("design:type", Function),
@@ -73,6 +74,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:returntype", Promise)
 ], TrackResolver.prototype, "createTrack", null);
 tslib_1.__decorate([
+    type_graphql_1.Authorized("ADMIN"),
     type_graphql_1.Mutation(() => track_1.Track, { nullable: true }),
     tslib_1.__param(0, type_graphql_1.Arg("id")),
     tslib_1.__param(1, type_graphql_1.Arg("youTubeId")),
@@ -82,6 +84,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:returntype", Promise)
 ], TrackResolver.prototype, "updateTrack", null);
 tslib_1.__decorate([
+    type_graphql_1.Authorized("ADMIN"),
     type_graphql_1.Mutation(() => Boolean),
     tslib_1.__param(0, type_graphql_1.Arg("id")),
     tslib_1.__metadata("design:type", Function),

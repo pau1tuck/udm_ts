@@ -54,7 +54,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Boolean)
 ], User.prototype, "isAdmin", void 0);
 tslib_1.__decorate([
-    type_graphql_1.Field(() => [String]),
+    type_graphql_1.Field(() => [String], { nullable: true }),
     typeorm_1.Column("simple-array", { nullable: true }),
     tslib_1.__metadata("design:type", Array)
 ], User.prototype, "roles", void 0);

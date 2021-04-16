@@ -36,6 +36,10 @@ import { ITrack } from "../types/track.interface";
 
 import { dummyData } from "../dummy-data";
 
+import { Media, Player, controls, withMediaProps } from "react-media-player";
+const { PlayPause, MuteUnmute } = controls;
+import PlayPauseButton from "../components/player/player.playpause-button";
+
 export const NOW_PLAYING = gql`
     query NowPlaying {
         nowPlaying @client
@@ -138,6 +142,20 @@ const Home = () => {
                     )}
                 </Box>
                 <NowPlaying nowPlaying={currentTrack} />
+            </Box>
+            <Box>
+                <Media>
+                    <div className="media">
+                        <Box visibility="hidden">
+                            <Player src="http://www.youtube.com/embed/h3YVKTxTOgU" />
+                        </Box>
+                        <div className="media-controls">
+                            <PlayPause />
+                            <MuteUnmute />
+                            <PlayPauseButton />
+                        </div>
+                    </div>
+                </Media>
             </Box>
             <audio
                 id="audio-player"
