@@ -22,6 +22,14 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], TrackInput.prototype, "label", void 0);
 tslib_1.__decorate([
+    type_graphql_1.Field(() => type_graphql_1.Int),
+    tslib_1.__metadata("design:type", Number)
+], TrackInput.prototype, "month", void 0);
+tslib_1.__decorate([
+    type_graphql_1.Field(() => type_graphql_1.Int),
+    tslib_1.__metadata("design:type", Number)
+], TrackInput.prototype, "year", void 0);
+tslib_1.__decorate([
     type_graphql_1.Field(),
     tslib_1.__metadata("design:type", String)
 ], TrackInput.prototype, "youTubeId", void 0);

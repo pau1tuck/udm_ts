@@ -32,6 +32,16 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], Track.prototype, "label", void 0);
 tslib_1.__decorate([
+    type_graphql_1.Field(() => type_graphql_1.Int),
+    typeorm_1.Column({ type: "int" }),
+    tslib_1.__metadata("design:type", Number)
+], Track.prototype, "month", void 0);
+tslib_1.__decorate([
+    type_graphql_1.Field(() => type_graphql_1.Int),
+    typeorm_1.Column({ type: "int" }),
+    tslib_1.__metadata("design:type", Number)
+], Track.prototype, "year", void 0);
+tslib_1.__decorate([
     type_graphql_1.Field(),
     typeorm_1.Column(),
     tslib_1.__metadata("design:type", String)

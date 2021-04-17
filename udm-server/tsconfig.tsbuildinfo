@@ -4462,8 +4462,8 @@
         "affectsGlobalScope": false
       },
       "./src/entities/track.ts": {
-        "version": "5a1fb181dcff973a7017810106cc07b12d6e77a842ea0e5fd8962e323678f739",
-        "signature": "1ee4fc1ed357d0a331fcc408f527d424f195e3b39df220e22a67dd65aee47458",
+        "version": "e051932535194e0c399ec70441788db6b7e3ffca611f5376370d6a387c12807c",
+        "signature": "2ea59b93da4052a9c422c275c80149ce5afd2dfb8534de960f7868c5145b7afa",
         "affectsGlobalScope": false
       },
       "./src/config/database.ts": {
@@ -4587,8 +4587,8 @@
         "affectsGlobalScope": false
       },
       "./src/types/track.input.ts": {
-        "version": "383a394923dc3b244c581aa07248f586e773893f8aff351d01d6a9c0c149fd18",
-        "signature": "813fe9077adc6885673ddf5762c9335fa9a4d6de343c2337d1743900361d46d3",
+        "version": "9ecc2524c1725641a1f476b91dc8b9d79ab36b70a027b5b31961f3c7db9613eb",
+        "signature": "3d135c198d63e86a22961a71d1b4d4ae09d9edb7041ad6428c566996088aa232",
         "affectsGlobalScope": false
       },
       "./src/types/paginated-tracks.ts": {

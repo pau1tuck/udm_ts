@@ -24,6 +24,10 @@ export const NavbarItems = () => {
     });
     const apolloClient = useApolloClient();
     const [isOpen, setIsOpen] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState({
+        loginButton: false,
+        signUpButton: false,
+    });
 
     const toggle = () => setIsOpen(!isOpen);
 
@@ -34,18 +38,27 @@ export const NavbarItems = () => {
             <>
                 <Box display={["none", "none", "none", "block"]}>
                     <ButtonGroup mt={1} mr={2} spacing={2}>
-                        <Button size="sm" colorScheme="white" variant="ghost">
-                            <NextLink href="/user/login" passHref>
-                                <Link>
-                                    <Text
-                                        fontFamily="Quicksand"
-                                        fontWeight="700"
-                                    >
-                                        LOG IN
-                                    </Text>
-                                </Link>
-                            </NextLink>
-                        </Button>
+                        <NextLink href="/user/login" passHref>
+                            <Link>
+                                <Button
+                                    size="sm"
+                                    colorScheme="white"
+                                    variant="ghost"
+                                    fontFamily="Quicksand"
+                                    fontWeight="700"
+                                    isLoading={isLoading.loginButton}
+                                    onClick={() => {
+                                        setIsLoading({
+                                            ...isLoading,
+                                            loginButton: true,
+                                        });
+                                    }}
+                                >
+                                    LOG IN
+                                </Button>
+                            </Link>
+                        </NextLink>
+
                         <Button
                             size="sm"
                             fontFamily="Quicksand"

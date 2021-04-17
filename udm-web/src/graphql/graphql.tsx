@@ -32,6 +32,7 @@ export type Mutation = {
 
 
 export type MutationRegisterArgs = {
+  password: Scalars['String'];
   input: UserInput;
 };
 
@@ -43,6 +44,7 @@ export type MutationLoginArgs = {
 
 
 export type MutationUpdateUserArgs = {
+  password: Scalars['String'];
   input: UserInput;
   id: Scalars['Float'];
 };
@@ -106,6 +108,8 @@ export type Track = {
   title: Scalars['String'];
   version: Scalars['String'];
   label: Scalars['String'];
+  month: Scalars['Int'];
+  year: Scalars['Int'];
   youTubeId: Scalars['String'];
   buyUrl: Scalars['String'];
   votes: Scalars['Int'];
@@ -118,6 +122,8 @@ export type TrackInput = {
   title: Scalars['String'];
   version: Scalars['String'];
   label: Scalars['String'];
+  month: Scalars['Int'];
+  year: Scalars['Int'];
   youTubeId: Scalars['String'];
   buyUrl: Scalars['String'];
 };
@@ -142,7 +148,6 @@ export type UserInput = {
   lastName: Scalars['String'];
   country: Scalars['String'];
   email: Scalars['String'];
-  password: Scalars['String'];
   verified?: Maybe<Scalars['Boolean']>;
   roles?: Maybe<Array<Scalars['String']>>;
 };
@@ -156,7 +161,7 @@ export type CreateTrackMutation = (
   { __typename?: 'Mutation' }
   & { createTrack: (
     { __typename?: 'Track' }
-    & Pick<Track, 'id' | 'artist' | 'title' | 'version' | 'label' | 'youTubeId' | 'buyUrl' | 'createdAt' | 'updatedAt' | 'votes'>
+    & Pick<Track, 'id' | 'artist' | 'title' | 'version' | 'label' | 'month' | 'year' | 'youTubeId' | 'buyUrl' | 'createdAt' | 'updatedAt' | 'votes'>
   ) }
 );
 
@@ -194,6 +199,8 @@ export const CreateTrackDocument = gql`
     title
     version
     label
+    month
+    year
     youTubeId
     buyUrl
     createdAt

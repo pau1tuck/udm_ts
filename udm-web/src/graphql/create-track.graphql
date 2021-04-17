@@ -5,6 +5,8 @@ mutation CreateTrack($input: TrackInput!) {
         title
         version
         label
+        month
+        year
         youTubeId
         buyUrl
         createdAt

@@ -1,4 +1,4 @@
-import { Field, InputType } from "type-graphql";
+import { Field, InputType, Int } from "type-graphql";
 
 @InputType()
 export class TrackInput {
@@ -13,6 +13,12 @@ export class TrackInput {
 
     @Field()
     label?: string;
+
+    @Field(() => Int)
+    month!: number;
+
+    @Field(() => Int)
+    year!: number;
 
     @Field()
     youTubeId!: string;

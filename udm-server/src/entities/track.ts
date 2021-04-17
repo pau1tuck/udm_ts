@@ -31,6 +31,14 @@ export class Track extends BaseEntity {
     @Column({ nullable: true })
     label?: string;
 
+    @Field(() => Int)
+    @Column({ type: "int" })
+    month!: number;
+
+    @Field(() => Int)
+    @Column({ type: "int" })
+    year!: number;
+
     @Field()
     @Column()
     youTubeId!: string;
