@@ -1,3 +1,8 @@
-.player audio {
-    visibility: hidden;
+.player {
+    width: 5px;
+    height: 5px;
+}
+
+.title {
+    color: ;
 }

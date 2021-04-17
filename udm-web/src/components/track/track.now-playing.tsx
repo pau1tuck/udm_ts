@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Text } from "@chakra-ui/react";
 
-export const NowPlaying = ({ nowPlaying }) => {
+export const NowPlaying = ({ nowPlaying }: any) => {
     return (
         <Box ml={2} fontWeight="600">
             {nowPlaying.title ? (

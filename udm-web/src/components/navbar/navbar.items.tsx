@@ -110,7 +110,7 @@ export const NavbarItems = () => {
                         <MenuList fontSize="sm" color="black">
                             <MenuItem fontWeight="bold">
                                 <NextLink href="/admin/add-track" passHref>
-                                    <Link>Add New Track</Link>
+                                    <Link>Add Track</Link>
                                 </NextLink>
                             </MenuItem>
                         </MenuList>
@@ -131,6 +131,7 @@ export const NavbarItems = () => {
                 onClick={toggle}
                 opacity="0.8"
                 fontSize="1.6rem"
+                cursor="pointer"
             >
                 <GiHamburgerMenu />
             </Box>

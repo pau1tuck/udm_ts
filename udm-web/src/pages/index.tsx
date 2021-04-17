@@ -138,56 +138,47 @@ const Home = () => {
                     {cards}
                 </Box>
             </Container>
-            <Box
-                position="fixed"
-                display="flex"
-                maxWidth="100vw"
-                height="40px"
-                bottom="0px"
-                left="0px"
-                right="0px"
-                pb="2px"
-                alignItems="center"
-                borderTopWidth="2px"
-                borderTopColor="#161616"
-                backgroundColor="#111111"
-                opacity="0.9"
-            >
-                <Box
-                    display="flex"
-                    h="50px"
-                    ml={1}
-                    alignItems="center"
-                    cursor="pointer"
-                    fontSize="2.5rem"
-                >
-                    {isPlaying ? (
-                        <Box color="lime.400">
-                            <RiPauseCircleFill />
-                        </Box>
-                    ) : (
-                        <Box color="primary.400">
-                            <RiPlayCircleFill />
-                        </Box>
-                    )}
-                </Box>
-            </Box>
             {currentTrack.youTubeId && (
-                <Box>
-                    <Media>
-                        <div className="media">
-                            <Box visibility="hidden">
+                <div>
+                    <Box
+                        position="fixed"
+                        display="flex"
+                        maxWidth="100vw"
+                        height="40px"
+                        bottom="0px"
+                        left="0px"
+                        right="0px"
+                        pb="7px"
+                        alignItems="center"
+                        borderTopWidth="2px"
+                        borderTopColor="#161616"
+                        backgroundColor="#111111"
+                        opacity="0.9"
+                    >
+                        {" "}
+                        <Media>
+                            <div>
                                 <Player
                                     src={`http://www.youtube.com/embed/${currentTrack.youTubeId}`}
                                     autoPlay
+                                    className={playerStyles.player}
                                 />
-                            </Box>
-                            <div className="media-controls">
-                                <PlayPauseButton />
+                                <Box
+                                    display="flex"
+                                    h="50px"
+                                    ml={1}
+                                    pb={1}
+                                    alignItems="center"
+                                    cursor="pointer"
+                                    fontSize="2.5rem"
+                                >
+                                    <PlayPauseButton />
+                                </Box>
                             </div>
-                        </div>
-                    </Media>
-                </Box>
+                        </Media>
+                        <NowPlaying nowPlaying={currentTrack} />
+                    </Box>
+                </div>
             )}
         </Layout>
     );
