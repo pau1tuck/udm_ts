@@ -27,9 +27,9 @@ const createClient = (ctx: NextPageContext) =>
                             ): PaginatedTracks {
                                 return {
                                     ...incoming,
-                                    tracks: [
-                                        ...(existing?.tracks || []),
-                                        ...incoming.tracks,
+                                    payload: [
+                                        ...(existing?.payload || []),
+                                        ...incoming.payload,
                                     ],
                                 };
                             },

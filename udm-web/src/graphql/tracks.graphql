@@ -1,0 +1,19 @@
+query Tracks($limit: Int!) {
+    tracks(limit: $limit) {
+        payload {
+            id
+            artist
+            title
+            version
+            label
+            month
+            year
+            youTubeId
+            buyUrl
+            votes
+            createdAt
+            updatedAt
+        }
+        hasMore
+    }
+}

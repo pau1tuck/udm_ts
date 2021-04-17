@@ -22,7 +22,7 @@ const theme = extendTheme({
         title: "'Michroma', monospace",
     },
     "::placeholder": {
-        /* Chrome, Firefox, Opera, Safari 10.1+ */ color: "#CDC9C9",
+        /* Chrome, Firefox, Opera, Safari 10.1+ */ color: "#CDC9C9 !important",
     },
     ":active": {
         /* Chrome, Firefox, Opera, Safari 10.1+ */ color: "yellow",

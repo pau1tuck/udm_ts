@@ -15,7 +15,7 @@ let TrackResolver = class TrackResolver {
             const allTracks = (yield redis_1.redisClient.lrange(constants_1.TRACKS_CACHE_KEY, 0, -1)) || [];
             const tracks = allTracks.map((track) => JSON.parse(track));
             return {
-                tracks: tracks.slice(0, limit - 1),
+                payload: tracks.slice(0, limit),
                 hasMore: tracks.length === limit + 1,
             };
         });

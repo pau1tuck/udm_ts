@@ -1,12 +1,10 @@
 export interface ITrack {
-    id: string;
     artist: string;
     title: string;
     version: string;
     label: string;
+    month: number;
+    year: number;
     youTubeId: string;
     buyUrl: string;
-    createdAt: string;
-    updatedAt: string;
-    votes: number;
 }

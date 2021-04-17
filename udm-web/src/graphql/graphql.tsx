@@ -79,7 +79,7 @@ export type MutationDeleteTrackArgs = {
 
 export type PaginatedTracks = {
   __typename?: 'PaginatedTracks';
-  tracks: Array<Track>;
+  payload: Array<Track>;
   hasMore: Scalars['Boolean'];
 };
 
@@ -188,6 +188,23 @@ export type LoginMutation = (
     { __typename?: 'User' }
     & Pick<User, 'id' | 'firstName' | 'lastName' | 'country' | 'email' | 'roles'>
   )> }
+);
+
+export type TracksQueryVariables = Exact<{
+  limit: Scalars['Int'];
+}>;
+
+
+export type TracksQuery = (
+  { __typename?: 'Query' }
+  & { tracks: (
+    { __typename?: 'PaginatedTracks' }
+    & Pick<PaginatedTracks, 'hasMore'>
+    & { payload: Array<(
+      { __typename?: 'Track' }
+      & Pick<Track, 'id' | 'artist' | 'title' | 'version' | 'label' | 'month' | 'year' | 'youTubeId' | 'buyUrl' | 'votes' | 'createdAt' | 'updatedAt'>
+    )> }
+  ) }
 );
 
 
@@ -352,3 +369,65 @@ export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginM
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
 export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
 export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
+export const TracksDocument = gql`
+    query Tracks($limit: Int!) {
+  tracks(limit: $limit) {
+    payload {
+      id
+      artist
+      title
+      version
+      label
+      month
+      year
+      youTubeId
+      buyUrl
+      votes
+      createdAt
+      updatedAt
+    }
+    hasMore
+  }
+}
+    `;
+export type TracksProps<TChildProps = {}, TDataName extends string = 'data'> = {
+      [key in TDataName]: ApolloReactHoc.DataValue<TracksQuery, TracksQueryVariables>
+    } & TChildProps;
+export function withTracks<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
+  TProps,
+  TracksQuery,
+  TracksQueryVariables,
+  TracksProps<TChildProps, TDataName>>) {
+    return ApolloReactHoc.withQuery<TProps, TracksQuery, TracksQueryVariables, TracksProps<TChildProps, TDataName>>(TracksDocument, {
+      alias: 'tracks',
+      ...operationOptions
+    });
+};
+
+/**
+ * __useTracksQuery__
+ *
+ * To run a query within a React component, call `useTracksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTracksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTracksQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *   },
+ * });
+ */
+export function useTracksQuery(baseOptions: Apollo.QueryHookOptions<TracksQuery, TracksQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TracksQuery, TracksQueryVariables>(TracksDocument, options);
+      }
+export function useTracksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TracksQuery, TracksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TracksQuery, TracksQueryVariables>(TracksDocument, options);
+        }
+export type TracksQueryHookResult = ReturnType<typeof useTracksQuery>;
+export type TracksLazyQueryHookResult = ReturnType<typeof useTracksLazyQuery>;
+export type TracksQueryResult = Apollo.QueryResult<TracksQuery, TracksQueryVariables>;

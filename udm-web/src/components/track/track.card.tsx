@@ -36,7 +36,7 @@ export const TrackCard = ({ track, handleChangeTrack }) => {
                     <GridItem rowSpan={4} align="center">
                         <Box w="237px" h="134px" align="center">
                             <img
-                                src={track.image}
+                                src={`https://i3.ytimg.com/vi/${track.youTubeId}/maxresdefault.jpg`}
                                 className={trackCardStyles.image}
                             />
                         </Box>

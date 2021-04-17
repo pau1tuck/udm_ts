@@ -8,6 +8,16 @@ import {
     Container,
     Flex,
     Link,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    MenuItemOption,
+    MenuGroup,
+    MenuOptionGroup,
+    MenuIcon,
+    MenuCommand,
+    MenuDivider,
     Slide,
     Spacer,
     Stack,
@@ -85,10 +95,26 @@ export const NavbarItems = () => {
                         fontWeight="600"
                         fontSize="sm"
                     >{`${data.currentUser.firstName} ${data.currentUser.lastName}`}</Text>
-                    <Avatar
-                        src="http://localhost:5000/media/images/avatars/9681727f-11af-424c-8a54-942f9321fc48/avatar.jpg"
-                        alt={data.currentUser.firstName}
-                    />
+                    <Menu>
+                        <MenuButton
+                            as={Avatar}
+                            aria-label="Settings"
+                            icon={
+                                <Avatar
+                                    src="http://localhost:5000/media/images/avatars/9681727f-11af-424c-8a54-942f9321fc48/avatar.jpg"
+                                    alt={data.currentUser.firstName}
+                                />
+                            }
+                            cursor="pointer"
+                        />
+                        <MenuList fontSize="sm" color="black">
+                            <MenuItem fontWeight="bold">
+                                <NextLink href="/admin/add-track" passHref>
+                                    <Link>Add New Track</Link>
+                                </NextLink>
+                            </MenuItem>
+                        </MenuList>
+                    </Menu>
                 </Box>
             </>
         );

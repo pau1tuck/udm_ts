@@ -11,13 +11,11 @@ const cacheTracks = () => tslib_1.__awaiter(void 0, void 0, void 0, function* ()
     const allTracks = yield typeorm_1.getConnection()
         .getRepository(track_1.Track)
         .createQueryBuilder("t")
-        .orderBy('t."createdAt"', "DESC")
+        .orderBy('t."createdAt"', "ASC")
         .getMany();
     const tracks = allTracks.map((track) => JSON.stringify(track));
-    if (tracks.length) {
-        yield redis_1.redisClient.lpush(constants_1.TRACKS_CACHE_KEY, ...tracks);
-        console.log(yield redis_1.redisClient.lrange(constants_1.TRACKS_CACHE_KEY, 0, -1));
-    }
+    yield redis_1.redisClient.lpush(constants_1.TRACKS_CACHE_KEY, ...tracks);
+    console.log(yield redis_1.redisClient.lrange(constants_1.TRACKS_CACHE_KEY, 0, -1));
 });
 exports.cacheTracks = cacheTracks;
 //# sourceMappingURL=cache-tracks.js.map

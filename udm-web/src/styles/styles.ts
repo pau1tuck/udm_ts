@@ -10,5 +10,10 @@ export const styles = {
             fontFamily: "body",
             color: "white",
         },
+        a: {
+            _hover: {
+                textDecoration: "none",
+            },
+        },
     },
 };

@@ -28,7 +28,7 @@ interface IUser {
     lastName: string;
     country: string;
     email: string;
-    isAdmin: boolean;
+    roles?: string[];
 }
 
 const validationSchema = yup.object().shape({

@@ -32,9 +32,8 @@ import { RiPauseCircleFill } from "react-icons/ri";
 import { nowPlayingVar } from "../utils/with-apollo";
 import { NowPlaying } from "../components/track/track.now-playing";
 
-import { ITrack } from "../types/track.interface";
-
 import { dummyData } from "../dummy-data";
+import { useTracksQuery } from "../graphql/graphql";
 
 import { Media, Player, controls, withMediaProps } from "react-media-player";
 const { PlayPause, MuteUnmute } = controls;
@@ -46,27 +45,65 @@ export const NOW_PLAYING = gql`
     }
 `;
 
+interface ITrack {
+    id: string;
+    artist: string;
+    title: string;
+    version?: string;
+    label: string;
+    month: number;
+    year: number;
+    youTubeId: string;
+    buyUrl: string;
+    createdAt: string;
+    updatedAt: string;
+    votes: number;
+}
+
 const Home = () => {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [currentTrack, setCurrentTrack] = useState({
-        title: "",
-        artist: "",
-        version: "",
-        label: "",
-        youTubeId: "",
-        buyUrl: "",
-    });
 
     const myAudio = useRef();
 
-    const onChangeTrack = (track: ITrack) => {
-        setCurrentTrack(track);
-        setIsPlaying(true);
-    };
+    const [currentTrack, setCurrentTrack] = useState({
+        id: "",
+        title: "",
+        artist: "",
+        label: "",
+        month: 0,
+        year: 0,
+        youTubeId: "",
+        buyUrl: "",
+        createdAt: "",
+        updatedAt: "",
+        votes: 0,
+    });
 
-    const cards = dummyData.map((track, key) => (
-        <TrackCard key={key} track={track} handleChangeTrack={onChangeTrack} />
-    ));
+    const { loading, error, data, fetchMore, variables } = useTracksQuery({
+        // fetchPolicy: "cache-first",
+        variables: {
+            limit: 6,
+        },
+        notifyOnNetworkStatusChange: true,
+    });
+
+    if (!data && loading) {
+        <div>Loading...</div>;
+    }
+    let cards: any;
+    if (data) {
+        cards = data.tracks.payload.map((track: ITrack, key: number) => (
+            <TrackCard
+                key={key}
+                track={track}
+                handleChangeTrack={onChangeTrack}
+            />
+        ));
+    }
+
+    const onChangeTrack = () => {
+        return 0;
+    };
 
     return (
         <Layout home>
@@ -134,13 +171,15 @@ const Home = () => {
                         </Box>
                     )}
                 </Box>
-                <NowPlaying nowPlaying={currentTrack} />
             </Box>
+            {/*
             <Box>
                 <Media>
                     <div className="media">
                         <Box visibility="hidden">
-                            <Player src="http://www.youtube.com/embed/h3YVKTxTOgU" />
+                            <Player
+                                src={`http://www.youtube.com/embed/${currentTrack.youTubeId}`}
+                            />
                         </Box>
                         <div className="media-controls">
                             <PlayPauseButton />
@@ -148,6 +187,7 @@ const Home = () => {
                     </div>
                 </Media>
             </Box>
+            */}
         </Layout>
     );
 };

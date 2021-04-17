@@ -9,7 +9,7 @@ let PaginatedTracks = class PaginatedTracks {
 tslib_1.__decorate([
     type_graphql_1.Field(() => [track_1.Track]),
     tslib_1.__metadata("design:type", Array)
-], PaginatedTracks.prototype, "tracks", void 0);
+], PaginatedTracks.prototype, "payload", void 0);
 tslib_1.__decorate([
     type_graphql_1.Field(),
     tslib_1.__metadata("design:type", Boolean)

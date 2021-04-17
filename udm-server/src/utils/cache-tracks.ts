@@ -9,11 +9,9 @@ export const cacheTracks = async () => {
     const allTracks = await getConnection()
         .getRepository(Track)
         .createQueryBuilder("t")
-        .orderBy('t."createdAt"', "DESC")
+        .orderBy('t."createdAt"', "ASC")
         .getMany();
     const tracks = allTracks.map((track: any) => JSON.stringify(track));
-    if (tracks.length) {
-        await redisClient.lpush(TRACKS_CACHE_KEY, ...tracks);
-        console.log(await redisClient.lrange(TRACKS_CACHE_KEY, 0, -1));
-    }
+    await redisClient.lpush(TRACKS_CACHE_KEY, ...tracks);
+    console.log(await redisClient.lrange(TRACKS_CACHE_KEY, 0, -1));
 };
