@@ -62,9 +62,6 @@ interface ITrack {
 
 const Home = () => {
     const [isPlaying, setIsPlaying] = useState(false);
-
-    const myAudio = useRef();
-
     const [currentTrack, setCurrentTrack] = useState({
         id: "",
         title: "",
@@ -79,6 +76,8 @@ const Home = () => {
         votes: 0,
     });
 
+    const myAudio = useRef();
+
     const { loading, error, data, fetchMore, variables } = useTracksQuery({
         // fetchPolicy: "cache-first",
         variables: {
@@ -86,6 +85,11 @@ const Home = () => {
         },
         notifyOnNetworkStatusChange: true,
     });
+
+    const onChangeTrack = (track: ITrack) => {
+        setCurrentTrack({ ...track });
+        setIsPlaying(true);
+    };
 
     if (!data && loading) {
         <div>Loading...</div>;
@@ -100,10 +104,6 @@ const Home = () => {
             />
         ));
     }
-
-    const onChangeTrack = () => {
-        return 0;
-    };
 
     return (
         <Layout home>
@@ -172,22 +172,23 @@ const Home = () => {
                     )}
                 </Box>
             </Box>
-            {/*
-            <Box>
-                <Media>
-                    <div className="media">
-                        <Box visibility="hidden">
-                            <Player
-                                src={`http://www.youtube.com/embed/${currentTrack.youTubeId}`}
-                            />
-                        </Box>
-                        <div className="media-controls">
-                            <PlayPauseButton />
+            {currentTrack.youTubeId && (
+                <Box>
+                    <Media>
+                        <div className="media">
+                            <Box visibility="hidden">
+                                <Player
+                                    src={`http://www.youtube.com/embed/${currentTrack.youTubeId}`}
+                                    autoPlay
+                                />
+                            </Box>
+                            <div className="media-controls">
+                                <PlayPauseButton />
+                            </div>
                         </div>
-                    </div>
-                </Media>
-            </Box>
-            */}
+                    </Media>
+                </Box>
+            )}
         </Layout>
     );
 };
