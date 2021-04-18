@@ -101,7 +101,7 @@ export const NavbarItems = () => {
                             aria-label="Settings"
                             icon={
                                 <Avatar
-                                    src="http://localhost:5000/media/images/avatars/9681727f-11af-424c-8a54-942f9321fc48/avatar.jpg"
+                                    src="http://localhost:5000/media/images/avatars/3/avatar.png"
                                     alt={data.currentUser.firstName}
                                 />
                             }

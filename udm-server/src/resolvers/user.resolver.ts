@@ -33,7 +33,7 @@ export class AssRoles {
 @Resolver(User)
 export class UserResolver {
     // LIST ALL USERS
-    // @Authorized("ADMIN")
+    @Authorized("ADMIN")
     @Query(() => [User])
     // @UseMiddleware(isAdmin)
     users(): Promise<User[]> {
@@ -166,12 +166,3 @@ export class UserResolver {
         );
     }
 }
-/*
-        @Arg("firstName") firstName: string,
-        @Arg("lastName") lastName: string,
-        @Arg("country") country: string,
-        @Arg("email") email: string,
-        @Arg("password") password: string,
-        @Arg("verified") verified: boolean,
-        @Arg("roles") roles: any
-        */

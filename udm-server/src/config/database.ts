@@ -7,7 +7,7 @@ export default {
     type: "postgres",
     url: process.env.DB_URL,
     synchronize: true,
-    logging: process.env.DB_LOGGING || true,
+    logging: process.env.DEBUG || true,
     ssl: true,
     extra: {
         ssl: {

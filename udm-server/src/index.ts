@@ -23,8 +23,9 @@ import { createUserDataLoader } from "./utils/create-user-dataloader";
 import { cacheTracks } from "./utils/cache-tracks";
 
 const PRODUCTION: boolean = process.env.NODE_ENV === "production";
-const WORKERS = process.env.WEB_CONCURRENCY || 1;
+const DEBUG = Boolean(process.env.DEBUG);
 const PORT = process.env.PORT || 5000;
+const WORKERS = process.env.WEB_CONCURRENCY || 1;
 
 const server = async () => {
     const orm: Connection = await createConnection(database);
@@ -53,7 +54,7 @@ const server = async () => {
             cookie: {
                 maxAge: 1000 * 60 * 60 * 24 * 365,
                 httpOnly: true,
-                sameSite: "lax", // set true
+                sameSite: PRODUCTION || "lax",
                 secure: PRODUCTION,
             },
             secret: process.env.SESSION_SECRET || "secret",
@@ -76,6 +77,8 @@ const server = async () => {
             redisClient,
             userLoader: createUserDataLoader(),
         }),
+        introspection: DEBUG,
+        playground: DEBUG,
     });
 
     apolloServer.applyMiddleware({ app, cors: false });
@@ -91,13 +94,15 @@ const server = async () => {
     }
 
     redisClient.monitor((error, monitor) => {
-        monitor.on("monitor", (time, args, source) => {
-            console.log(time, args, source);
-        });
         if (!error) {
             console.log(
                 `📙 Connected to Redis on port ${process.env.REDIS_PORT}`
             );
+        }
+        if (DEBUG) {
+            monitor.on("monitor", (time, args, source) => {
+                console.log(time, args, source);
+            });
         }
     });
 
