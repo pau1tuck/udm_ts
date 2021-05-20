@@ -15,31 +15,44 @@ export class User extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number;
 
+    @Field()
     @Column({ nullable: true })
-    socialId!: string;
-
-    @Field()
-    @Column({ length: 128, nullable: true })
-    firstName!: string;
-
-    @Field()
-    @Column({ length: 128, nullable: true })
-    lastName!: string;
-
-    @Field()
-    @Column({ length: 128, nullable: true })
-    country!: string;
+    facebookId?: string;
 
     @Field()
     @Column({ nullable: true })
-    avatar!: string;
+    googleId?: string;
 
     @Field()
-    @Column({ unique: true })
-    email!: string;
+    @Column({ nullable: true })
+    twitterId?: string;
 
-    @Column()
-    password!: string;
+    @Field()
+    @Column({ length: 128, nullable: true })
+    givenName?: string;
+
+    @Field()
+    @Column({ length: 128, nullable: true })
+    familyName?: string;
+
+    @Field()
+    @Column({ length: 128, nullable: true })
+    city?: string;
+
+    @Field()
+    @Column({ length: 128, nullable: true })
+    country?: string;
+
+    @Field()
+    @Column({ nullable: true })
+    avatar?: string;
+
+    @Field()
+    @Column({ unique: true, nullable: true })
+    email?: string;
+
+    @Column({ unique: true, nullable: true })
+    password?: string;
 
     @Field()
     @Column({ default: false })

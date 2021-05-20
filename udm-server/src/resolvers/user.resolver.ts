@@ -3,15 +3,9 @@ import { Errback } from "express";
 import { createWriteStream } from "fs";
 import {
     Arg,
-    Args,
-    ArgsType,
     Authorized,
     Ctx,
-    InputType,
-    Field,
-    Int,
     Mutation,
-    ObjectType,
     Query,
     Resolver,
     UseMiddleware,
@@ -20,23 +14,17 @@ import { getConnection } from "typeorm";
 import { GraphQLUpload } from "graphql-upload";
 import argon2 from "argon2";
 import { User } from "../entities/user";
-import { UserInput } from "../types/user.input";
+import { RegisterUserInput } from "../types/user.types";
 import { IContext } from "../types/context.interface";
 import { IUpload } from "../types/upload.interface";
-
-@InputType()
-export class AssRoles {
-    @Field()
-    roles?: string;
-}
 
 @Resolver(User)
 export class UserResolver {
     // LIST ALL USERS
-    @Authorized("ADMIN")
+    // @Authorized("ADMIN")
     @Query(() => [User])
     // @UseMiddleware(isAdmin)
-    users(): Promise<User[]> {
+    users(): Promise<User[]> | null {
         return User.find();
     }
 
@@ -52,7 +40,7 @@ export class UserResolver {
     // REGISTER
     @Mutation(() => Boolean)
     async register(
-        @Arg("input") input: UserInput,
+        @Arg("input") input: RegisterUserInput,
         @Arg("password") password: string
     ) {
         const encryptedPassword = await argon2.hash(password);
@@ -60,6 +48,8 @@ export class UserResolver {
             await User.insert({
                 ...input,
                 password: encryptedPassword,
+                verified: true,
+                roles: ["ADMIN", "MODERATOR"],
             });
         } catch (err) {
             console.log(err);
@@ -74,17 +64,22 @@ export class UserResolver {
         @Arg("email") email: string,
         @Arg("password") password: string,
         @Ctx() ctx: IContext
-    ): Promise<User | null> {
+    ): Promise<User | Error> {
         const user = await User.findOne({ where: { email } });
 
         if (!user) {
             throw new Error("Email address not registered");
         }
 
-        const checkPassword = await argon2.verify(user.password, password);
+        let checkPassword: boolean;
+        if (user.password) {
+            checkPassword = await argon2.verify(user.password, password);
 
-        if (!checkPassword) {
-            throw new Error("Incorrect password");
+            if (!checkPassword) {
+                throw new Error("Incorrect password");
+            }
+        } else {
+            throw new Error("No password set for account");
         }
 
         if (!user.verified) {
@@ -119,7 +114,7 @@ export class UserResolver {
     @Mutation(() => User, { nullable: true })
     async updateUser(
         @Arg("id") id: number,
-        @Arg("input") input: UserInput,
+        @Arg("input") input: RegisterUserInput,
         @Arg("password") password: string
     ): Promise<User | null> {
         const encryptedPassword = await argon2.hash(password);

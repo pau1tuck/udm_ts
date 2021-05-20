@@ -11,7 +11,9 @@ export const cacheTracks = async () => {
         .createQueryBuilder("t")
         .orderBy('t."createdAt"', "ASC")
         .getMany();
-    const tracks = allTracks.map((track: any) => JSON.stringify(track));
-    await redisClient.lpush(TRACKS_CACHE_KEY, ...tracks);
-    console.log(await redisClient.lrange(TRACKS_CACHE_KEY, 0, -1));
+    if (allTracks.length) {
+        const tracks = allTracks.map((track: any) => JSON.stringify(track));
+        await redisClient.lpush(TRACKS_CACHE_KEY, ...tracks);
+        console.log(await redisClient.lrange(TRACKS_CACHE_KEY, 0, -1));
+    }
 };

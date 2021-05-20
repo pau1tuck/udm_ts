@@ -2,12 +2,11 @@ import nodemailer from "nodemailer";
 import { emailTransporter } from "../config/email";
 
 export const sendVerificationEmail = async (recipient: string, url: string) => {
-    // send mail with defined transport object
     const info = await emailTransporter.sendMail({
         from: '"Underground Dance Music" <noreply@udmx.net>',
         to: recipient,
         subject: "Confirm email address",
-        text: "Welcome.",
+        text: `Click the following link to confirm your email address: ${url}`,
         html: `Click the following link to confirm your email address: ${url}`,
     });
 

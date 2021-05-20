@@ -10,7 +10,7 @@ import { createConnection, Connection } from "typeorm";
 
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
-import { authChecker } from "./utils/auth-checker";
+import { authChecker } from "./utils/check-auth";
 
 import database from "./config/database";
 import { RedisStore, redisClient } from "./config/redis";
@@ -106,6 +106,7 @@ const server = async () => {
         }
     });
 
+    /*
     emailTransporter.verify((error) => {
         if (error) {
             console.log(error);
@@ -115,6 +116,7 @@ const server = async () => {
             );
         }
     });
+    */
 
     app.listen(PORT, () => {
         console.log(`🚀 Node server running on port ${PORT}`);

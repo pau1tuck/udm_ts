@@ -10,5 +10,5 @@ export const createVerificationUrl = async (userId: string) => {
         "secret"
     );
     await redisClient.set(token, userId, "ex", 60 * 60 * 24);
-    return `http://localhost:8000/verify/${token}`;
+    return `http://localhost:${process.env.PORT}/verify/${token}`;
 };

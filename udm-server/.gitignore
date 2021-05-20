@@ -5,3 +5,6 @@ npm-debug.log
 .DS_Store
 /*.env
 yarn-error.log
+
+/build
+/dist
