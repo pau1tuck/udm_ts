@@ -5,6 +5,7 @@ npm-debug.log
 .DS_Store
 /*.env
 yarn-error.log
+tsconfig.tsbuildinfo
 
 /build
 /dist

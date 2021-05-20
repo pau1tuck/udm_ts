@@ -1,7 +1,8 @@
 import { getConnection } from "typeorm";
 import { Track } from "../entities/track";
 import { redisClient } from "../config/redis";
-import { TRACKS_CACHE_KEY } from "../config/constants";
+
+const { TRACKS_CACHE_KEY } = process.env;
 
 export const cacheTracks = async () => {
     await redisClient.del(TRACKS_CACHE_KEY);

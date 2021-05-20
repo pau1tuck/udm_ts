@@ -21,7 +21,7 @@ import { IUpload } from "../types/upload.interface";
 @Resolver(User)
 export class UserResolver {
     // LIST ALL USERS
-    // @Authorized("ADMIN")
+    @Authorized("ADMIN")
     @Query(() => [User])
     // @UseMiddleware(isAdmin)
     users(): Promise<User[]> | null {
@@ -48,8 +48,6 @@ export class UserResolver {
             await User.insert({
                 ...input,
                 password: encryptedPassword,
-                verified: true,
-                roles: ["ADMIN", "MODERATOR"],
             });
         } catch (err) {
             console.log(err);
@@ -111,6 +109,7 @@ export class UserResolver {
     }
 
     // UPDATE USER
+    @Authorized("ADMIN")
     @Mutation(() => User, { nullable: true })
     async updateUser(
         @Arg("id") id: number,
@@ -132,6 +131,7 @@ export class UserResolver {
     }
 
     // DELETE USER
+    @Authorized("ADMIN")
     @Mutation(() => Boolean)
     async deleteUser(@Arg("id") id: number): Promise<boolean> {
         await User.delete({ id });
