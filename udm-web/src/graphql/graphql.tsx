@@ -33,7 +33,7 @@ export type Mutation = {
 
 export type MutationRegisterArgs = {
   password: Scalars['String'];
-  input: UserInput;
+  input: RegisterUserInput;
 };
 
 
@@ -45,7 +45,7 @@ export type MutationLoginArgs = {
 
 export type MutationUpdateUserArgs = {
   password: Scalars['String'];
-  input: UserInput;
+  input: RegisterUserInput;
   id: Scalars['Float'];
 };
 
@@ -101,6 +101,13 @@ export type QueryTrackArgs = {
   id: Scalars['String'];
 };
 
+export type RegisterUserInput = {
+  givenName: Scalars['String'];
+  familyName: Scalars['String'];
+  country: Scalars['String'];
+  email: Scalars['String'];
+};
+
 export type Track = {
   __typename?: 'Track';
   id: Scalars['ID'];
@@ -132,8 +139,12 @@ export type TrackInput = {
 export type User = {
   __typename?: 'User';
   id: Scalars['ID'];
-  firstName: Scalars['String'];
-  lastName: Scalars['String'];
+  facebookId: Scalars['String'];
+  googleId: Scalars['String'];
+  twitterId: Scalars['String'];
+  givenName: Scalars['String'];
+  familyName: Scalars['String'];
+  city: Scalars['String'];
   country: Scalars['String'];
   avatar: Scalars['String'];
   email: Scalars['String'];
@@ -141,15 +152,6 @@ export type User = {
   roles?: Maybe<Array<Scalars['String']>>;
   createdAt: Scalars['String'];
   updatedAt: Scalars['String'];
-};
-
-export type UserInput = {
-  firstName: Scalars['String'];
-  lastName: Scalars['String'];
-  country: Scalars['String'];
-  email: Scalars['String'];
-  verified?: Maybe<Scalars['Boolean']>;
-  roles?: Maybe<Array<Scalars['String']>>;
 };
 
 export type CreateTrackMutationVariables = Exact<{
@@ -165,14 +167,14 @@ export type CreateTrackMutation = (
   ) }
 );
 
-export type CurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
+export type CurrentUserBasicQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CurrentUserQuery = (
+export type CurrentUserBasicQuery = (
   { __typename?: 'Query' }
   & { currentUser?: Maybe<(
     { __typename?: 'User' }
-    & Pick<User, 'id' | 'firstName' | 'lastName' | 'country' | 'email' | 'roles'>
+    & Pick<User, 'id' | 'givenName' | 'familyName' | 'roles'>
   )> }
 );
 
@@ -186,7 +188,7 @@ export type LoginMutation = (
   { __typename?: 'Mutation' }
   & { login?: Maybe<(
     { __typename?: 'User' }
-    & Pick<User, 'id' | 'firstName' | 'lastName' | 'country' | 'email' | 'roles'>
+    & Pick<User, 'id' | 'givenName' | 'familyName' | 'roles'>
   )> }
 );
 
@@ -265,66 +267,62 @@ export function useCreateTrackMutation(baseOptions?: Apollo.MutationHookOptions<
 export type CreateTrackMutationHookResult = ReturnType<typeof useCreateTrackMutation>;
 export type CreateTrackMutationResult = Apollo.MutationResult<CreateTrackMutation>;
 export type CreateTrackMutationOptions = Apollo.BaseMutationOptions<CreateTrackMutation, CreateTrackMutationVariables>;
-export const CurrentUserDocument = gql`
-    query CurrentUser {
+export const CurrentUserBasicDocument = gql`
+    query CurrentUserBasic {
   currentUser {
     id
-    firstName
-    lastName
-    country
-    email
+    givenName
+    familyName
     roles
   }
 }
     `;
-export type CurrentUserProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<CurrentUserQuery, CurrentUserQueryVariables>
+export type CurrentUserBasicProps<TChildProps = {}, TDataName extends string = 'data'> = {
+      [key in TDataName]: ApolloReactHoc.DataValue<CurrentUserBasicQuery, CurrentUserBasicQueryVariables>
     } & TChildProps;
-export function withCurrentUser<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
+export function withCurrentUserBasic<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
   TProps,
-  CurrentUserQuery,
-  CurrentUserQueryVariables,
-  CurrentUserProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, CurrentUserQuery, CurrentUserQueryVariables, CurrentUserProps<TChildProps, TDataName>>(CurrentUserDocument, {
-      alias: 'currentUser',
+  CurrentUserBasicQuery,
+  CurrentUserBasicQueryVariables,
+  CurrentUserBasicProps<TChildProps, TDataName>>) {
+    return ApolloReactHoc.withQuery<TProps, CurrentUserBasicQuery, CurrentUserBasicQueryVariables, CurrentUserBasicProps<TChildProps, TDataName>>(CurrentUserBasicDocument, {
+      alias: 'currentUserBasic',
       ...operationOptions
     });
 };
 
 /**
- * __useCurrentUserQuery__
+ * __useCurrentUserBasicQuery__
  *
- * To run a query within a React component, call `useCurrentUserQuery` and pass it any options that fit your needs.
- * When your component renders, `useCurrentUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useCurrentUserBasicQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCurrentUserBasicQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useCurrentUserQuery({
+ * const { data, loading, error } = useCurrentUserBasicQuery({
  *   variables: {
  *   },
  * });
  */
-export function useCurrentUserQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserQuery, CurrentUserQueryVariables>) {
+export function useCurrentUserBasicQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserBasicQuery, CurrentUserBasicQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<CurrentUserQuery, CurrentUserQueryVariables>(CurrentUserDocument, options);
+        return Apollo.useQuery<CurrentUserBasicQuery, CurrentUserBasicQueryVariables>(CurrentUserBasicDocument, options);
       }
-export function useCurrentUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserQuery, CurrentUserQueryVariables>) {
+export function useCurrentUserBasicLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserBasicQuery, CurrentUserBasicQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<CurrentUserQuery, CurrentUserQueryVariables>(CurrentUserDocument, options);
+          return Apollo.useLazyQuery<CurrentUserBasicQuery, CurrentUserBasicQueryVariables>(CurrentUserBasicDocument, options);
         }
-export type CurrentUserQueryHookResult = ReturnType<typeof useCurrentUserQuery>;
-export type CurrentUserLazyQueryHookResult = ReturnType<typeof useCurrentUserLazyQuery>;
-export type CurrentUserQueryResult = Apollo.QueryResult<CurrentUserQuery, CurrentUserQueryVariables>;
+export type CurrentUserBasicQueryHookResult = ReturnType<typeof useCurrentUserBasicQuery>;
+export type CurrentUserBasicLazyQueryHookResult = ReturnType<typeof useCurrentUserBasicLazyQuery>;
+export type CurrentUserBasicQueryResult = Apollo.QueryResult<CurrentUserBasicQuery, CurrentUserBasicQueryVariables>;
 export const LoginDocument = gql`
     mutation Login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
     id
-    firstName
-    lastName
-    country
-    email
+    givenName
+    familyName
     roles
   }
 }

@@ -26,10 +26,10 @@ import {
 import { GiHamburgerMenu } from "react-icons/gi";
 import { NavbarMenu } from "./navbar.menu";
 import { ApolloClient, useApolloClient } from "@apollo/client";
-import { useCurrentUserQuery } from "../../graphql/graphql";
+import { useCurrentUserBasicQuery } from "../../graphql/graphql";
 
 export const NavbarItems = () => {
-    const { data, loading } = useCurrentUserQuery({
+    const { data, loading } = useCurrentUserBasicQuery({
         fetchPolicy: "cache-first",
     });
     const apolloClient = useApolloClient();

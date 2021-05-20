@@ -1,0 +1,8 @@
+query CurrentUserBasic {
+    currentUser {
+        id
+        givenName
+        familyName
+        roles
+    }
+}

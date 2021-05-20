@@ -4552,7 +4552,7 @@
         "affectsGlobalScope": false
       },
       "./src/resolvers/user.resolver.ts": {
-        "version": "79d5fe584c19e49c83040150a28ed98dad8a084a63d796e1bfeb5fff1b30a16b",
+        "version": "f391a8007934483afd32a2b96e7e72fc9eeb7fe71a30725731c035778200d728",
         "signature": "3ecdcf97e1281df4b43e6836a664d6e95ccec92cd840631536206cb27e403762",
         "affectsGlobalScope": false
       },

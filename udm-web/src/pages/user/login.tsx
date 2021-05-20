@@ -16,18 +16,16 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
     useLoginMutation,
-    CurrentUserQuery,
-    CurrentUserDocument,
+    CurrentUserBasicQuery,
+    CurrentUserBasicDocument,
 } from "../../graphql/graphql";
 import Layout from "../../components/layout";
 import { withApollo } from "../../utils/with-apollo";
 
 interface IUser {
     id: string;
-    firstName: string;
-    lastName: string;
-    country: string;
-    email: string;
+    givenName: string;
+    familyName: string;
     roles?: string[];
 }
 
@@ -56,8 +54,8 @@ const Login = () => {
         const response: any = await Login({
             variables: values,
             update: (cache, { data }) => {
-                cache.writeQuery<CurrentUserQuery>({
-                    query: CurrentUserDocument,
+                cache.writeQuery<CurrentUserBasicQuery>({
+                    query: CurrentUserBasicDocument,
                     data: {
                         __typename: "Query",
                         currentUser: data?.login,
