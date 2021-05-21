@@ -59,13 +59,13 @@ export const TrackCard = ({ track, handleChangeTrack }) => {
                         opacity="0.6"
                         fontSize="1.3rem"
                     >
-                        <Box pt="1px" pr={2}>
+                        <Box pt="1px" pr={2} color="#383838">
                             <AiFillStar />
                         </Box>
-                        <Box pr={2}>
+                        <Box pr={2} color="#383838">
                             <HiThumbUp />
                         </Box>
-                        <Box>
+                        <Box as="a" href={track.buyUrl} target="_blank">
                             <RiShoppingBasket2Fill />
                         </Box>
                     </Box>

@@ -94,7 +94,7 @@ export const NavbarItems = () => {
                         fontFamily="heading"
                         fontWeight="600"
                         fontSize="sm"
-                    >{`${data.currentUser.firstName} ${data.currentUser.lastName}`}</Text>
+                    >{`${data.currentUser.givenName} ${data.currentUser.familyName}`}</Text>
                     <Menu>
                         <MenuButton
                             as={Avatar}
@@ -102,7 +102,7 @@ export const NavbarItems = () => {
                             icon={
                                 <Avatar
                                     src="http://localhost:5000/media/images/avatars/3/avatar.png"
-                                    alt={data.currentUser.firstName}
+                                    alt={data.currentUser.givenName}
                                 />
                             }
                             cursor="pointer"

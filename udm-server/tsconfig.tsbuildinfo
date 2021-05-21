@@ -4562,7 +4562,7 @@
         "affectsGlobalScope": false
       },
       "./src/resolvers/track.resolver.ts": {
-        "version": "27f7f19609f1976099b3273f5f998d875420ab6fc606f7144dccc54b55fb7194",
+        "version": "67ff5583f681d6923935691eca17108eb4cb1fccf54e64b2fae964b9f4cce7ef",
         "signature": "c22accc34fe5db969c48d6d0f6668204f8d3c256a444682863593d98036fc46f",
         "affectsGlobalScope": false
       },
@@ -4885,6 +4885,7 @@
       },
       "moduleResolution": 2,
       "pathsBasePath": "/home/paul/dev/udm/udm-server",
+      "watch": true,
       "configFilePath": "./tsconfig.json"
     },
     "referencedMap": {

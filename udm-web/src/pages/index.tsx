@@ -125,12 +125,8 @@ const Home = () => {
                     </GridItem>
                 </Grid>
                 <Box
-                    display={[
-                        "inline-grid",
-                        "inline-grid",
-                        "inline-grid",
-                        "none",
-                    ]}
+                    display={["flex", "flex", "flex", "none"]}
+                    flexWrap="wrap"
                     w="100%"
                     justifyContent="center"
                     wrap="wrap"

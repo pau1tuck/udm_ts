@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { Navbar } from "./navbar/navbar";
 import { Logo } from "./logo";
+import { Box } from "@chakra-ui/react";
 
 export const siteTitle = "Underground Dance Music";
 
@@ -37,7 +38,9 @@ const Layout = ({
                 <Navbar />
                 <Logo />
 
-                <div>{children}</div>
+                <div>
+                    <Box pb="75px">{children}</Box>
+                </div>
             </div>
         </>
     );

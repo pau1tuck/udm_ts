@@ -45,7 +45,7 @@ export class TrackResolver {
         return newTrack;
     }
 
-    @Authorized("ADMIN")
+    // @Authorized("ADMIN")
     @Mutation(() => Track, { nullable: true })
     async updateTrack(
         @Arg("id") id: string,
