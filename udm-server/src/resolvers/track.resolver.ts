@@ -8,7 +8,7 @@ import {
     UseMiddleware,
 } from "type-graphql";
 import { getConnection } from "typeorm";
-import { Track } from "../entities/track";
+import { Track } from "../entities/track.entity";
 import { PaginatedTracks, TrackInput } from "../types/track.types";
 import { redisClient } from "../config/redis";
 
@@ -49,7 +49,7 @@ export class TrackResolver {
     @Mutation(() => Track, { nullable: true })
     async updateTrack(
         @Arg("id") id: string,
-        @Arg("youTubeId") youTubeId: string,
+        @Arg("filename") youTubeId: string,
         @Arg("buyUrl") buyUrl: string
     ): Promise<Track | null> {
         const result = await getConnection()

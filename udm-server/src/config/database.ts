@@ -1,7 +1,7 @@
 import path from "path";
 import { createConnection } from "typeorm";
-import { User } from "../entities/user";
-import { Track } from "../entities/track";
+import { User } from "../entities/user.entity";
+import { Track } from "../entities/track.entity";
 
 export default {
     type: "postgres",

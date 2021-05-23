@@ -1,6 +1,6 @@
 /* eslint-disable no-new */
 import DataLoader from "dataloader";
-import { User } from "../entities/user";
+import { User } from "../entities/user.entity";
 
 export const createUserDataLoader = () => {
     new DataLoader<number, User>(async (userIds) => {

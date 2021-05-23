@@ -1,5 +1,5 @@
 import { getConnection } from "typeorm";
-import { Track } from "../entities/track";
+import { Track } from "../entities/track.entity";
 import { redisClient } from "../config/redis";
 
 const { TRACKS_CACHE_KEY } = process.env;

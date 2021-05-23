@@ -21,11 +21,12 @@ import { TrackResolver } from "./resolvers/track.resolver";
 
 import { createUserDataLoader } from "./utils/create-user-dataloader";
 import { cacheTracks } from "./utils/cache-tracks";
+import sessionConfig from "./config/session";
 
-const PRODUCTION: boolean = process.env.NODE_ENV === "production";
-const DEBUG = Boolean(process.env.DEBUG);
-const PORT = process.env.PORT || 5000;
 const WORKERS = process.env.WEB_CONCURRENCY || 1;
+
+const { NODE_ENV, DEBUG, HOST, PORT, CORS_ORIGIN, DB_PORT, REDIS_PORT } =
+    process.env;
 
 const server = async () => {
     const orm: Connection = await createConnection(database);
@@ -35,33 +36,15 @@ const server = async () => {
     app.disable("x-powered-by");
 
     app.set("trust proxy", 1);
+
     app.use(
         cors({
-            origin: process.env.CORS_ORIGIN,
+            origin: CORS_ORIGIN,
             credentials: true,
         })
     );
 
-    app.use(
-        session({
-            name: "sid",
-            genid: () => v4(),
-            store: new RedisStore({
-                client: redisClient as any,
-                disableTouch: true,
-                disableTTL: true,
-            }),
-            cookie: {
-                maxAge: 1000 * 60 * 60 * 24 * 365,
-                httpOnly: true,
-                sameSite: PRODUCTION || "lax",
-                secure: PRODUCTION,
-            },
-            secret: process.env.SESSION_SECRET || "secret",
-            resave: false,
-            saveUninitialized: false,
-        })
-    );
+    app.use(session(sessionConfig));
 
     const graphQLSchema = await buildSchema({
         resolvers: [UserResolver, TrackResolver],
@@ -88,16 +71,12 @@ const server = async () => {
     app.use("/media", express.static("media"));
 
     if (orm.isConnected) {
-        console.log(
-            `🗄️  Connected to PostgreSQL database on port ${process.env.DB_PORT}`
-        );
+        console.log(`🗄️  Connected to PostgreSQL database on port ${DB_PORT}`);
     }
 
     redisClient.monitor((error, monitor) => {
         if (!error) {
-            console.log(
-                `📙 Connected to Redis on port ${process.env.REDIS_PORT}`
-            );
+            console.log(`📙 Connected to Redis on port ${REDIS_PORT}`);
         }
         if (DEBUG) {
             monitor.on("monitor", (time, args, source) => {
@@ -119,7 +98,7 @@ const server = async () => {
     */
 
     app.listen(PORT, () => {
-        console.log(`🚀 Node server running on port ${PORT}`);
+        console.log(`🚀 Node server running on ${HOST}:${PORT}`);
     });
 };
 server().catch((err) => {

@@ -1,5 +1,5 @@
 import { Field, InputType, Int, ObjectType } from "type-graphql";
-import { Track } from "../entities/track";
+import { Track } from "../entities/track.entity";
 
 @ObjectType()
 export class PaginatedTracks {
@@ -31,7 +31,7 @@ export class TrackInput {
     year!: number;
 
     @Field()
-    youTubeId!: string;
+    filename!: string;
 
     @Field()
     buyUrl?: string;

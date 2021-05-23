@@ -13,7 +13,7 @@ import {
 import { getConnection } from "typeorm";
 import { GraphQLUpload } from "graphql-upload";
 import argon2 from "argon2";
-import { User } from "../entities/user";
+import { User } from "../entities/user.entity";
 import { RegisterUserInput } from "../types/user.types";
 import { IContext } from "../types/context.interface";
 import { IUpload } from "../types/upload.interface";

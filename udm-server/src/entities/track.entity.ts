@@ -41,7 +41,7 @@ export class Track extends BaseEntity {
 
     @Field()
     @Column()
-    youTubeId!: string;
+    filename!: string;
 
     @Field()
     @Column({ nullable: true })
