@@ -5,8 +5,9 @@ month=$(date +"%m")
 day=$(date +"%d")
 hour=$(date +"%H")
 minute=$(date +"%M")
+timezone=$(date +"%Z")
 
-datetime="$year-$month-$day""T$hour:$minute"
+datetime="$year-$month-$day""T$hour:$minute$timezone"
 
 echo $datetime
 
