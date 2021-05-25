@@ -68,7 +68,7 @@ export type MutationCreateTrackArgs = {
 
 export type MutationUpdateTrackArgs = {
   buyUrl: Scalars['String'];
-  youTubeId: Scalars['String'];
+  trackId: Scalars['Float'];
   id: Scalars['String'];
 };
 
@@ -111,13 +111,13 @@ export type RegisterUserInput = {
 export type Track = {
   __typename?: 'Track';
   id: Scalars['ID'];
+  trackId: Scalars['Int'];
   artist: Scalars['String'];
   title: Scalars['String'];
   version: Scalars['String'];
   label: Scalars['String'];
   month: Scalars['Int'];
   year: Scalars['Int'];
-  youTubeId: Scalars['String'];
   buyUrl: Scalars['String'];
   votes: Scalars['Int'];
   createdAt: Scalars['String'];
@@ -125,13 +125,13 @@ export type Track = {
 };
 
 export type TrackInput = {
+  trackId: Scalars['Int'];
   artist: Scalars['String'];
   title: Scalars['String'];
   version: Scalars['String'];
   label: Scalars['String'];
   month: Scalars['Int'];
   year: Scalars['Int'];
-  youTubeId: Scalars['String'];
   buyUrl: Scalars['String'];
 };
 
@@ -163,14 +163,14 @@ export type CreateTrackMutation = (
   { __typename?: 'Mutation' }
   & { createTrack: (
     { __typename?: 'Track' }
-    & Pick<Track, 'id' | 'artist' | 'title' | 'version' | 'label' | 'month' | 'year' | 'youTubeId' | 'buyUrl' | 'createdAt' | 'updatedAt' | 'votes'>
+    & Pick<Track, 'id' | 'trackId' | 'artist' | 'title' | 'version' | 'label' | 'month' | 'year' | 'buyUrl' | 'createdAt' | 'updatedAt' | 'votes'>
   ) }
 );
 
-export type CurrentUserBasicQueryVariables = Exact<{ [key: string]: never; }>;
+export type CurrentUserShortQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CurrentUserBasicQuery = (
+export type CurrentUserShortQuery = (
   { __typename?: 'Query' }
   & { currentUser?: Maybe<(
     { __typename?: 'User' }
@@ -204,7 +204,7 @@ export type TracksQuery = (
     & Pick<PaginatedTracks, 'hasMore'>
     & { payload: Array<(
       { __typename?: 'Track' }
-      & Pick<Track, 'id' | 'artist' | 'title' | 'version' | 'label' | 'month' | 'year' | 'youTubeId' | 'buyUrl' | 'votes' | 'createdAt' | 'updatedAt'>
+      & Pick<Track, 'id' | 'trackId' | 'artist' | 'title' | 'version' | 'label' | 'month' | 'year' | 'buyUrl' | 'votes' | 'createdAt' | 'updatedAt'>
     )> }
   ) }
 );
@@ -214,13 +214,13 @@ export const CreateTrackDocument = gql`
     mutation CreateTrack($input: TrackInput!) {
   createTrack(input: $input) {
     id
+    trackId
     artist
     title
     version
     label
     month
     year
-    youTubeId
     buyUrl
     createdAt
     updatedAt
@@ -267,8 +267,8 @@ export function useCreateTrackMutation(baseOptions?: Apollo.MutationHookOptions<
 export type CreateTrackMutationHookResult = ReturnType<typeof useCreateTrackMutation>;
 export type CreateTrackMutationResult = Apollo.MutationResult<CreateTrackMutation>;
 export type CreateTrackMutationOptions = Apollo.BaseMutationOptions<CreateTrackMutation, CreateTrackMutationVariables>;
-export const CurrentUserBasicDocument = gql`
-    query CurrentUserBasic {
+export const CurrentUserShortDocument = gql`
+    query CurrentUserShort {
   currentUser {
     id
     givenName
@@ -277,46 +277,46 @@ export const CurrentUserBasicDocument = gql`
   }
 }
     `;
-export type CurrentUserBasicProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<CurrentUserBasicQuery, CurrentUserBasicQueryVariables>
+export type CurrentUserShortProps<TChildProps = {}, TDataName extends string = 'data'> = {
+      [key in TDataName]: ApolloReactHoc.DataValue<CurrentUserShortQuery, CurrentUserShortQueryVariables>
     } & TChildProps;
-export function withCurrentUserBasic<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
+export function withCurrentUserShort<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
   TProps,
-  CurrentUserBasicQuery,
-  CurrentUserBasicQueryVariables,
-  CurrentUserBasicProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, CurrentUserBasicQuery, CurrentUserBasicQueryVariables, CurrentUserBasicProps<TChildProps, TDataName>>(CurrentUserBasicDocument, {
-      alias: 'currentUserBasic',
+  CurrentUserShortQuery,
+  CurrentUserShortQueryVariables,
+  CurrentUserShortProps<TChildProps, TDataName>>) {
+    return ApolloReactHoc.withQuery<TProps, CurrentUserShortQuery, CurrentUserShortQueryVariables, CurrentUserShortProps<TChildProps, TDataName>>(CurrentUserShortDocument, {
+      alias: 'currentUserShort',
       ...operationOptions
     });
 };
 
 /**
- * __useCurrentUserBasicQuery__
+ * __useCurrentUserShortQuery__
  *
- * To run a query within a React component, call `useCurrentUserBasicQuery` and pass it any options that fit your needs.
- * When your component renders, `useCurrentUserBasicQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useCurrentUserShortQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCurrentUserShortQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useCurrentUserBasicQuery({
+ * const { data, loading, error } = useCurrentUserShortQuery({
  *   variables: {
  *   },
  * });
  */
-export function useCurrentUserBasicQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserBasicQuery, CurrentUserBasicQueryVariables>) {
+export function useCurrentUserShortQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserShortQuery, CurrentUserShortQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<CurrentUserBasicQuery, CurrentUserBasicQueryVariables>(CurrentUserBasicDocument, options);
+        return Apollo.useQuery<CurrentUserShortQuery, CurrentUserShortQueryVariables>(CurrentUserShortDocument, options);
       }
-export function useCurrentUserBasicLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserBasicQuery, CurrentUserBasicQueryVariables>) {
+export function useCurrentUserShortLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserShortQuery, CurrentUserShortQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<CurrentUserBasicQuery, CurrentUserBasicQueryVariables>(CurrentUserBasicDocument, options);
+          return Apollo.useLazyQuery<CurrentUserShortQuery, CurrentUserShortQueryVariables>(CurrentUserShortDocument, options);
         }
-export type CurrentUserBasicQueryHookResult = ReturnType<typeof useCurrentUserBasicQuery>;
-export type CurrentUserBasicLazyQueryHookResult = ReturnType<typeof useCurrentUserBasicLazyQuery>;
-export type CurrentUserBasicQueryResult = Apollo.QueryResult<CurrentUserBasicQuery, CurrentUserBasicQueryVariables>;
+export type CurrentUserShortQueryHookResult = ReturnType<typeof useCurrentUserShortQuery>;
+export type CurrentUserShortLazyQueryHookResult = ReturnType<typeof useCurrentUserShortLazyQuery>;
+export type CurrentUserShortQueryResult = Apollo.QueryResult<CurrentUserShortQuery, CurrentUserShortQueryVariables>;
 export const LoginDocument = gql`
     mutation Login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
@@ -372,13 +372,13 @@ export const TracksDocument = gql`
   tracks(limit: $limit) {
     payload {
       id
+      trackId
       artist
       title
       version
       label
       month
       year
-      youTubeId
       buyUrl
       votes
       createdAt

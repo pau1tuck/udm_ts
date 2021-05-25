@@ -10,7 +10,7 @@ export const authChecker: AuthChecker<IContext> = ({ context }, roles) => {
         return false;
     }
     if (
-        context.req.session.roles.some((role: string) => roles.includes(role))
+        context.req.session.roles?.some((role: string) => roles.includes(role))
     ) {
         return true;
     }

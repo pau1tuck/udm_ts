@@ -74,7 +74,6 @@ const server = async () => {
             `🗄️  Connected to PostgreSQL database on ${DB_HOST}:${DB_PORT}`
         );
     }
-    console.log(orm.logger);
 
     redisClient.monitor((error, monitor) => {
         if (!error) {

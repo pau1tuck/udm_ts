@@ -30,7 +30,7 @@ export class TrackResolver {
     }
 
     // CREATE TRACK
-    @Authorized("ADMIN")
+    // @Authorized("ADMIN")
     @Mutation(() => Track)
     async createTrack(@Arg("input") input: TrackInput): Promise<Track> {
         const newTrack = await Track.create({

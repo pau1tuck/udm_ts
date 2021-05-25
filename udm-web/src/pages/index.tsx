@@ -47,13 +47,13 @@ export const NOW_PLAYING = gql`
 
 interface ITrack {
     id: string;
+    trackId: number;
     artist: string;
     title: string;
     version?: string;
     label: string;
     month: number;
     year: number;
-    youTubeId: string;
     buyUrl: string;
     createdAt: string;
     updatedAt: string;
@@ -64,12 +64,12 @@ const Home = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTrack, setCurrentTrack] = useState({
         id: "",
+        trackId: 0,
         title: "",
         artist: "",
         label: "",
         month: 0,
         year: 0,
-        youTubeId: "",
         buyUrl: "",
         createdAt: "",
         updatedAt: "",
@@ -134,7 +134,7 @@ const Home = () => {
                     {cards}
                 </Box>
             </Container>
-            {currentTrack.youTubeId && (
+            {currentTrack.trackId && (
                 <div>
                     <Box
                         position="fixed"
@@ -169,7 +169,7 @@ const Home = () => {
                 </div>
             )}
             <audio
-                src={`${process.env.NEXT_PUBLIC_HOST}/media/audio/${track.trackId}.mp3}`}
+                src={`${process.env.NEXT_PUBLIC_HOST}/media/audio/${currentTrack.trackId}.mp3}`}
                 controls
             ></audio>
         </Layout>

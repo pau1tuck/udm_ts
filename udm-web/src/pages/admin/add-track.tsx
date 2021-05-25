@@ -1,5 +1,5 @@
 import React from "react";
-import { ITrack } from "../../types/track.interface";
+import { ICreateTrack } from "../../types/track.types";
 import { useRouter } from "next/router";
 import {
     Box,
@@ -35,9 +35,9 @@ const validationSchema = yup.object().shape({
     ["trackId"]: yup.number().required().label("Track ID"),
     ["artist"]: yup.string().required().label("Artist"),
     ["title"]: yup.string().required().label("Title"),
-    ["version"]: yup.string().label("Version"),
-    ["label"]: yup.string().label("Label"),
-    ["buyUrl"]: yup.string().label("Buy URL"),
+    ["version"]: yup.string().label("Version").default(""),
+    ["label"]: yup.string().label("Label").default(""),
+    ["buyUrl"]: yup.string().label("Buy URL").default(""),
     ["month"]: yup.number().required().label("Release Month"),
     ["year"]: yup.number().required().label("Release Year"),
 });
@@ -47,13 +47,15 @@ const CreateTrack = () => {
     checkAdmin();
 
     const [CreateTrack] = useCreateTrackMutation();
-    const { register, errors, handleSubmit, formState } = useForm<ITrack>({
-        resolver: yupResolver(validationSchema),
-        mode: "onBlur",
-        reValidateMode: "onSubmit",
-    });
+    const { register, errors, handleSubmit, formState } = useForm<ICreateTrack>(
+        {
+            resolver: yupResolver(validationSchema),
+            mode: "onBlur",
+            reValidateMode: "onSubmit",
+        }
+    );
 
-    const onFormSubmit = async (values: ITrack) => {
+    const onFormSubmit = async (values: ICreateTrack) => {
         const { errors } = await CreateTrack({
             variables: { input: values },
             update: (cache) => {

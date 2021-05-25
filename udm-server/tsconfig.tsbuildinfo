@@ -156,11 +156,6 @@
         "signature": "8d6d51a5118d000ed3bfe6e1dd1335bebfff3fef23cd2af2f84a24d30f90cc90",
         "affectsGlobalScope": true
       },
-      "./node_modules/@types/uuid/index.d.ts": {
-        "version": "96b49a9de749afcf92b5bce1d8cc42cfae6816cdf5ea36584fd9256b8b2e5292",
-        "signature": "96b49a9de749afcf92b5bce1d8cc42cfae6816cdf5ea36584fd9256b8b2e5292",
-        "affectsGlobalScope": false
-      },
       "./node_modules/@types/cors/index.d.ts": {
         "version": "a68969f643e0cb091046a9437b64cb1880a081fc07c70a4717b0edef2a38bc85",
         "signature": "a68969f643e0cb091046a9437b64cb1880a081fc07c70a4717b0edef2a38bc85",
@@ -4411,33 +4406,33 @@
         "signature": "507050f504a446515a2d9e648fdcf850176a27d748e0c430ad118d09f0ba0124",
         "affectsGlobalScope": false
       },
-      "./src/entities/user.ts": {
+      "./src/entities/user.entity.ts": {
         "version": "4c3a036dfd259b4108c22612f727ed63ea6c81a48ee34ea8d641e4bcca73bad2",
         "signature": "6cef9b3463aa5cd71c1f99e58cc59f7044faa6f3f2b9190fe8a5fc79474148c0",
         "affectsGlobalScope": false
       },
-      "./src/utils/create-user-dataloader.ts": {
-        "version": "4557981bee4157f25e856031a08bccf2f640cd91f1d742afda8dc5c9fd3068dc",
+      "./src/middleware/create-user-dataloader.ts": {
+        "version": "8928d8bfcb51d8abb532ea723c5678656430a7e48560faf740d35ccc1c69755a",
         "signature": "def2bc9ae2193776b5e9f714feabc57b660d4771d8919a64df5454a2daa328b9",
         "affectsGlobalScope": false
       },
       "./src/types/context.interface.ts": {
-        "version": "bd90f84fc0e12340ddd2346787ef70966e994f12fc040568faeee5b2b6cf2dba",
-        "signature": "3d2833239ef27c8c297fcf11f0b2a10e299085eaf8b7fcfb008b991768fb4544",
+        "version": "63ac506658eb3ea2509ba56bcc46a2051b763e027ac8af653f13c04b3581c59d",
+        "signature": "4c98e6604a6bd5dfd782db6d139dd3d2e9b2aafcd4c755a7d4782d500dcecdaa",
         "affectsGlobalScope": false
       },
-      "./src/utils/check-auth.ts": {
-        "version": "242f9a5554401f3fc673d0608a5cf0d833247a34bb3a225baa3a8ccc02fa795b",
+      "./src/middleware/check-auth.ts": {
+        "version": "5a5d1029c94b2443349fd31384249a9ebfca067b4195207d624a7a8db2cccea4",
         "signature": "2ff0f71a2446b7031f2d7687c333d02f4a4a8ff77f61269e9c3e5ba0d845c075",
         "affectsGlobalScope": false
       },
-      "./src/entities/track.ts": {
-        "version": "82e6f0ceb471f07ac548321e303134baed5de3fdfe0a4a02552feeb772e4f566",
-        "signature": "1d59d8498496ce5c6cb1047821e2dc6f1342a709f002dd9cc69c932bca94cf02",
+      "./src/entities/track.entity.ts": {
+        "version": "783b6eb44ad3d3f0a18b0ff7b092d825da6379a1f1ed8ec326028cbd51ff3ce3",
+        "signature": "1fb4ad564dfdb1851cc5f9fda1646617ce6f259d31dddc1da302904293565c1a",
         "affectsGlobalScope": false
       },
-      "./src/config/database.ts": {
-        "version": "566ba5b6d3ed3f07e0ffe78a97a0651afad0ed6cc0531519d845fd725c150f4c",
+      "./src/config/database.config.ts": {
+        "version": "e6b8903a79481f183c292119c47c696a3b274b7189051be446837cc62ea4789c",
         "signature": "71e5c78081b44a5e7ba6d85ad3cc93b78d09bf7c459a364fcba516461fb2a41d",
         "affectsGlobalScope": false
       },
@@ -4451,7 +4446,7 @@
         "signature": "ba221482780f4d23bf7ef372b48eb50e91a1aa5bd1124e9ae9542fb21ed6adb8",
         "affectsGlobalScope": false
       },
-      "./src/config/redis.ts": {
+      "./src/config/redis.config.ts": {
         "version": "7ecfc9d87e629b52f8cd3c58f8f6c2f86f7391b0542d1df6f248b20a4b9f06c8",
         "signature": "f1fcd7dcddeace57e543fa76d4abedf6fe63a4ea25972c3b21937025cc791037",
         "affectsGlobalScope": false
@@ -4526,14 +4521,9 @@
         "signature": "eaa6770d1989e69958307203c67f67c7abfb5195831d9b5c9350ccb616fe1c9e",
         "affectsGlobalScope": false
       },
-      "./src/config/email.ts": {
+      "./src/config/nodemailer.config.ts": {
         "version": "9dafe55796531d54206d1b15f92bf0873dbd84d0fbe823e2b21b23c0b04ae67d",
         "signature": "803ef3f2d370660426ea1d0f3b79d8c7e4f7a49ad28723ec19e009bcc7671e78",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@types/graphql-upload/index.d.ts": {
-        "version": "74da2e9262096f5d5cfd1b2c4b2c16d6f40b771cd558a47e0525e02ede8b5ea9",
-        "signature": "74da2e9262096f5d5cfd1b2c4b2c16d6f40b771cd558a47e0525e02ede8b5ea9",
         "affectsGlobalScope": false
       },
       "./node_modules/argon2/argon2.d.ts": {
@@ -4541,9 +4531,14 @@
         "signature": "daedf662f5c12939c9e2098b24dfee1cb9726cfa2a872f2b0963655c434ad546",
         "affectsGlobalScope": false
       },
+      "./node_modules/@types/graphql-upload/index.d.ts": {
+        "version": "74da2e9262096f5d5cfd1b2c4b2c16d6f40b771cd558a47e0525e02ede8b5ea9",
+        "signature": "74da2e9262096f5d5cfd1b2c4b2c16d6f40b771cd558a47e0525e02ede8b5ea9",
+        "affectsGlobalScope": false
+      },
       "./src/types/user.types.ts": {
-        "version": "b88f18bbec83293a67f8274ad74138f5325306ae2757a816e36a7867aeff5853",
-        "signature": "5bdbc4e99972275b76a0c7f1e58cd0605c0af794d6090b8341fd80c073cc3a5c",
+        "version": "7cf1ea9593faa3ccbb19b6ca9806b83205a104ab1f1cdf232fb21293f548ad8f",
+        "signature": "f6ef9d7feed6191ac299fcd7de4bbecfefe6984cacc52a3fd602c7c5145080a0",
         "affectsGlobalScope": false
       },
       "./src/types/upload.interface.ts": {
@@ -4552,31 +4547,41 @@
         "affectsGlobalScope": false
       },
       "./src/resolvers/user.resolver.ts": {
-        "version": "f391a8007934483afd32a2b96e7e72fc9eeb7fe71a30725731c035778200d728",
-        "signature": "3ecdcf97e1281df4b43e6836a664d6e95ccec92cd840631536206cb27e403762",
+        "version": "8dffc38a33a496523ad101a86a74a79d9919d63b5dbef71fb867abbca071e82f",
+        "signature": "70bff06e66f96ced0d01499df5e526fc6fcefa1fb0efee3d08b816d004e689da",
         "affectsGlobalScope": false
       },
       "./src/types/track.types.ts": {
-        "version": "eebffb257ab5bcee758e6bf8692223f7f524ef3bceb4630a816792e653030913",
-        "signature": "48eecc9bb5f404cdef38dc0c152ccb451702585adcac2a209cc4c861d2356e03",
+        "version": "fc07fdf7511ed3ca9a0241a4c9087d0115f966ced4d99107b82704a1f6766d63",
+        "signature": "434dfe02539abcf411f1b597d23eaa17ba47d45693f3ccc7c7b52ac00aa9f0f3",
         "affectsGlobalScope": false
       },
       "./src/resolvers/track.resolver.ts": {
-        "version": "67ff5583f681d6923935691eca17108eb4cb1fccf54e64b2fae964b9f4cce7ef",
-        "signature": "c22accc34fe5db969c48d6d0f6668204f8d3c256a444682863593d98036fc46f",
+        "version": "b3490de00648cb2b627e2e09ab8038b9cb8f0b515d7ab456f7f86616561e65db",
+        "signature": "8d163f804fa0761cd7dcfbbe71d6bd90efc0c7277fe82715b2c9579242fc69d3",
         "affectsGlobalScope": false
       },
-      "./src/utils/cache-tracks.ts": {
-        "version": "1d69ab730f92880d61e7dac935fd8b87c35e53b13109a1145de3447ad80efe70",
+      "./src/middleware/cache-tracks.ts": {
+        "version": "c7868f8db18f72dec2d38656ceca485ee579ec21f219994467e5002b4bc21c44",
         "signature": "f34f6de0beb7c88ef0bcfdcdfd1e271b0dcf2fcf1728bad4323292ea5c77c153",
         "affectsGlobalScope": false
       },
+      "./node_modules/@types/uuid/index.d.ts": {
+        "version": "96b49a9de749afcf92b5bce1d8cc42cfae6816cdf5ea36584fd9256b8b2e5292",
+        "signature": "96b49a9de749afcf92b5bce1d8cc42cfae6816cdf5ea36584fd9256b8b2e5292",
+        "affectsGlobalScope": false
+      },
+      "./src/config/session.config.ts": {
+        "version": "26fb4bcf55ae340960a84fed1ce9dcbfac2028ac48af8ab5031a55f54bacd7fa",
+        "signature": "b97119a44bbe3b2249ad8df147d54d299fc2a1f0190e1c3b345e3039d51be714",
+        "affectsGlobalScope": false
+      },
       "./src/index.ts": {
-        "version": "0638edbb9b5a0fa39f2a5ac133097d4857ae6ebcb6f054184ad12b32ac5852d3",
+        "version": "c629890e38899de6245c68102a4695fb539f8c10de1dd34be9eff15f0bb7ad4d",
         "signature": "ed67f3476bd1d2cf794092aeaa5206fe302cf3ae937d015e00252859b0914122",
         "affectsGlobalScope": false
       },
-      "./src/utils/check-permissions.ts": {
+      "./src/middleware/check-permissions.ts": {
         "version": "dc218ab40b57d2f90959381159bff3f944234a14ba1ead53f13bdea736b42fee",
         "signature": "1034448a16267ac93d22fe326ba1373559440353f19cb20574bf704c2169c92d",
         "affectsGlobalScope": false
@@ -4586,19 +4591,19 @@
         "signature": "82cffc446a000271c34cdf657c5aaa397c87183762431efe5e09660979cce586",
         "affectsGlobalScope": false
       },
-      "./src/utils/create-verification-url.ts": {
-        "version": "9c53b2e2e1c4c24cd207d583fc47d2c534bfc2cfc74a118c28943011a8e3fc58",
+      "./src/middleware/create-verification-url.ts": {
+        "version": "130f1f02eb2de654c536e8ff79a4be3dd3a818818b223caa0ed31a4598e90c20",
         "signature": "16a2a29a4bb76afe44e72a329d3017fb15281aab40f2507966894ddd4b2c4145",
         "affectsGlobalScope": false
       },
-      "./src/utils/send-email.ts": {
-        "version": "d1f877f1690ee19f4aca9ab79caa0eca574eefa213896d209ffd5c01bea9b173",
+      "./src/middleware/send-email.ts": {
+        "version": "1a3603133ab426472f2a78890840671c8d7cec668a88a2576a8f75e658f0e7ef",
         "signature": "b570b2bdd45aeee0af2eab08c8c7d19c1bd97f00135ed281c66cb9ba4677301c",
         "affectsGlobalScope": false
       },
       "./env.d.ts": {
-        "version": "4e6d7a401ddd0da75e960051fa883bcfa84b23a8e9608853fddaaa7848fbe298",
-        "signature": "4e6d7a401ddd0da75e960051fa883bcfa84b23a8e9608853fddaaa7848fbe298",
+        "version": "bec963d3d0e97aa30b96997595915fa2a51bd9115fed75b06b627f20d5b6e39b",
+        "signature": "bec963d3d0e97aa30b96997595915fa2a51bd9115fed75b06b627f20d5b6e39b",
         "affectsGlobalScope": true
       },
       "./node_modules/@types/minimatch/index.d.ts": {
@@ -4885,7 +4890,6 @@
       },
       "moduleResolution": 2,
       "pathsBasePath": "/home/paul/dev/udm/udm-server",
-      "watch": true,
       "configFilePath": "./tsconfig.json"
     },
     "referencedMap": {
@@ -8578,29 +8582,34 @@
         "./node_modules/typeorm/metadata/RelationMetadata.d.ts",
         "./node_modules/typeorm/query-runner/QueryRunner.d.ts"
       ],
-      "./src/config/database.ts": [
+      "./src/config/database.config.ts": [
         "./node_modules/@types/node/path.d.ts",
         "./node_modules/tslib/tslib.d.ts",
         "./node_modules/typeorm/index.d.ts",
-        "./src/entities/track.ts",
-        "./src/entities/user.ts"
+        "./src/entities/track.entity.ts",
+        "./src/entities/user.entity.ts"
       ],
-      "./src/config/email.ts": [
+      "./src/config/nodemailer.config.ts": [
         "./node_modules/@types/nodemailer/index.d.ts",
         "./node_modules/tslib/tslib.d.ts"
       ],
-      "./src/config/redis.ts": [
+      "./src/config/redis.config.ts": [
         "./node_modules/@types/connect-redis/index.d.ts",
         "./node_modules/@types/express-session/index.d.ts",
         "./node_modules/@types/ioredis/index.d.ts",
         "./node_modules/tslib/tslib.d.ts"
       ],
-      "./src/entities/track.ts": [
+      "./src/config/session.config.ts": [
+        "./node_modules/@types/uuid/index.d.ts",
+        "./node_modules/tslib/tslib.d.ts",
+        "./src/config/redis.config.ts"
+      ],
+      "./src/entities/track.entity.ts": [
         "./node_modules/tslib/tslib.d.ts",
         "./node_modules/type-graphql/dist/index.d.ts",
         "./node_modules/typeorm/index.d.ts"
       ],
-      "./src/entities/user.ts": [
+      "./src/entities/user.entity.ts": [
         "./node_modules/tslib/tslib.d.ts",
         "./node_modules/type-graphql/dist/index.d.ts",
         "./node_modules/typeorm/index.d.ts"
@@ -8609,27 +8618,58 @@
         "./node_modules/@types/cors/index.d.ts",
         "./node_modules/@types/express-session/index.d.ts",
         "./node_modules/@types/express/index.d.ts",
-        "./node_modules/@types/uuid/index.d.ts",
         "./node_modules/apollo-server-express/dist/index.d.ts",
         "./node_modules/reflect-metadata/index.d.ts",
         "./node_modules/tslib/tslib.d.ts",
         "./node_modules/type-graphql/dist/index.d.ts",
         "./node_modules/typeorm/index.d.ts",
-        "./src/config/database.ts",
-        "./src/config/email.ts",
-        "./src/config/redis.ts",
+        "./src/config/database.config.ts",
+        "./src/config/nodemailer.config.ts",
+        "./src/config/redis.config.ts",
+        "./src/config/session.config.ts",
+        "./src/middleware/cache-tracks.ts",
+        "./src/middleware/check-auth.ts",
+        "./src/middleware/create-user-dataloader.ts",
         "./src/resolvers/track.resolver.ts",
-        "./src/resolvers/user.resolver.ts",
-        "./src/utils/cache-tracks.ts",
-        "./src/utils/check-auth.ts",
-        "./src/utils/create-user-dataloader.ts"
+        "./src/resolvers/user.resolver.ts"
+      ],
+      "./src/middleware/cache-tracks.ts": [
+        "./node_modules/tslib/tslib.d.ts",
+        "./node_modules/typeorm/index.d.ts",
+        "./src/config/redis.config.ts",
+        "./src/entities/track.entity.ts"
+      ],
+      "./src/middleware/check-auth.ts": [
+        "./node_modules/tslib/tslib.d.ts",
+        "./node_modules/type-graphql/dist/index.d.ts",
+        "./src/types/context.interface.ts"
+      ],
+      "./src/middleware/check-permissions.ts": [
+        "./node_modules/tslib/tslib.d.ts",
+        "./node_modules/type-graphql/dist/index.d.ts",
+        "./src/types/context.interface.ts"
+      ],
+      "./src/middleware/create-user-dataloader.ts": [
+        "./node_modules/dataloader/index.d.ts",
+        "./node_modules/tslib/tslib.d.ts",
+        "./src/entities/user.entity.ts"
+      ],
+      "./src/middleware/create-verification-url.ts": [
+        "./node_modules/@types/jsonwebtoken/index.d.ts",
+        "./node_modules/tslib/tslib.d.ts",
+        "./src/config/redis.config.ts"
+      ],
+      "./src/middleware/send-email.ts": [
+        "./node_modules/@types/nodemailer/index.d.ts",
+        "./node_modules/tslib/tslib.d.ts",
+        "./src/config/nodemailer.config.ts"
       ],
       "./src/resolvers/track.resolver.ts": [
         "./node_modules/tslib/tslib.d.ts",
         "./node_modules/type-graphql/dist/index.d.ts",
         "./node_modules/typeorm/index.d.ts",
-        "./src/config/redis.ts",
-        "./src/entities/track.ts",
+        "./src/config/redis.config.ts",
+        "./src/entities/track.entity.ts",
         "./src/types/track.types.ts"
       ],
       "./src/resolvers/user.resolver.ts": [
@@ -8641,7 +8681,7 @@
         "./node_modules/tslib/tslib.d.ts",
         "./node_modules/type-graphql/dist/index.d.ts",
         "./node_modules/typeorm/index.d.ts",
-        "./src/entities/user.ts",
+        "./src/entities/user.entity.ts",
         "./src/types/context.interface.ts",
         "./src/types/upload.interface.ts",
         "./src/types/user.types.ts"
@@ -8650,12 +8690,12 @@
         "./node_modules/@types/express/index.d.ts",
         "./node_modules/@types/ioredis/index.d.ts",
         "./node_modules/tslib/tslib.d.ts",
-        "./src/utils/create-user-dataloader.ts"
+        "./src/middleware/create-user-dataloader.ts"
       ],
       "./src/types/track.types.ts": [
         "./node_modules/tslib/tslib.d.ts",
         "./node_modules/type-graphql/dist/index.d.ts",
-        "./src/entities/track.ts"
+        "./src/entities/track.entity.ts"
       ],
       "./src/types/upload.interface.ts": [
         "./node_modules/@types/node/stream.d.ts",
@@ -8664,37 +8704,6 @@
       "./src/types/user.types.ts": [
         "./node_modules/tslib/tslib.d.ts",
         "./node_modules/type-graphql/dist/index.d.ts"
-      ],
-      "./src/utils/cache-tracks.ts": [
-        "./node_modules/tslib/tslib.d.ts",
-        "./node_modules/typeorm/index.d.ts",
-        "./src/config/redis.ts",
-        "./src/entities/track.ts"
-      ],
-      "./src/utils/check-auth.ts": [
-        "./node_modules/tslib/tslib.d.ts",
-        "./node_modules/type-graphql/dist/index.d.ts",
-        "./src/types/context.interface.ts"
-      ],
-      "./src/utils/check-permissions.ts": [
-        "./node_modules/tslib/tslib.d.ts",
-        "./node_modules/type-graphql/dist/index.d.ts",
-        "./src/types/context.interface.ts"
-      ],
-      "./src/utils/create-user-dataloader.ts": [
-        "./node_modules/dataloader/index.d.ts",
-        "./node_modules/tslib/tslib.d.ts",
-        "./src/entities/user.ts"
-      ],
-      "./src/utils/create-verification-url.ts": [
-        "./node_modules/@types/jsonwebtoken/index.d.ts",
-        "./node_modules/tslib/tslib.d.ts",
-        "./src/config/redis.ts"
-      ],
-      "./src/utils/send-email.ts": [
-        "./node_modules/@types/nodemailer/index.d.ts",
-        "./node_modules/tslib/tslib.d.ts",
-        "./src/config/email.ts"
       ]
     },
     "exportedModulesMap": {
@@ -12387,31 +12396,42 @@
         "./node_modules/typeorm/metadata/RelationMetadata.d.ts",
         "./node_modules/typeorm/query-runner/QueryRunner.d.ts"
       ],
-      "./src/config/database.ts": [
+      "./src/config/database.config.ts": [
         "./node_modules/typeorm/index.d.ts"
       ],
-      "./src/config/email.ts": [
+      "./src/config/nodemailer.config.ts": [
         "./node_modules/@types/nodemailer/lib/mailer/index.d.ts"
       ],
-      "./src/config/redis.ts": [
+      "./src/config/redis.config.ts": [
         "./node_modules/@types/connect-redis/index.d.ts",
         "./node_modules/@types/ioredis/index.d.ts"
       ],
-      "./src/entities/track.ts": [
+      "./src/config/session.config.ts": [
+        "./node_modules/@types/connect-redis/index.d.ts"
+      ],
+      "./src/entities/track.entity.ts": [
         "./node_modules/typeorm/index.d.ts"
       ],
-      "./src/entities/user.ts": [
+      "./src/entities/user.entity.ts": [
         "./node_modules/typeorm/index.d.ts"
       ],
       "./src/index.ts": [
         "./node_modules/reflect-metadata/index.d.ts"
       ],
+      "./src/middleware/check-auth.ts": [
+        "./node_modules/type-graphql/dist/index.d.ts",
+        "./src/types/context.interface.ts"
+      ],
+      "./src/middleware/check-permissions.ts": [
+        "./node_modules/type-graphql/dist/index.d.ts",
+        "./src/types/context.interface.ts"
+      ],
       "./src/resolvers/track.resolver.ts": [
-        "./src/entities/track.ts",
+        "./src/entities/track.entity.ts",
         "./src/types/track.types.ts"
       ],
       "./src/resolvers/user.resolver.ts": [
-        "./src/entities/user.ts",
+        "./src/entities/user.entity.ts",
         "./src/types/context.interface.ts",
         "./src/types/upload.interface.ts",
         "./src/types/user.types.ts"
@@ -12419,21 +12439,13 @@
       "./src/types/context.interface.ts": [
         "./node_modules/@types/express/index.d.ts",
         "./node_modules/@types/ioredis/index.d.ts",
-        "./src/utils/create-user-dataloader.ts"
+        "./src/middleware/create-user-dataloader.ts"
       ],
       "./src/types/track.types.ts": [
-        "./src/entities/track.ts"
+        "./src/entities/track.entity.ts"
       ],
       "./src/types/upload.interface.ts": [
         "./node_modules/@types/node/stream.d.ts"
-      ],
-      "./src/utils/check-auth.ts": [
-        "./node_modules/type-graphql/dist/index.d.ts",
-        "./src/types/context.interface.ts"
-      ],
-      "./src/utils/check-permissions.ts": [
-        "./node_modules/type-graphql/dist/index.d.ts",
-        "./src/types/context.interface.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -13387,24 +13399,25 @@
       "./node_modules/typescript/lib/lib.es2020.bigint.d.ts",
       "./node_modules/typescript/lib/lib.es5.d.ts",
       "./node_modules/typescript/lib/lib.esnext.intl.d.ts",
-      "./src/config/database.ts",
-      "./src/config/email.ts",
-      "./src/config/redis.ts",
-      "./src/entities/track.ts",
-      "./src/entities/user.ts",
+      "./src/config/database.config.ts",
+      "./src/config/nodemailer.config.ts",
+      "./src/config/redis.config.ts",
+      "./src/config/session.config.ts",
+      "./src/entities/track.entity.ts",
+      "./src/entities/user.entity.ts",
       "./src/index.ts",
+      "./src/middleware/cache-tracks.ts",
+      "./src/middleware/check-auth.ts",
+      "./src/middleware/check-permissions.ts",
+      "./src/middleware/create-user-dataloader.ts",
+      "./src/middleware/create-verification-url.ts",
+      "./src/middleware/send-email.ts",
       "./src/resolvers/track.resolver.ts",
       "./src/resolvers/user.resolver.ts",
       "./src/types/context.interface.ts",
       "./src/types/track.types.ts",
       "./src/types/upload.interface.ts",
-      "./src/types/user.types.ts",
-      "./src/utils/cache-tracks.ts",
-      "./src/utils/check-auth.ts",
-      "./src/utils/check-permissions.ts",
-      "./src/utils/create-user-dataloader.ts",
-      "./src/utils/create-verification-url.ts",
-      "./src/utils/send-email.ts"
+      "./src/types/user.types.ts"
     ]
   },
   "version": "4.2.4"
