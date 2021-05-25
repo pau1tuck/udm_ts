@@ -1,31 +1,30 @@
 import "reflect-metadata";
 import "dotenv/config";
-import { v4 } from "uuid";
 import cors from "cors";
 
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import session from "express-session";
 
 import { createConnection, Connection } from "typeorm";
 
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
-import { authChecker } from "./utils/check-auth";
+import { authChecker } from "./middleware/check-auth";
 
-import database from "./config/database";
-import { RedisStore, redisClient } from "./config/redis";
-import { emailTransporter } from "./config/email";
+import database from "./config/database.config";
+import { redisClient } from "./config/redis.config";
+import { emailTransporter } from "./config/nodemailer.config";
 
 import { UserResolver } from "./resolvers/user.resolver";
 import { TrackResolver } from "./resolvers/track.resolver";
 
-import { createUserDataLoader } from "./utils/create-user-dataloader";
-import { cacheTracks } from "./utils/cache-tracks";
-import sessionConfig from "./config/session";
+import { createUserDataLoader } from "./middleware/create-user-dataloader";
+import { cacheTracks } from "./middleware/cache-tracks";
+import sessionConfig from "./config/session.config";
 
 const WORKERS = process.env.WEB_CONCURRENCY || 1;
 
-const { NODE_ENV, DEBUG, HOST, PORT, CORS_ORIGIN, DB_PORT, REDIS_PORT } =
+const { DEBUG, HOST, PORT, CORS_ORIGIN, DB_HOST, DB_PORT, REDIS_PORT } =
     process.env;
 
 const server = async () => {
@@ -71,8 +70,11 @@ const server = async () => {
     app.use("/media", express.static("media"));
 
     if (orm.isConnected) {
-        console.log(`🗄️  Connected to PostgreSQL database on port ${DB_PORT}`);
+        console.log(
+            `🗄️  Connected to PostgreSQL database on ${DB_HOST}:${DB_PORT}`
+        );
     }
+    console.log(orm.logger);
 
     redisClient.monitor((error, monitor) => {
         if (!error) {

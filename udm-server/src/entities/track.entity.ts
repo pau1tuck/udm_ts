@@ -15,6 +15,10 @@ export class Track extends BaseEntity {
     @PrimaryGeneratedColumn("uuid")
     id!: string;
 
+    @Field(() => Int)
+    @Column({ type: "int", unique: true })
+    trackId!: number;
+
     @Field()
     @Column()
     artist!: string;
@@ -38,10 +42,6 @@ export class Track extends BaseEntity {
     @Field(() => Int)
     @Column({ type: "int" })
     year!: number;
-
-    @Field()
-    @Column()
-    filename!: string;
 
     @Field()
     @Column({ nullable: true })

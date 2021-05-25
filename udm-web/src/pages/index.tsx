@@ -151,31 +151,27 @@ const Home = () => {
                         backgroundColor="#111111"
                         opacity="0.9"
                     >
-                        {" "}
-                        <Media>
-                            <div>
-                                <Player
-                                    src={`http://www.youtube.com/embed/${currentTrack.youTubeId}`}
-                                    autoPlay
-                                    className={playerStyles.player}
-                                />
-                                <Box
-                                    display="flex"
-                                    h="50px"
-                                    ml={1}
-                                    pb={1}
-                                    alignItems="center"
-                                    cursor="pointer"
-                                    fontSize="2.5rem"
-                                >
-                                    <PlayPauseButton />
-                                </Box>
-                            </div>
-                        </Media>
+                        <div>
+                            <Box
+                                display="flex"
+                                h="50px"
+                                ml={1}
+                                pb={1}
+                                alignItems="center"
+                                cursor="pointer"
+                                fontSize="2.5rem"
+                            >
+                                <PlayPauseButton />
+                            </Box>
+                        </div>
                         <NowPlaying nowPlaying={currentTrack} />
                     </Box>
                 </div>
             )}
+            <audio
+                src={`${process.env.NEXT_PUBLIC_HOST}/media/audio/${track.trackId}.mp3}`}
+                controls
+            ></audio>
         </Layout>
     );
 };

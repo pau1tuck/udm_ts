@@ -2,13 +2,13 @@ query Tracks($limit: Int!) {
     tracks(limit: $limit) {
         payload {
             id
+            trackId
             artist
             title
             version
             label
             month
             year
-            youTubeId
             buyUrl
             votes
             createdAt

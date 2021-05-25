@@ -24,12 +24,12 @@ import {
     Text,
 } from "@chakra-ui/react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { NavbarMenu } from "./navbar.menu";
+import { NavbarMenu } from "./navbar-menu";
 import { ApolloClient, useApolloClient } from "@apollo/client";
-import { useCurrentUserBasicQuery } from "../../graphql/graphql";
+import { useCurrentUserShortQuery } from "../../graphql/graphql";
 
 export const NavbarItems = () => {
-    const { data, loading } = useCurrentUserBasicQuery({
+    const { data, loading } = useCurrentUserShortQuery({
         fetchPolicy: "cache-first",
     });
     const apolloClient = useApolloClient();

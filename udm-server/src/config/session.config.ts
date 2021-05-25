@@ -1,5 +1,5 @@
 import { v4 } from "uuid";
-import { RedisStore, redisClient } from "./redis";
+import { RedisStore, redisClient } from "./redis.config";
 
 const PROD = process.env.NODE_ENV === "production";
 

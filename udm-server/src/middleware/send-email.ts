@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import { emailTransporter } from "../config/email";
+import { emailTransporter } from "../config/nodemailer.config";
 
 export const sendVerificationEmail = async (recipient: string, url: string) => {
     const info = await emailTransporter.sendMail({

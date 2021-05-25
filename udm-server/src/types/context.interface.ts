@@ -1,9 +1,11 @@
 import { Request, Response } from "express";
 import { Redis } from "ioredis";
-import { createUserDataLoader } from "../utils/create-user-dataloader";
+import { createUserDataLoader } from "../middleware/create-user-dataloader";
 
 export interface IContext {
-    req: Request & { session: any };
+    req: Request & {
+        session: { userId?: number; roles?: string[] };
+    };
     res: Response;
     redis: Redis;
     payload?: { userId: string; roles: string[] };

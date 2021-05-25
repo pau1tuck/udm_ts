@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Box, Container, Flex, Slide, Spacer, Stack } from "@chakra-ui/react";
-import { NavbarLogo } from "./navbar.logo";
-import { NavbarItems } from "./navbar.items";
-import { NavbarMenu } from "./navbar.menu";
+import { NavbarLogo } from "./navbar-logo";
+import { NavbarItems } from "./navbar-items";
+import { NavbarMenu } from "./navbar-menu";
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = React.useState(false);

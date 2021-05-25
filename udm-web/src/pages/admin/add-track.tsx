@@ -32,14 +32,14 @@ import { withApollo } from "../../utils/with-apollo";
 const today = new Date();
 
 const validationSchema = yup.object().shape({
+    ["trackId"]: yup.number().required().label("Track ID"),
     ["artist"]: yup.string().required().label("Artist"),
     ["title"]: yup.string().required().label("Title"),
     ["version"]: yup.string().label("Version"),
     ["label"]: yup.string().label("Label"),
+    ["buyUrl"]: yup.string().label("Buy URL"),
     ["month"]: yup.number().required().label("Release Month"),
     ["year"]: yup.number().required().label("Release Year"),
-    ["youTubeId"]: yup.string().required().label("YouTube ID"),
-    ["buyUrl"]: yup.string().label("Buy Link"),
 });
 
 const CreateTrack = () => {
@@ -78,6 +78,13 @@ const CreateTrack = () => {
                     <form onSubmit={handleSubmit(onFormSubmit)}>
                         <Stack spacing={4}>
                             <Input
+                                id="trackId"
+                                name="trackId"
+                                placeholder="Track ID"
+                                autoComplete="off"
+                                ref={register}
+                            />
+                            <Input
                                 id="title"
                                 name="title"
                                 placeholder="Title"
@@ -103,6 +110,13 @@ const CreateTrack = () => {
                                 id="label"
                                 name="label"
                                 placeholder="Label"
+                                ref={register}
+                            />
+                            <Input
+                                id="buyUrl"
+                                name="buyUrl"
+                                placeholder="Buy URL"
+                                autoComplete="off"
                                 ref={register}
                             />
                             <Select
@@ -145,20 +159,6 @@ const CreateTrack = () => {
                                     {errors.year && errors.year.message}
                                 </FormErrorMessage>
                             </FormControl>
-                            <Input
-                                id="youTubeId"
-                                name="youTubeId"
-                                placeholder="YouTube ID"
-                                autoComplete="off"
-                                ref={register}
-                            />
-                            <Input
-                                id="buyUrl"
-                                name="buyUrl"
-                                placeholder="Buy URL"
-                                autoComplete="off"
-                                ref={register}
-                            />
                         </Stack>
                         <Button
                             width="100%"

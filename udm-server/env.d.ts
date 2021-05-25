@@ -7,6 +7,7 @@ declare namespace NodeJS {
         CORS_ORIGIN: string;
         SESSION_SECRET: string;
         DB_URL: string;
+        DB_HOST: string;
         DB_PORT: number;
         REDIS_HOST: string;
         REDIS_PORT: number;

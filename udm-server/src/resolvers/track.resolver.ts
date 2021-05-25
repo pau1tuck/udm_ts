@@ -1,21 +1,14 @@
-import {
-    Arg,
-    Authorized,
-    Int,
-    Mutation,
-    Query,
-    Resolver,
-    UseMiddleware,
-} from "type-graphql";
+import { Arg, Authorized, Int, Mutation, Query, Resolver } from "type-graphql";
 import { getConnection } from "typeorm";
 import { Track } from "../entities/track.entity";
 import { PaginatedTracks, TrackInput } from "../types/track.types";
-import { redisClient } from "../config/redis";
+import { redisClient } from "../config/redis.config";
 
 const { TRACKS_CACHE_KEY } = process.env;
 
 @Resolver(Track)
 export class TrackResolver {
+    // READ ALL TRACKS
     @Query(() => PaginatedTracks)
     async tracks(
         @Arg("limit", () => Int)
@@ -30,11 +23,13 @@ export class TrackResolver {
         };
     }
 
+    // READ ONE TRACK
     @Query(() => Track, { nullable: true })
     track(@Arg("id") id: string): Promise<Track | undefined> {
         return Track.findOne(id);
     }
 
+    // CREATE TRACK
     @Authorized("ADMIN")
     @Mutation(() => Track)
     async createTrack(@Arg("input") input: TrackInput): Promise<Track> {
@@ -45,17 +40,18 @@ export class TrackResolver {
         return newTrack;
     }
 
-    // @Authorized("ADMIN")
+    // UPDATE TRACK
+    @Authorized("ADMIN")
     @Mutation(() => Track, { nullable: true })
     async updateTrack(
         @Arg("id") id: string,
-        @Arg("filename") youTubeId: string,
+        @Arg("trackId") trackId: number,
         @Arg("buyUrl") buyUrl: string
     ): Promise<Track | null> {
         const result = await getConnection()
             .createQueryBuilder()
             .update(Track)
-            .set({ youTubeId, buyUrl })
+            .set({ trackId, buyUrl })
             .where("id = :id", {
                 id,
             })
@@ -65,6 +61,7 @@ export class TrackResolver {
         return result.raw[0];
     }
 
+    // DELETE TRACK
     @Authorized("ADMIN")
     @Mutation(() => Boolean)
     async deleteTrack(@Arg("id") id: string): Promise<boolean> {

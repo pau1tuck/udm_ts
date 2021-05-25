@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { redisClient } from "../config/redis";
+import { redisClient } from "../config/redis.config";
 
 export const createVerificationUrl = async (userId: string) => {
     const token = jwt.sign(

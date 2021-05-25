@@ -14,3 +14,9 @@ export class RegisterUserInput {
     @Field()
     email!: string;
 }
+
+@InputType()
+export class CreateUserInput extends RegisterUserInput {
+    @Field()
+    city!: string;
+}

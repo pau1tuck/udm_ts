@@ -1,18 +1,10 @@
 import path from "path";
+import argon2 from "argon2";
 import { Errback } from "express";
 import { createWriteStream } from "fs";
-import {
-    Arg,
-    Authorized,
-    Ctx,
-    Mutation,
-    Query,
-    Resolver,
-    UseMiddleware,
-} from "type-graphql";
+import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from "type-graphql";
 import { getConnection } from "typeorm";
 import { GraphQLUpload } from "graphql-upload";
-import argon2 from "argon2";
 import { User } from "../entities/user.entity";
 import { RegisterUserInput } from "../types/user.types";
 import { IContext } from "../types/context.interface";
@@ -20,15 +12,14 @@ import { IUpload } from "../types/upload.interface";
 
 @Resolver(User)
 export class UserResolver {
-    // LIST ALL USERS
+    // READ ALL USERS
     @Authorized("ADMIN")
     @Query(() => [User])
-    // @UseMiddleware(isAdmin)
     users(): Promise<User[]> | null {
         return User.find();
     }
 
-    // CURRENT USER
+    // READ CURRENT USER
     @Query(() => User, { nullable: true })
     currentUser(@Ctx() { req }: IContext) {
         if (!req.session.userId) {

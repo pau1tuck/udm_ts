@@ -12,6 +12,9 @@ export class PaginatedTracks {
 
 @InputType()
 export class TrackInput {
+    @Field(() => Int)
+    trackId!: number;
+
     @Field()
     artist!: string;
 
@@ -29,9 +32,6 @@ export class TrackInput {
 
     @Field(() => Int)
     year!: number;
-
-    @Field()
-    filename!: string;
 
     @Field()
     buyUrl?: string;

@@ -1,4 +1,4 @@
-query CurrentUserBasic {
+query CurrentUserShort {
     currentUser {
         id
         givenName
