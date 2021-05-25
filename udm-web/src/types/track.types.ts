@@ -8,3 +8,10 @@ export interface ICreateTrack {
     month: number;
     year: number;
 }
+
+export interface ITrack extends ICreateTrack {
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    votes: number;
+}

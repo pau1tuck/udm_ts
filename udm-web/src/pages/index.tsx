@@ -34,6 +34,7 @@ import { NowPlaying } from "../components/track/track.now-playing";
 
 import { dummyData } from "../dummy-data";
 import { useTracksQuery } from "../graphql/graphql";
+import { ITrack } from "~types/track.types";
 
 import { Media, Player, controls, withMediaProps } from "react-media-player";
 const { PlayPause, MuteUnmute } = controls;
@@ -44,21 +45,6 @@ export const NOW_PLAYING = gql`
         nowPlaying @client
     }
 `;
-
-interface ITrack {
-    id: string;
-    trackId: number;
-    artist: string;
-    title: string;
-    version?: string;
-    label: string;
-    month: number;
-    year: number;
-    buyUrl: string;
-    createdAt: string;
-    updatedAt: string;
-    votes: number;
-}
 
 const Home = () => {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -134,7 +120,7 @@ const Home = () => {
                     {cards}
                 </Box>
             </Container>
-            {currentTrack.trackId && (
+            {currentTrack.trackId !== 0 && (
                 <div>
                     <Box
                         position="fixed"
@@ -161,17 +147,19 @@ const Home = () => {
                                 cursor="pointer"
                                 fontSize="2.5rem"
                             >
-                                <PlayPauseButton />
+                                {/*<PlayPauseButton />*/}
                             </Box>
                         </div>
                         <NowPlaying nowPlaying={currentTrack} />
                     </Box>
+                    <audio
+                        src={`${process.env.NEXT_PUBLIC_HOST}/media/audio/${currentTrack.trackId}.mp3`}
+                        controls
+                        autoPlay
+                        style={{ visibility: "hidden" }}
+                    ></audio>
                 </div>
             )}
-            <audio
-                src={`${process.env.NEXT_PUBLIC_HOST}/media/audio/${currentTrack.trackId}.mp3}`}
-                controls
-            ></audio>
         </Layout>
     );
 };
