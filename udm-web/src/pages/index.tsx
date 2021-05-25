@@ -162,6 +162,7 @@ const Home = () => {
                                 <Box
                                     display="flex"
                                     h="50px"
+                                    mt="2px"
                                     ml={1}
                                     pb={1}
                                     alignItems="center"
