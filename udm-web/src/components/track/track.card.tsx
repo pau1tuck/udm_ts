@@ -1,17 +1,5 @@
-import React, { useState } from "react";
-import {
-    Box,
-    Container,
-    Flex,
-    Grid,
-    GridItem,
-    Heading,
-    HStack,
-    Link,
-    Stack,
-    Text,
-    useMediaQuery,
-} from "@chakra-ui/react";
+import React from "react";
+import { Box, Grid, GridItem } from "@chakra-ui/react";
 import { RiShoppingBasket2Fill } from "react-icons/ri";
 import { HiThumbUp } from "react-icons/hi";
 import { AiFillStar } from "react-icons/ai";

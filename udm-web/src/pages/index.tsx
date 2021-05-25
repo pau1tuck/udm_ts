@@ -1,26 +1,6 @@
 import React, { useState, useRef } from "react";
 import { gql } from "@apollo/client";
-import {
-    Box,
-    Button,
-    Center,
-    Container,
-    Drawer,
-    DrawerBody,
-    DrawerContent,
-    DrawerHeader,
-    DrawerOverlay,
-    Flex,
-    Grid,
-    GridItem,
-    Heading,
-    HStack,
-    Link,
-    Stack,
-    Text,
-    useDisclosure,
-    useMediaQuery,
-} from "@chakra-ui/react";
+import { Box, Container, Flex, Grid, GridItem } from "@chakra-ui/react";
 import Layout from "../components/layout";
 import { Tagline } from "../components/tagline";
 import { Navigation } from "../components/navigation";
@@ -32,13 +12,8 @@ import { RiPauseCircleFill } from "react-icons/ri";
 import { nowPlayingVar } from "../utils/with-apollo";
 import { NowPlaying } from "../components/track/track.now-playing";
 
-import { dummyData } from "../dummy-data";
 import { useTracksQuery } from "../graphql/graphql";
 import { ITrack } from "~types/track.types";
-
-import { Media, Player, controls, withMediaProps } from "react-media-player";
-const { PlayPause, MuteUnmute } = controls;
-import PlayPauseButton from "../components/player/player.playpause-button";
 
 export const NOW_PLAYING = gql`
     query NowPlaying {

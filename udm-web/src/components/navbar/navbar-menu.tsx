@@ -1,10 +1,12 @@
 import React from "react";
+import NextLink from "next/link";
 import {
     Box,
     ButtonGroup,
     Button,
     Container,
     Divider,
+    Link,
     Flex,
     Slide,
     Spacer,
@@ -14,6 +16,10 @@ import {
 import { IoMdClose } from "react-icons/io";
 
 export const NavbarMenu = ({ toggle, user }) => {
+    const [isLoading, setIsLoading] = React.useState({
+        loginButton: false,
+        signUpButton: false,
+    });
     return (
         <Box
             width="100%"
@@ -48,15 +54,26 @@ export const NavbarMenu = ({ toggle, user }) => {
                                 SIGN UP
                             </Text>
                         </Button>
-                        <Button size="md" colorScheme="white" variant="ghost">
-                            <Text
-                                fontFamily="Quicksand"
-                                fontWeight="700"
-                                color="pumpkin.400"
-                            >
-                                LOG IN
-                            </Text>
-                        </Button>
+                        <NextLink href="/user/login" passHref>
+                            <Link>
+                                <Button
+                                    size="sm"
+                                    colorScheme="white"
+                                    variant="ghost"
+                                    fontFamily="Quicksand"
+                                    fontWeight="700"
+                                    isLoading={isLoading.loginButton}
+                                    onClick={() => {
+                                        setIsLoading({
+                                            ...isLoading,
+                                            loginButton: true,
+                                        });
+                                    }}
+                                >
+                                    LOG IN
+                                </Button>
+                            </Link>
+                        </NextLink>
                         <Divider />
                         <Text fontFamily="Quicksand" fontWeight="700">
                             Latest Tunes
