@@ -1,13 +1,6 @@
 #!/bin/bash
 
-year=$(date +"%y")
-month=$(date +"%m")
-day=$(date +"%d")
-hour=$(date +"%H")
-minute=$(date +"%M")
-timezone=$(date +"%Z")
-
-datetime="$year-$month-$day""T$hour:$minute$timezone"
+datetime=$(date "+%Y-%m-%dT%H:%M%Z")
 
 echo $datetime
 

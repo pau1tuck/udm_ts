@@ -12,14 +12,14 @@ import { IUpload } from "../types/upload.interface";
 
 @Resolver(User)
 export class UserResolver {
-    // READ ALL USERS
+    // GET ALL USERS
     @Authorized("ADMIN")
     @Query(() => [User])
     users(): Promise<User[]> | null {
         return User.find();
     }
 
-    // READ CURRENT USER
+    // GET CURRENT USER
     @Query(() => User, { nullable: true })
     currentUser(@Ctx() { req }: IContext) {
         if (!req.session.userId) {
@@ -28,7 +28,7 @@ export class UserResolver {
         return User.findOne(req.session.userId);
     }
 
-    // REGISTER
+    // REGISTER NEW USER
     @Mutation(() => Boolean)
     async register(
         @Arg("input") input: RegisterUserInput,

@@ -2,7 +2,7 @@
     "extends": "./tsconfig_base.json",
     "compilerOptions": {
         "noEmit": false,
-        "incremental": true,
+        "incremental": false,
         "target": "es6",
         "module": "commonjs",
         "lib": [
@@ -12,7 +12,7 @@
             "esnext.asynciterable"
         ],
         "skipLibCheck": true,
-        "sourceMap": true,
+        "sourceMap": false,
         "baseUrl": ".",
         "rootDir": "./src",
         "outDir": "./dist",

@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import "dotenv/config";
 import cors from "cors";
+import throng from "throng";
 
 import express, { Express } from "express";
 import session from "express-session";
@@ -22,7 +23,7 @@ import { createUserDataLoader } from "./middleware/create-user-dataloader";
 import { cacheTracks } from "./middleware/cache-tracks";
 import sessionConfig from "./config/session.config";
 
-const WORKERS = process.env.WEB_CONCURRENCY || 1;
+const WORKERS = Number(process.env.WEB_CONCURRENCY) || 1;
 
 const { DEBUG, HOST, PORT, CORS_ORIGIN, DB_HOST, DB_PORT, REDIS_PORT } =
     process.env;
@@ -102,6 +103,5 @@ const server = async () => {
         console.log(`🚀 Node server running on ${HOST}:${PORT}`);
     });
 };
-server().catch((err) => {
-    console.error(err);
-});
+
+throng(WORKERS, server);
