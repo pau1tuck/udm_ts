@@ -3,7 +3,7 @@ import { Box, Text } from "@chakra-ui/react";
 
 export const NowPlaying = ({ nowPlaying }: any) => {
     return (
-        <Box ml={2} fontWeight="600">
+        <Box ml={2} pt={1} fontWeight="600">
             {nowPlaying.title ? (
                 <Box fontSize={["sm", "md", "md", "lg"]} isTruncated>
                     <Text as="span">{`${nowPlaying.artist}`}</Text>
