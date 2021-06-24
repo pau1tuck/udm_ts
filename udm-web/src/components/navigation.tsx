@@ -25,9 +25,6 @@ export const Navigation = () => {
             <NextLink href="/" passHref>
                 <Link>Latest Tunes</Link>
             </NextLink>
-            <NextLink href="/" passHref>
-                <Link>All Tracks</Link>
-            </NextLink>
         </Stack>
     );
 };

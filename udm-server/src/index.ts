@@ -25,8 +25,16 @@ import sessionConfig from "./config/session.config";
 
 const WORKERS = Number(process.env.WEB_CONCURRENCY) || 1;
 
-const { DEBUG, HOST, PORT, CORS_ORIGIN, DB_HOST, DB_PORT, REDIS_PORT } =
-    process.env;
+const {
+    DEBUG,
+    HOST,
+    PORT,
+    CORS_ORIGIN,
+    DB_HOST,
+    DB_PORT,
+    REDIS_HOST,
+    REDIS_PORT,
+} = process.env;
 
 const server = async () => {
     const orm: Connection = await createConnection(database);
@@ -78,7 +86,7 @@ const server = async () => {
 
     redisClient.monitor((error, monitor) => {
         if (!error) {
-            console.log(`📙 Connected to Redis on port ${REDIS_PORT}`);
+            console.log(`📙 Connected to Redis on ${REDIS_HOST}:${REDIS_PORT}`);
         }
         if (DEBUG) {
             monitor.on("monitor", (time, args, source) => {

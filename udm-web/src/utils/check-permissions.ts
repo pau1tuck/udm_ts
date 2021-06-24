@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { useCurrentUserBasicQuery } from "../graphql/graphql";
+import { useCurrentUserShortQuery } from "../graphql/graphql";
 
 export const checkAuth = () => {
-    const { data, loading } = useCurrentUserBasicQuery();
+    const { data, loading } = useCurrentUserShortQuery();
     const router = useRouter();
     useEffect(() => {
         if (!loading && !data?.currentUser) {
@@ -13,7 +13,7 @@ export const checkAuth = () => {
 };
 
 export const checkAdmin = () => {
-    const { data, loading } = useCurrentUserBasicQuery();
+    const { data, loading } = useCurrentUserShortQuery();
     const router = useRouter();
     useEffect(() => {
         if (!loading && !data?.currentUser) {

@@ -1,12 +1,13 @@
 export const dummyData = [
     {
+        trackId: 2106100058,
         title: "Tears of the Fallen Angel",
         version: "",
         artist: "Marc Brauner",
         label: "Shall Not Fade",
         image: "http://i3.ytimg.com/vi/mVX7YsaF_9o/maxresdefault.jpg",
         filename: "Marc-Brauner-Tears-Of-The-Fallen-Angel.mp3",
-        buyUrl: "",
+        buyUrl: "https://www.beatport.com/track/tears-of-the-fallen-angel/14827129",
     },
     {
         title: "Sylvestre Alone",
@@ -24,8 +25,7 @@ export const dummyData = [
         label: "Saved",
         image: "https://i3.ytimg.com/vi/Cw-uMfFGWL8/maxresdefault.jpg",
         filename: "Dario-DAttis-Markus-Homm-Lets-Try.mp3",
-        buyUrl:
-            "https://www.traxsource.com/track/8546951/lets-try-extended-mix",
+        buyUrl: "https://www.traxsource.com/track/8546951/lets-try-extended-mix",
     },
     {
         title: "Break For Lovers",
