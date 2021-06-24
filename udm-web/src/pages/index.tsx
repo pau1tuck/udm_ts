@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { gql } from "@apollo/client";
-import { Box, Container, Flex, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Button, Container, Flex, Grid, GridItem } from "@chakra-ui/react";
 import Layout from "../components/layout";
 import { Tagline } from "../components/tagline";
 import { Navigation } from "../components/navigation";
@@ -11,6 +11,7 @@ import { RiPlayCircleFill } from "react-icons/ri";
 import { RiPauseCircleFill } from "react-icons/ri";
 import { nowPlayingVar } from "../utils/with-apollo";
 import { NowPlaying } from "../components/track/track.now-playing";
+import PlayPauseButton from "../components/player/player.playpause-button";
 
 import { useTracksQuery } from "../graphql/graphql";
 import { ITrack } from "~types/track.types";
@@ -24,17 +25,7 @@ export const NOW_PLAYING = gql`
 const Home = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTrack, setCurrentTrack] = useState({
-        id: "",
-        trackId: 0,
-        title: "",
-        artist: "",
-        label: "",
-        month: 0,
-        year: 0,
-        buyUrl: "",
-        createdAt: "",
-        updatedAt: "",
-        votes: 0,
+        id: null,
     });
 
     const myAudio = useRef();
@@ -65,6 +56,16 @@ const Home = () => {
             />
         ));
     }
+
+    const playPause = (myAudio) => {
+        if (isPlaying) {
+            myAudio.current.pause();
+            setIsPlaying(false);
+        } else if (currentTrack.id) {
+            myAudio.current.play();
+            setIsPlaying(true);
+        } else return;
+    };
 
     return (
         <Layout home>
@@ -122,14 +123,29 @@ const Home = () => {
                                 cursor="pointer"
                                 fontSize="2.5rem"
                             >
-                                {/*<PlayPauseButton />*/}
+                                <Box
+                                    onClick={() => {
+                                        playPause(myAudio);
+                                    }}
+                                    pt={1}
+                                >
+                                    {isPlaying ? (
+                                        <Box color="lime.400">
+                                            <RiPauseCircleFill />
+                                        </Box>
+                                    ) : (
+                                        <Box color="primary.400">
+                                            <RiPlayCircleFill />
+                                        </Box>
+                                    )}
+                                </Box>
                             </Box>
                         </div>
                         <NowPlaying nowPlaying={currentTrack} />
                     </Box>
                     <audio
                         src={`${process.env.NEXT_PUBLIC_HOST}/media/audio/${currentTrack.trackId}.mp3`}
-                        controls
+                        ref={myAudio}
                         autoPlay
                         style={{ visibility: "hidden" }}
                     ></audio>

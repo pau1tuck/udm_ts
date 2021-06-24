@@ -10,6 +10,7 @@ export const dummyData = [
         buyUrl: "https://www.beatport.com/track/tears-of-the-fallen-angel/14827129",
     },
     {
+        trackId: 1,
         title: "Sylvestre Alone",
         version: "",
         artist: "DJOKO",
