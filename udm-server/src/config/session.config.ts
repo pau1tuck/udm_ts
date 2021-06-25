@@ -13,7 +13,7 @@ const sessionConfig = {
     }),
     cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 365,
-        httpOnly: true,
+        httpOnly: !PROD,
         sameSite: PROD,
         secure: PROD,
     },

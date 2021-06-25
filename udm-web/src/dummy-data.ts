@@ -10,7 +10,7 @@ export const dummyData = [
         buyUrl: "https://www.beatport.com/track/tears-of-the-fallen-angel/14827129",
     },
     {
-        trackId: 1,
+        trackId: 2106171206,
         title: "Sylvestre Alone",
         version: "",
         artist: "DJOKO",
@@ -20,6 +20,7 @@ export const dummyData = [
         buyUrl: "https://djoko.bandcamp.com/track/sylvestre-alone",
     },
     {
+        trackId: 2106171205,
         title: "Let’s Try",
         version: "",
         artist: "Dario D'Attis, Markus Homm",
@@ -29,15 +30,7 @@ export const dummyData = [
         buyUrl: "https://www.traxsource.com/track/8546951/lets-try-extended-mix",
     },
     {
-        title: "Break For Lovers",
-        version: "Elinov Edit",
-        artist: "Men I Trust",
-        label: "White Label",
-        image: "http://i3.ytimg.com/vi/2JCGnqOBpJE/maxresdefault.jpg",
-        filename: "Men-I-Trust-Break-For-Lovers-Elinov-Edit.mp3",
-        buyUrl: "https://hypeddit.com/track/ksgko5",
-    },
-    {
+        trackId: 2106252332,
         title: "Sense Of Closure",
         version: "",
         artist: "3 S",
@@ -47,6 +40,7 @@ export const dummyData = [
         buyUrl: "https://3smusique.bandcamp.com/track/sense-of-closure",
     },
     {
+        trackId: 2106171203,
         title: "Italia Chic",
         version: "",
         artist: "KOKO",
@@ -54,5 +48,15 @@ export const dummyData = [
         image: "http://i3.ytimg.com/vi/klxNS-RKxe0/maxresdefault.jpg",
         filename: "KOKO Italia-Chic.mp3",
         buyUrl: "https://koko18.bandcamp.com/track/koko-italia-chic",
+    },
+    {
+        trackId: 2106171207,
+        title: "Break For Lovers",
+        version: "Elinov Edit",
+        artist: "Men I Trust",
+        label: "White Label",
+        image: "http://i3.ytimg.com/vi/2JCGnqOBpJE/maxresdefault.jpg",
+        filename: "Men-I-Trust-Break-For-Lovers-Elinov-Edit.mp3",
+        buyUrl: "https://hypeddit.com/track/ksgko5",
     },
 ];
