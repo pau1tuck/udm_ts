@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import "dotenv/config";
 import cors from "cors";
-import throng from "throng";
+import throng from "throng";import { v4 } from "uuid";
 
 import express, { Express } from "express";
 import session from "express-session";
@@ -13,7 +13,7 @@ import { buildSchema } from "type-graphql";
 import { authChecker } from "./middleware/check-auth";
 
 import database from "./config/database.config";
-import { redisClient } from "./config/redis.config";
+import { RedisStore, redisClient } from "./config/redis.config";
 import { emailTransporter } from "./config/nodemailer.config";
 
 import { UserResolver } from "./resolvers/user.resolver";
@@ -21,8 +21,8 @@ import { TrackResolver } from "./resolvers/track.resolver";
 
 import { createUserDataLoader } from "./middleware/create-user-dataloader";
 import { cacheTracks } from "./middleware/cache-tracks";
-import sessionConfig from "./config/session.config";
 
+const PROD = process.env.NODE_ENV === "production";
 const WORKERS = Number(process.env.WEB_CONCURRENCY) || 1;
 
 const {
@@ -52,7 +52,25 @@ const server = async () => {
         })
     );
 
-    app.use(session(sessionConfig));
+    app.use(session({ 
+        name: "sid",
+        genid: () => v4(),
+        store: new RedisStore({
+            client: redisClient as any,
+            disableTouch: true,
+            disableTTL: true,
+        }),
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24 * 365,
+            httpOnly: false,
+            sameSite: "lax",
+            secure: PROD,
+            domain: PROD ? ".udmx.net" : undefined,
+        },
+        secret: process.env.SESSION_SECRET || "secret",
+        resave: false,
+        saveUninitialized: false
+    }));
 
     const graphQLSchema = await buildSchema({
         resolvers: [UserResolver, TrackResolver],
