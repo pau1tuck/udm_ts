@@ -26,6 +26,17 @@ const Home = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTrack, setCurrentTrack] = useState({
         id: null,
+        trackId: null,
+        artist: null,
+        title: null,
+        version: null,
+        label: null,
+        buyUrl: null,
+        month: null,
+        year: null,
+        votes: null,
+        createdAt: null,
+        updatedAt: null,
     });
 
     const myAudio = useRef();
@@ -39,7 +50,7 @@ const Home = () => {
     });
 
     const onChangeTrack = (track: ITrack) => {
-        setCurrentTrack({ ...track });
+        setCurrentTrack(track);
         setIsPlaying(true);
     };
 
