@@ -7,7 +7,7 @@ export const nowPlayingVar = makeVar("");
 
 const createClient = (ctx: NextPageContext) =>
     new ApolloClient({
-        uri: "http://localhost:5000/graphql" as string,
+        uri: `${process.env.NEXT_PUBLIC_HOST}/graphql` as string,
         credentials: "include",
         headers: {
             cookie:
