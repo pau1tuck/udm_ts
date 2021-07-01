@@ -43,7 +43,7 @@ const server = async () => {
 
     app.disable("x-powered-by");
 
-    app.set("trust proxy", 1);
+    app.set("trust proxy", "195.110.58.50");
 
     app.use(
         cors({
@@ -87,7 +87,6 @@ const server = async () => {
             userLoader: createUserDataLoader(),
         }),
         introspection: DEBUG,
-        playground: DEBUG,
     });
 
     apolloServer.applyMiddleware({ app, cors: false });
@@ -124,6 +123,14 @@ const server = async () => {
         }
     });
     */
+
+    app.get("/.well-known/acme-challenge/BGG82hWJqcHQ4uFCs6ICI6w2zzuIUIbMjrGYjmRLdwQ", (req, res) => {
+        res.send("BGG82hWJqcHQ4uFCs6ICI6w2zzuIUIbMjrGYjmRLdwQ.sgFVWkcUsODnnQ0ll8Qx94Wi2b-EPuFsJ6258U5doRM")
+    });
+
+    app.get('/', (req, res) => {
+        res.send('API')
+    });
 
     app.listen(PORT, () => {
         console.log(`🚀 Node server running on ${HOST}:${PORT}`);
