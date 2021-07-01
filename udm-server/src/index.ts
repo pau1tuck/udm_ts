@@ -47,7 +47,7 @@ const server = async () => {
 
     app.use(
         cors({
-            origin: CORS_ORIGIN,
+            origin: /udmx\.net$/,
             credentials: true,
         })
     );
@@ -129,7 +129,7 @@ const server = async () => {
     });
 
     app.get('/', (req, res) => {
-        res.send('API')
+        res.redirect('https://udmx.net')
     });
 
     app.listen(PORT, () => {
