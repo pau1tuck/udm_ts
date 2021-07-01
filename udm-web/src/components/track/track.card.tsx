@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Icon } from "@chakra-ui/react";
 import { RiShoppingBasket2Fill } from "react-icons/ri";
 import { HiThumbUp } from "react-icons/hi";
 import { AiFillStar } from "react-icons/ai";
@@ -47,14 +47,28 @@ export const TrackCard = ({ track, handleChangeTrack }) => {
                         opacity="0.6"
                         fontSize="1.3rem"
                     >
-                        <Box pt="1px" pr={2} color="#383838">
+                        <Box pt="1px" pr={3} color="#383838">
                             <AiFillStar />
                         </Box>
-                        <Box pr={2} color="#383838">
+                        <Box pr={3} color="#383838">
                             <HiThumbUp />
                         </Box>
-                        <Box as="a" href={track.buyUrl} target="_blank">
-                            <RiShoppingBasket2Fill />
+                        <Box
+                            as="a"
+                            href={track.buyUrl}
+                            target="_blank"
+                            mt="-7px"
+                        >
+                            <Icon
+                                aria-label="buy"
+                                fontSize="1.4rem"
+                                cursor="pointer"
+                                _hover={{
+                                    color: "white",
+                                }}
+                            >
+                                <RiShoppingBasket2Fill />
+                            </Icon>
                         </Box>
                     </Box>
                 </GridItem>

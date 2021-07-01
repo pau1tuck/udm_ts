@@ -1,9 +1,10 @@
 import "reflect-metadata";
 import "dotenv/config";
 import cors from "cors";
-import throng from "throng";import { v4 } from "uuid";
+import throng from "throng";
+import { v4 } from "uuid";
 
-import express, { Express } from "express";
+import express, { Express, Request, Response } from "express";
 import session from "express-session";
 
 import { createConnection, Connection } from "typeorm";
@@ -47,30 +48,32 @@ const server = async () => {
 
     app.use(
         cors({
-            origin: /udmx\.net$/,
+            origin: PROD ? /udmx\.net$/ : CORS_ORIGIN,
             credentials: true,
         })
     );
 
-    app.use(session({ 
-        name: "sid",
-        genid: () => v4(),
-        store: new RedisStore({
-            client: redisClient as any,
-            disableTouch: true,
-            disableTTL: true,
-        }),
-        cookie: {
-            maxAge: 1000 * 60 * 60 * 24 * 365,
-            httpOnly: false,
-            sameSite: "lax",
-            secure: PROD,
-            domain: PROD ? ".udmx.net" : undefined,
-        },
-        secret: process.env.SESSION_SECRET || "secret",
-        resave: false,
-        saveUninitialized: false
-    }));
+    app.use(
+        session({
+            name: "sid",
+            genid: () => v4(),
+            store: new RedisStore({
+                client: redisClient as any,
+                disableTouch: true,
+                disableTTL: true,
+            }),
+            cookie: {
+                maxAge: 1000 * 60 * 60 * 24 * 365,
+                httpOnly: false,
+                sameSite: "lax",
+                secure: PROD,
+                domain: PROD ? ".udmx.net" : undefined,
+            },
+            secret: process.env.SESSION_SECRET || "secret",
+            resave: false,
+            saveUninitialized: false,
+        })
+    );
 
     const graphQLSchema = await buildSchema({
         resolvers: [UserResolver, TrackResolver],
@@ -124,13 +127,20 @@ const server = async () => {
     });
     */
 
-    app.get("/.well-known/acme-challenge/BGG82hWJqcHQ4uFCs6ICI6w2zzuIUIbMjrGYjmRLdwQ", (req, res) => {
-        res.send("BGG82hWJqcHQ4uFCs6ICI6w2zzuIUIbMjrGYjmRLdwQ.sgFVWkcUsODnnQ0ll8Qx94Wi2b-EPuFsJ6258U5doRM")
-    });
+    app.get(
+        "/.well-known/acme-challenge/BGG82hWJqcHQ4uFCs6ICI6w2zzuIUIbMjrGYjmRLdwQ",
+        (_req: Request, res: Response) => {
+            res.send(
+                "BGG82hWJqcHQ4uFCs6ICI6w2zzuIUIbMjrGYjmRLdwQ.sgFVWkcUsODnnQ0ll8Qx94Wi2b-EPuFsJ6258U5doRM"
+            );
+        }
+    );
 
-    app.get('/', (req, res) => {
-        res.redirect('https://udmx.net')
-    });
+    if (PROD) {
+        app.get("/", (_req: Request, res: Response) => {
+            res.redirect("https://udmx.net");
+        });
+    }
 
     app.listen(PORT, () => {
         console.log(`🚀 Node server running on ${HOST}:${PORT}`);

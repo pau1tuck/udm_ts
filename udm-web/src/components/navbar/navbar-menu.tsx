@@ -78,9 +78,6 @@ export const NavbarMenu = ({ toggle, user }) => {
                         <Text fontFamily="Quicksand" fontWeight="700">
                             Latest Tunes
                         </Text>
-                        <Text fontFamily="Quicksand" fontWeight="700">
-                            All Tracks
-                        </Text>
                     </Stack>
                 </ButtonGroup>
             </Box>
