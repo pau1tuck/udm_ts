@@ -59,7 +59,7 @@ export const TrackCard = ({ track, handleChangeTrack }) => {
                             as="a"
                             href={track.buyUrl}
                             target="_blank"
-                            mt="-7px"
+                            mt="-6px"
                         >
                             <Icon
                                 aria-label="buy"
