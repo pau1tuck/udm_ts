@@ -31,6 +31,7 @@ const {
     HOST,
     PORT,
     CORS_ORIGIN,
+    SESSION_COOKIE,
     DB_HOST,
     DB_PORT,
     REDIS_HOST,
@@ -55,7 +56,7 @@ const server = async () => {
 
     app.use(
         session({
-            name: "sid",
+            name: SESSION_COOKIE,
             genid: () => v4(),
             store: new RedisStore({
                 client: redisClient as any,
@@ -64,9 +65,9 @@ const server = async () => {
             }),
             cookie: {
                 maxAge: 1000 * 60 * 60 * 24 * 365,
-                httpOnly: false,
+                httpOnly: true,
                 sameSite: "lax",
-                secure: PROD,
+                secure: "auto",
                 domain: PROD ? ".udmx.net" : undefined,
             },
             secret: process.env.SESSION_SECRET || "secret",

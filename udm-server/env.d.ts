@@ -6,6 +6,7 @@ declare namespace NodeJS {
         HOST: string;
         PORT: number;
         CORS_ORIGIN: string;
+        SESSION_COOKIE: string;
         SESSION_SECRET: string;
         DB_URL: string;
         DB_HOST: string;

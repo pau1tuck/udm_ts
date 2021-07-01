@@ -14,6 +14,8 @@ const createClient = (ctx: NextPageContext) =>
                 (typeof window === "undefined"
                     ? ctx?.req?.headers.cookie
                     : undefined) || "",
+                sameSite: "lax",
+                secure: "auto",
         },
         cache: new InMemoryCache({
             typePolicies: {
