@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Grid, GridItem, Icon } from "@chakra-ui/react";
+import "animate.css/animate.css";
 import { RiShoppingBasket2Fill } from "react-icons/ri";
 import { HiThumbUp } from "react-icons/hi";
 import { AiFillStar } from "react-icons/ai";
@@ -18,6 +19,7 @@ export const TrackCard = ({ track, handleChangeTrack }) => {
             bgColor="#111111"
             opacity="0.9"
             borderRadius={6}
+            className="animate__animated animate__zoomIn"
         >
             <Grid h="310px" m={1} mb={4} templateRows="repeat(9, 1fr)">
                 <Box onClick={() => handleChangeTrack(track)} cursor="pointer">
