@@ -84,7 +84,6 @@ const Home = () => {
                 <Tagline />
                 <Grid
                     display={["none", "none", "none", "grid"]}
-                    h="500px"
                     mb={12}
                     templateRows="repeat(4, 1fr)"
                     templateColumns="repeat(5, 1fr)"

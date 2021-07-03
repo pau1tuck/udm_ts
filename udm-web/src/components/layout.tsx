@@ -32,9 +32,9 @@ const Layout = ({
                 <Navbar />
                 <Logo />
 
-                <div>
+                <main>
                     <Box pb="75px">{children}</Box>
-                </div>
+                </main>
             </div>
         </>
     );
