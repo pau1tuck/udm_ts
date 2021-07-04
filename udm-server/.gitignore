@@ -10,3 +10,6 @@ tsconfig.tsbuildinfo
 
 /build
 /dist
+
+# media
+/media/audio
