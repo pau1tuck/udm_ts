@@ -29,6 +29,7 @@ const Layout = ({
                     <meta name="twitter:card" content="summary_large_image" />
                     <link href="/fonts/fonts.css" rel="stylesheet" />
                 </Head>
+                <script>0</script>
                 <Navbar />
                 <Logo />
 
