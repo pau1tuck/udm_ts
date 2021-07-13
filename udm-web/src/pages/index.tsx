@@ -82,7 +82,7 @@ const Home = () => {
         <Layout home>
             <Container maxW={"62em"} justifyContent="center">
                 <Tagline />
-                <Grid
+                {/* <Grid
                     display={["none", "none", "none", "grid"]}
                     mb={12}
                     templateRows="repeat(4, 1fr)"
@@ -95,11 +95,12 @@ const Home = () => {
                     <GridItem rowSpan={4} colSpan={4}>
                         <Flex wrap="wrap">{cards}</Flex>
                     </GridItem>
-                </Grid>
+                </Grid> */}
                 <Box
-                    display={["flex", "flex", "flex", "none"]}
+                    display={["flex", "flex", "flex", "flex"]}
                     flexWrap="wrap"
                     w="100%"
+                    ml={[1, 2, 2, 3]}
                     justifyContent="center"
                     wrap="wrap"
                 >

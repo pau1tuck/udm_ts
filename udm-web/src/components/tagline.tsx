@@ -6,11 +6,11 @@ import taglineStyles from "../styles/components/tagline.module.css";
 export const Tagline = () => {
     return (
         <Flex
+            display={["none", "flex", "flex", "flex"]}
             mt={4}
             mb={6}
-            ml={1}
+            justifyContent="center"
             alignContent="center"
-            justifyContent="space-between"
         >
             <Typed
                 className={taglineStyles.typed}
