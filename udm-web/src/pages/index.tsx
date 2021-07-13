@@ -44,7 +44,7 @@ const Home = () => {
     const { loading, error, data, fetchMore, variables } = useTracksQuery({
         // fetchPolicy: "cache-first",
         variables: {
-            limit: 9,
+            limit: 24,
         },
         notifyOnNetworkStatusChange: true,
     });
